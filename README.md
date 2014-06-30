@@ -3,6 +3,10 @@ Tomin.TotalCmd.AzureBlob
 
 Total Commander plugin for Azure Blob service
 
+Prerequisites
+---------------
+- .NET Framework 4.5
+
 Known issues
 ---------------
 - 64 bit not supported (cannot compile)
