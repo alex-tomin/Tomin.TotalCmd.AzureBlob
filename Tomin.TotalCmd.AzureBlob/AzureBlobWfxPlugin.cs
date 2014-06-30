@@ -246,8 +246,8 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override void OnError(Exception error)
 		{
-			Log.ImportantError(error.Message);
 			Request.MessageBox(error.Message);
+			Log.ImportantError(error.Message);
 		}
 
 		//-- Helpers
@@ -272,6 +272,7 @@ namespace Tomin.TotalCmd.AzureBlob
 							? CloudStorageAccount.DevelopmentStorageAccount.CreateCloudBlobClient()
 							: new CloudStorageAccount(new StorageCredentials(s.AccountName, s.AccountKey), s.UseSsl).CreateCloudBlobClient()
 					);
+			throw new Exception("test log");
 		}
 
 		private FindData ContainerToFindData(CloudBlobContainer container)
