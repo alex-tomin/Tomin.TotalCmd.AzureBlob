@@ -5,7 +5,7 @@ Total Commander plugin for Azure Blob service
 
 Known issues
 ---------------
-- 64 but not supported (cannot compile)
+- 64 bit not supported (cannot compile)
 - whitespaces in folder and file names
 
 Credits
