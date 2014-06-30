@@ -128,7 +128,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="pluginst.inf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\AddStorageDialog.resx">
       <DependentUpon>AddStorageDialog.cs</DependentUpon>
@@ -140,6 +144,6 @@
     <CallTarget Targets="GenerateTotalCommanderWfxPlugin" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetDir)* "C:\Program Files\TotalComander\Plugins\wfx\AzureBlob\" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "C:\Program Files\TotalComander\Plugins\wfx\AzureBlob\" /Y /S</PostBuildEvent>
   </PropertyGroup>
 </Project>

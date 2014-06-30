@@ -1,0 +1,5 @@
+[plugininstall]
+description=Browse Azure Blob file system
+type=wfx
+file=Tomin.TotalCmd.AzureBlob.wfx
+defaultdir=AzureBlob
