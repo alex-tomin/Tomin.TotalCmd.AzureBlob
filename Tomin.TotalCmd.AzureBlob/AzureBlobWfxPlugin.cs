@@ -23,6 +23,7 @@ namespace Tomin.TotalCmd.AzureBlob
 	{
 
 		private const string AddNewStorageText = "<Add New Storage...>.";
+		private const string DoNotUseDelete = "!WARN: do not use Del/F8 in this folder.";
 		private const string FakeFileName = "11FakeEmptyFile11";
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
@@ -257,7 +258,10 @@ namespace Tomin.TotalCmd.AzureBlob
 				ReloadBlobClientsFromConfig();
 
 			return blobClients.Keys.Select(x => new FindData(x, FileAttributes.Directory))
-				.Concat(new[] { new FindData(AddNewStorageText) });
+				.Concat(new[] { 
+					new FindData(AddNewStorageText),
+					new FindData(DoNotUseDelete)
+				});
 		}
 
 		private static void ReloadBlobClientsFromConfig()
