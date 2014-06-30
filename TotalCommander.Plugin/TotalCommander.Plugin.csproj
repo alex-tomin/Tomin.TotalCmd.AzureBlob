@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A4C0890-6532-4B1D-9A32-977ECB568A5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TotalCommander.Plugin</RootNamespace>
+    <AssemblyName>TotalCommander.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>..\Build\TotalCommander.Plugin.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DocumentationFile>..\Build\TotalCommander.Plugin.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DllExportAttribute.cs" />
+    <Compile Include="TotalCommanderWindow.cs" />
+    <Compile Include="Utils\DateTimeUtil.cs" />
+    <Compile Include="Wcx\ArchiveResult.cs" />
+    <Compile Include="Wcx\ArchiveHeader.cs" />
+    <Compile Include="Wcx\ArchiveProcess.cs" />
+    <Compile Include="Wcx\ChangeVolume.cs" />
+    <Compile Include="Wcx\IArchivePacker.cs" />
+    <Compile Include="Wcx\MemoryPackMode.cs" />
+    <Compile Include="Wcx\PackMode.cs" />
+    <Compile Include="Wcx\Progress.cs" />
+    <Compile Include="Wcx\IArchiveUnpacker.cs" />
+    <Compile Include="Wcx\PackerCapabilities.cs" />
+    <Compile Include="Wcx\Password.cs" />
+    <Compile Include="Wcx\TotalCommanderWcxPlugin.cs" />
+    <Compile Include="Wcx\BackgroundFlags.cs" />
+    <Compile Include="Wcx\WcxDispatcher.cs" />
+    <Compile Include="Wcx\ITotalCommanderWcxPlugin.cs" />
+    <Compile Include="Wcx\OpenArchiveInfo.cs" />
+    <Compile Include="Wcx\OpenArchiveMode.cs" />
+    <Compile Include="Wcx\WcxException.cs" />
+    <Compile Include="Wfx\BackgroundFlags.cs" />
+    <Compile Include="Wfx\Password.cs" />
+    <Compile Include="Wfx\WfxDispatcher.cs" />
+    <Compile Include="Wfx\PreviewBitmapResult.cs" />
+    <Compile Include="Wfx\CustomIconFlags.cs" />
+    <Compile Include="Wfx\CustomIconResult.cs" />
+    <Compile Include="Wfx\StatusOperation.cs" />
+    <Compile Include="Wfx\StatusOrigin.cs" />
+    <Compile Include="Wfx\CopyFlags.cs" />
+    <Compile Include="Wfx\ExecuteResult.cs" />
+    <Compile Include="Wfx\FileOperationResult.cs" />
+    <Compile Include="Wfx\RemoteInfo.cs" />
+    <Compile Include="Wfx\Request.cs" />
+    <Compile Include="Wfx\Progress.cs" />
+    <Compile Include="Wfx\Log.cs" />
+    <Compile Include="Wfx\TotalCommanderWfxPlugin.cs" />
+    <Compile Include="Wfx\FindData.cs" />
+    <Compile Include="DefaultParam.cs" />
+    <Compile Include="Win32.cs" />
+    <Compile Include="TotalCommanderPluginHolder.cs" />
+    <Compile Include="Wfx\ITotalCommanderWfxPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\LongUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Docs\WCX.hlp" />
+    <None Include="Docs\WDX.hlp" />
+    <None Include="Docs\WFX.hlp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
