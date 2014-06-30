@@ -48,8 +48,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var blobPath = AzurePath.FromPath(path);
 
-			//no container - account selected
-			if (string.IsNullOrEmpty(blobPath.ContainerName))
+			if (blobPath.IsAccountOnly)
 			{
 				enumerator = blobClients[blobPath.StorageDisplayName].ListContainers().GetEnumerator();
 				return FindNext(enumerator);
@@ -57,8 +56,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
 
-			//no folders - container selected
-			if (string.IsNullOrEmpty(blobPath.Path))
+			if (blobPath.IsContainerOnly)
 			{
 				enumerator = container.ListBlobs().GetEnumerator();
 				return FindNext(enumerator);
@@ -85,7 +83,12 @@ namespace Tomin.TotalCmd.AzureBlob
 				return DirectoryToFindData((CloudBlobDirectory)enumerator.Current);
 
 			if (enumerator.Current is ICloudBlob)
-				return BlobToFindData((CloudBlockBlob)enumerator.Current);
+			{
+				FindData findData = BlobToFindData((CloudBlockBlob)enumerator.Current);
+				if (findData.FileName.Contains(FakeFileName))
+					return FindNext(enumerator);
+				return findData;
+			}
 
 			return FindData.NoMoreFiles;
 		}
@@ -96,15 +99,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				var blobPath = AzurePath.FromPath(path);
 
-				//no container - account selected
-				if (string.IsNullOrEmpty(blobPath.ContainerName))
+				if (blobPath.IsAccountOnly)
 				{
 					Request.MessageBox("You canot create Account. Use " + AddNewStorageText + " below");
 					return false;
 				}
 
-				//no folders - container selected
-				if (string.IsNullOrEmpty(blobPath.Path))
+				if (blobPath.IsContainerOnly)
 				{
 					var newContainer = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
 					newContainer.CreateIfNotExists();
@@ -169,10 +170,16 @@ namespace Tomin.TotalCmd.AzureBlob
 		public override FileOperationResult FilePut(string localName, ref string remoteName, CopyFlags copyFlags)
 		{
 			var blobPath = AzurePath.FromPath(remoteName);
+
+			if (blobPath.IsAccountOnly || blobPath.IsContainerOnly)
+			{
+				Request.MessageBox("You cannot create files in this level. Select a subfolder.");
+				return FileOperationResult.UserAbort;
+			}
+
 			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
 			var blob = container.GetBlockBlobReference(blobPath.Path);
 			blob.UploadFromFile(localName, FileMode.Open);
-
 
 			return FileOperationResult.OK;
 		}
@@ -188,8 +195,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				var blobPath = AzurePath.FromPath(remoteName);
 
-				//no container - account selected
-				if (string.IsNullOrEmpty(blobPath.ContainerName))
+				if (blobPath.IsAccountOnly)
 				{
 					Settings.Default.BlobConfigs.Remove(new BlobConfig { StorageDisplayName = blobPath.StorageDisplayName });
 					Settings.Default.Save();
@@ -200,7 +206,7 @@ namespace Tomin.TotalCmd.AzureBlob
 				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
 
 				//no folders - only container
-				if (string.IsNullOrWhiteSpace(blobPath.Path))
+				if (blobPath.IsContainerOnly)
 				{
 					container.Delete();
 				}
@@ -223,9 +229,6 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override bool FileRemove(string remoteName)
 		{
-			if (remoteName.Contains(AddNewStorageText))
-				return false;
-
 			try
 			{
 				var blobPath = AzurePath.FromPath(remoteName);
@@ -238,8 +241,6 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				return false;
 			}
-
-
 		}
 
 		public override void OnError(Exception error)
@@ -247,7 +248,6 @@ namespace Tomin.TotalCmd.AzureBlob
 			Log.ImportantError(error.Message);
 			Request.MessageBox(error.Message);
 		}
-
 
 		//-- Helpers
 
@@ -282,14 +282,14 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		private FindData DirectoryToFindData(CloudBlobDirectory blobItem)
 		{
-			var findData = new FindData(blobItem.Uri.Segments.Last().TrimEnd('/'));
+			var findData = new FindData(Uri.UnescapeDataString(blobItem.Uri.Segments.Last().TrimEnd('/')));
 			findData.Attributes |= FileAttributes.Directory;
 			return findData;
 		}
 
 		private FindData BlobToFindData(ICloudBlob blobItem)
 		{
-			var findData = new FindData(blobItem.Uri.Segments.Last().TrimEnd('/'), blobItem.Properties.Length);
+			var findData = new FindData(Uri.UnescapeDataString(blobItem.Uri.Segments.Last().TrimEnd('/')), blobItem.Properties.Length);
 			if (blobItem.Properties.LastModified != null)
 				findData.LastWriteTime = blobItem.Properties.LastModified.Value.ToLocalTime().DateTime;
 			return findData;

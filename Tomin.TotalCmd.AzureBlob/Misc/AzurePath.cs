@@ -15,9 +15,26 @@ namespace Tomin.TotalCmd.AzureBlob.Misc
 		public string ContainerName { get; set; }
 		public string Path { get; set; }
 
+		/// <summary>
+		/// Path contains only Storage Account (Display Name) folder.
+		/// </summary>
+		public bool IsAccountOnly
+		{
+			get { return string.IsNullOrEmpty(ContainerName); }
+		}
+
+		/// <summary>
+		/// Path is root for Azure Container, no futher path.
+		/// </summary>
+		public bool IsContainerOnly
+		{
+			get { return string.IsNullOrEmpty(Path); }
+		}
+
 		public static AzurePath FromPath(string remoteName)
 		{
 			Match regexMatch = blobPathRegex.Match(remoteName);
+
 			var azurePath = new AzurePath
 						{
 							ContainerName = regexMatch.Groups["container"].Value,
