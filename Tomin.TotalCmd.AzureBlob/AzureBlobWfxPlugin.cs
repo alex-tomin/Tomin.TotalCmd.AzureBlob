@@ -85,7 +85,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			if (enumerator.Current is ICloudBlob)
 			{
-				FindData findData = BlobToFindData((CloudBlockBlob)enumerator.Current);
+				FindData findData = BlobToFindData((ICloudBlob)enumerator.Current);
 				if (findData.FileName.Contains(FakeFileName))
 					return FindNext(enumerator);
 				return findData;
@@ -250,6 +250,11 @@ namespace Tomin.TotalCmd.AzureBlob
 			Log.ImportantError(error.Message);
 		}
 
+		public override CustomIconResult GetCustomIcon(ref string remoteName, CustomIconFlags extractIconFlag, out System.Drawing.Icon icon)
+		{
+			return base.GetCustomIcon(ref remoteName, extractIconFlag, out icon);
+		}
+
 		//-- Helpers
 
 		private IEnumerable<FindData> GetStorageAccounts()
@@ -272,7 +277,6 @@ namespace Tomin.TotalCmd.AzureBlob
 							? CloudStorageAccount.DevelopmentStorageAccount.CreateCloudBlobClient()
 							: new CloudStorageAccount(new StorageCredentials(s.AccountName, s.AccountKey), s.UseSsl).CreateCloudBlobClient()
 					);
-			throw new Exception("test log");
 		}
 
 		private FindData ContainerToFindData(CloudBlobContainer container)
