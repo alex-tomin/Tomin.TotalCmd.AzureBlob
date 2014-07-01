@@ -20,6 +20,7 @@ Known issues
 - 64 bit not supported (cannot compile)
 - whitespaces in folder and file names
 - Cannot remove account once added (all blobs will be removed)
+- Only Block blobs are supported
 
 Credits
 ---------------
