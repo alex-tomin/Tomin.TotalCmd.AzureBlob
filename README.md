@@ -6,6 +6,7 @@ Total Commander plugin for Azure Blob service
 Prerequisites
 ---------------
 - .NET Framework 4.5
+- Azure SDK
 
 Download
 ---------------
