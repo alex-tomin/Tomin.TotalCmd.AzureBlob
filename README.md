@@ -6,6 +6,7 @@ Total Commander plugin for Azure Blob service
 Prerequisites
 ---------------
 - .NET Framework 4.5
+- Azure SDK
 
 Download
 ---------------
@@ -18,9 +19,10 @@ https://github.com/alex-tomin/Tomin.TotalCmd.AzureBlob/releases
 Known issues
 ---------------
 - 64 bit not supported (cannot compile)
-- whitespaces in folder and file names
 - Cannot remove account once added (all blobs will be removed)
 - Only Block blobs are supported
+- Background copying not supported
+- No Progress
 
 Credits
 ---------------
