@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Seq RDF:about="chrome://communicator/content/pref/pref-appearance.xul">
+    <RDF:li>chrome://editor/content/editorPrefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/mailPrefsOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/utilityOverlay.xul">
+    <RDF:li>chrome://help/content/helpMenuOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/contentAreaContextOverlay.xul">
+    <RDF:li>chrome://cookie/content/cookieContextOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/tasksOverlay.xul">
+    <RDF:li>chrome://editor/content/editorTasksOverlay.xul</RDF:li>
+    <RDF:li>chrome://wallet/content/walletTasksOverlay.xul</RDF:li>
+    <RDF:li>chrome://venkman/content/venkman-overlay.xul</RDF:li>
+    <RDF:li>chrome://inspector/content/tasksOverlay.xul</RDF:li>
+    <RDF:li>chrome://tasks/content/tasksOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/downloadmanager/downloadmanager.xul">
+    <RDF:li>chrome://communicator/content/tasksOverlay.xul</RDF:li>
+    <RDF:li>chrome://communicator/content/utilityOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/pref/preftree.xul">
+    <RDF:li>chrome://editor/content/editorPrefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://pippki/content/PrefOverlay.xul</RDF:li>
+    <RDF:li>chrome://cookie/content/cookiePrefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://wallet/content/walletPrefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://content-packs/content/prefOverlay.xul</RDF:li>
+    <RDF:li>chrome://inspector/content/prefs/prefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://chatzilla/content/prefsOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/mailPrefsOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://communicator/content/pref/pref-scripts.xul">
+    <RDF:li>chrome://messenger/content/mailPrefsOverlay.xul</RDF:li>
+  </RDF:Seq>
+</RDF:RDF>

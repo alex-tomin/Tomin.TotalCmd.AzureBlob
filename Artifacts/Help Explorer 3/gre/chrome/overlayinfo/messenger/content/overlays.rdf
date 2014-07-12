@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:c="http://www.mozilla.org/rdf/chrome#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Seq RDF:about="chrome://messenger/content/messengercompose/messengercompose.xul">
+    <RDF:li>chrome://messenger-smime/content/msgCompSMIMEOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/mailMessengerComposeOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/addressbook/abSelectAddressesDialog.xul">
+    <RDF:li>chrome://messenger/content/mailOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/msgHdrViewOverlay.xul">
+    <RDF:li>chrome://messenger-smime/content/msgHdrViewSMIMEOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/addressbook/addressbook.xul">
+    <RDF:li>chrome://messenger/content/mailABOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/messenger.xul">
+    <RDF:li>chrome://messenger-smime/content/msgReadSMIMEOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/mailMessengerOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/pref-mailnews.xul">
+    <RDF:li>chrome://messenger-mapi/content/pref-mailnewsOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/mail3PaneWindowVertLayout.xul">
+    <RDF:li>chrome://messenger-smime/content/msgReadSMIMEOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/mailMessengerOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/messageWindow.xul">
+    <RDF:li>chrome://messenger-smime/content/msgReadSMIMEOverlay.xul</RDF:li>
+  </RDF:Seq>
+  <RDF:Seq RDF:about="chrome://messenger/content/mailWindowOverlay.xul">
+    <RDF:li>chrome://editor/content/editorMailOverlay.xul</RDF:li>
+    <RDF:li>chrome://cookie/content/cookieContextOverlay.xul</RDF:li>
+    <RDF:li>chrome://messenger/content/msgViewPickerOverlay.xul</RDF:li>
+  </RDF:Seq>
+</RDF:RDF>

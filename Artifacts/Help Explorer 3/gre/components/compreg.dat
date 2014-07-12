@@ -1,0 +1,1327 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version,0,5
+
+[COMPONENTS]
+rel:xpc3250.dll,1176921924000,xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:gkparser.dll,1176921920000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:gkgfxwin.dll,1176921916000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:i18n.dll,1176921920000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:webbrwsr.dll,1176921924000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:editor.dll,1176921916000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:imglib2.dll,1176921920000,jpeg3250.dll png.dll mozz.dll gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:gklayout.dll,1176921920000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:gkplugin.dll,1176921920000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:embedcomponents.dll,1176921916000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:necko.dll,1176921922000,xpcom.dll nspr4.dll plc4.dll plds4.dll mozz.dll
+rel:txmgr.dll,1176921922000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:appshell.dll,1176921914000,gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:rdf.dll,1176921922000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:caps.dll,1176921914000,mozz.dll js3250.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:xmlextras.dll,1176921924000,xpcom.dll nspr4.dll plc4.dll plds4.dll mozz.dll js3250.dll
+rel:cookie.dll,1176921914000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:xppref32.dll,1176921926000,js3250.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:docshell.dll,1176921914000,gkgfx.dll js3250.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:jar50.dll,1176921920000
+rel:chrome.dll,1176921914000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:oji.dll,1176921922000,jsj3250.dll xpcom.dll nspr4.dll plc4.dll plds4.dll js3250.dll
+rel:uconv.dll,1176921924000,xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:gkwidget.dll,1176921920000,widget_windows.dll gkgfx.dll xpcom.dll nspr4.dll plc4.dll plds4.dll
+rel:pipboot.dll,1176921922000
+
+[CLASSIDS]
+{dbe63944-d434-11d3-98b1-001083010e9b},,,,rel:docshell.dll
+{6803cacf-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{b57f97c1-0d70-11d3-8aae-00600811a836},,,,rel:uconv.dll
+{905f80f1-8a7b-11d2-918c-0080c8e44db5},,,,rel:gklayout.dll
+{6a8c0dd4-1dd2-11b2-9a8f-f82f9df25b07},,,,rel:gkgfxwin.dll
+{d92d57c3-ba1d-11d2-af0c-0060089fe59b},,,,rel:i18n.dll
+{495eca42-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{019718e3-cdb5-11d2-8d3c-000000000000},,,,rel:editor.dll
+{e746a8b1-c97a-4fc5-baa4-66607521bd08},,,,rel:necko.dll
+{8b5314ba-db01-11d2-96ce-0060b0fb9956},,,,rel:gkwidget.dll
+{56ad2981-8a87-11d2-918c-0080c8e44db5},,,,rel:gklayout.dll
+{2d524fd0-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{6394eeae-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{d4214e92-fb94-11d2-bdd8-00104bde6048},,,,rel:rdf.dll
+{e0da1d70-2f7b-11d3-8cd0-0060b0fc14a3},,,,rel:necko.dll
+{8323fad0-2102-11d4-8142-000064657374},,,,rel:gkparser.dll
+{a7f800e0-4306-11d4-98d0-001083010e9b},,,,rel:docshell.dll
+{f7fa4581-238e-11d5-a73c-ab64fb68f2bc},,,,rel:embedcomponents.dll
+{ba6151b7-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{cc75499a-1dd1-11b2-8a82-ca410ac907b8},,,,rel:pipboot.dll
+{ba61519d-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{be9a53ae-c7e9-11d3-8cda-0060b0fc14a3},,,,rel:necko.dll
+{a0f827e1-8ab6-11d5-a14b-005004832142},,,,rel:uconv.dll
+{c07e81e0-ef12-11d2-92b6-00105a1b0d64},,,,rel:necko.dll
+{de9472d0-8034-11d3-9399-00104ba0fd40},,,,rel:necko.dll
+{a6cf9124-15b3-11d2-932e-00805f8add32},,,,rel:xmlextras.dll
+{7c657d18-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{7f915b01-98fc-11d4-8eb0-a803f80ff1bc},,,,rel:gklayout.dll
+{6394eebb-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{7b8556ac-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{199c7040-cab0-11d2-a849-0040959a28c9},,,,rel:gkgfxwin.dll
+{5e04ec5e-1dd2-11b2-8fda-c4db5fb666e0},,,,rel:imglib2.dll
+{ff41913b-546a-4bff-9201-dc9b2c032eba},,,,rel:necko.dll
+{77221d5a-1dd2-11b2-8c69-c710f15d2ed5},,,,rel:gkwidget.dll
+{2d96b3e0-c051-11d1-a827-0040959a28c9},,,,rel:gkwidget.dll
+{3c1c0163-9bd0-11d3-9d09-0050040007b2},,,,rel:uconv.dll
+{efc323e1-ec62-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{36102b6b-7b62-451a-a1c8-a0d456c92dc5},,,,rel:caps.dll
+{7c657d14-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{6394eea6-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{ba61519b-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{5fcaa2c1-7ca4-4f73-a357-93e79d709376},,,,rel:gklayout.dll
+{660d8ca6-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{495eca48-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{ba6151a3-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{eaca2576-0d4a-11d3-9d7e-0060088f9ff7},,,,rel:gklayout.dll
+{13111d00-ce81-11d6-8082-ecf3665af67c},,,,rel:gklayout.dll
+{495eca47-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{da5b130a-1dd1-11b2-ad47-f455b1814a78},,,,rel:gkgfxwin.dll
+{98d41c21-ccf3-11d2-b3b1-00805f8a6670},,,,rel:uconv.dll
+{ba6151af-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{712603da-f245-4503-a541-b049cb0681ae},,,,rel:gklayout.dll
+{ba6151b3-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{57cf9383-3405-11d5-be5b-aa20fa2cf37c},,,,rel:embedcomponents.dll
+{d25e0511-2bae-11d4-9d10-0050040007b2},,,,rel:i18n.dll
+{660d8ca0-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{78c61626-4d1f-4843-9364-4652d98ff6e1},,,,rel:imglib2.dll
+{2d96b3df-c051-11d1-a827-0040959a28c9},,,,rel:gkwidget.dll
+{a6cf90e5-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{3b581fd4-3497-426c-8f61-3658b971cb80},,,,rel:gklayout.dll
+{12bb8f17-2389-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{ea06d4e6-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{14c0e880-623e-11d3-a178-0050041caf44},,,,rel:necko.dll
+{a6cf9107-15b3-11d2-932e-00805f8add32},,,,rel:gkparser.dll
+{21dd6a02-413c-11d3-b3c3-00805f8a6670},,,,rel:uconv.dll
+{9ac9e770-18bc-11d3-9337-00104ba0fd40},,,,rel:necko.dll
+{831f8f13-7aa8-485f-b02e-77c881cc5773},,,,rel:necko.dll
+{9445791f-fa4c-4669-b174-df5032bb67b3},,,,rel:necko.dll
+{ccd0e960-7947-4635-b70e-4c661b63d675},,,,rel:necko.dll
+{a6cf9129-15b3-11d2-932e-00805f8add32},,,,rel:gkgfxwin.dll
+{8b975b0a-6ae5-11d7-4c00-039363659200},,,,rel:editor.dll
+{c401eb80-f9ea-11d3-bb6f-e732b73ebe7c},,,,rel:gkgfxwin.dll
+{ba6151aa-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{e28ab250-d66d-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{66856477-6596-40eb-bb87-59ca2dabb6f7},,,,rel:gklayout.dll
+{892ffeb0-3f80-11d3-a16c-0050041caf44},,,,rel:necko.dll
+{1f4dbcf7-245c-4c8c-943d-8a1da0495e8a},,,,rel:necko.dll
+{dd335422-b8b8-11d3-bdc8-0050040a9b44},,,,rel:docshell.dll
+{9580e69b-8fd6-414e-80cd-3a1821017646},,,,rel:gklayout.dll
+{36b63ef3-e0fa-4c49-9fd4-e065e85568f4},,,,rel:necko.dll
+{aa13e4a0-a5ac-11d2-9119-006008a6edf6},,,,rel:i18n.dll
+{9416bfc0-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{2002f784-3960-11d3-b3c3-00805f8a6670},,,,rel:i18n.dll
+{2d96b3d0-c051-11d1-a827-0040959a28c9},,,,rel:gkwidget.dll
+{ea06d4e3-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{8775ca39-4072-4cc0-92d3-a7c2b820089c},,,,rel:gklayout.dll
+{7b8556a9-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{439400d3-6f23-43db-8b06-8aafe1869bd8},,,,rel:necko.dll
+{a578e0a4-f76b-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{4f47e42e-4d23-4dd3-bfda-eb29255e9ea3},,,,rel:necko.dll
+{78804a84-8173-42b6-bb94-789f0816a810},,,,rel:necko.dll
+{6803caca-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{3a0a0fc1-8349-11d3-be47-00104bde6048},,,,rel:gklayout.dll
+{948a0023-e3a7-11d2-96cf-0060b0fb9956},,,,rel:gkwidget.dll
+{8dbe7246-1dd2-11b2-9b8f-b9a849e4403a},,,,rel:necko.dll
+{c87a37fc-8109-4ce2-a322-8cdec925379f},,,,rel:gklayout.dll
+{7d7008a0-c49a-11d3-9b22-0080c7cb1080},,,,rel:necko.dll
+{77cfaaf1-1cf4-11d3-8aaf-00600811a836},,,,rel:uconv.dll
+{bfd1a791-ad9f-11d3-bdc7-0050040a9b44},,,,rel:docshell.dll
+{7294fe9c-14d8-11d5-9882-00c04fa02f40},,,,rel:docshell.dll
+{379c2771-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{2d524fdd-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{12bb8f1c-2389-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{e6fd9940-899d-11d2-8eae-00805f29f370},,,,rel:gklayout.dll
+{9226888e-da08-11d3-8cda-0060b0fc14a3},,,,rel:necko.dll
+{96882b71-8a27-11d2-8eaf-00805f29f370},,,,rel:gklayout.dll
+{e197cc01-cfe1-11d4-8eb0-87ae406dfd3f},,,,rel:editor.dll
+{6394eea4-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{bf88b48c-fd8e-40b4-ba36-c7c3ad6d8ac9},,,,rel:embedcomponents.dll
+{6049b262-c1e6-11d1-a827-0040959a28c9},,,,rel:gkgfxwin.dll
+{7c657d11-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{6394eea3-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{9416bfbe-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{2ce606b0-bee6-11d1-aad9-00805f8a3e14},,,,rel:gkparser.dll
+{0885d4f8-f7b8-4cda-902e-94ba38bc256e},,,,rel:necko.dll
+{7c02eadc-0076-4d03-998d-80d779c48589},,,,rel:caps.dll
+{2f977d58-5485-11d4-87e2-0010a4e75ef2},,,,rel:embedcomponents.dll
+{e12752f0-ee9a-11d1-a82a-0040959a28c9},,,,rel:gkgfxwin.dll
+{1f5c1721-7dc3-11d3-bf87-00105a1b0627},,,,rel:gklayout.dll
+{ba6151a4-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{68b9fbda-f230-45a9-bf92-dbbbd4ac8555},,,,rel:gklayout.dll
+{a6cf90f7-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{6394eeb8-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{495eca44-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{6803cace-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{61ba33c0-3031-11d3-8cd0-0060b0fc14a3},,,,rel:chrome.dll
+{6394eec0-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{0032d852-1dd2-11b2-95f7-e0a1910ed2da},,,,rel:rdf.dll
+{6394eeb0-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{7b8556a1-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{a59da935-4091-11d5-a145-005004832142},,,,rel:uconv.dll
+{3f6fe6a2-ac0a-11d2-b3ae-00805f8a6670},,,,rel:uconv.dll
+{2d524fd5-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{319ff9c3-51d2-11d3-b3c3-00805f8a6670},,,,rel:uconv.dll
+{6394eead-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{3decd6c8-30ef-11d3-8cd0-0060b0fc14a3},,,,rel:necko.dll
+{797bec5a-1dd2-11b2-a7f8-ca397e0179c4},,,,rel:imglib2.dll
+{2e9b69dd-9087-438c-8b5d-f77b553abefb},,,,rel:docshell.dll
+{e64f152a-9f07-11d3-8cda-0060b0fc14a3},,,,rel:necko.dll
+{1767fc50-caa4-11d2-8aa9-00600811a836},,,,rel:uconv.dll
+{841387c8-72e6-484b-9296-bf6eea80d58a},,,,rel:gkgfxwin.dll
+{0e6892c1-a9ad-11d2-b3ae-00805f8a6670},,,,rel:uconv.dll
+{0f78da56-8321-11d2-8eac-00805f29f370},,,,rel:rdf.dll
+{a6cf9126-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{c2710d40-6f4d-4b7f-9778-76ae5166648c},,,,rel:gklayout.dll
+{6394eebd-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{7b8556ae-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{379c2776-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{ea617873-3b73-4efd-a2c4-fc39bfab809d},,,,rel:necko.dll
+{a578e0a2-f76b-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{af7a9952-aa48-11d2-b3ae-00805f8a6670},,,,rel:uconv.dll
+{f66bc334-1dd1-11b2-bab2-90e04fe15c19},,,,rel:webbrwsr.dll
+{64f300a1-c88c-11d3-97fb-00400553eef0},,,,rel:gklayout.dll
+{66230b2b-17fa-4bd3-abf4-07986151022d},,,,rel:necko.dll
+{3986b301-097c-11d3-bf87-00105a1b0627},,,,rel:gklayout.dll
+{5d0fcdd0-4daa-11d2-b328-00805f8a3859},,,,rel:gklayout.dll
+{fcacef23-2b40-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{8f666a11-04a0-11d3-b3b9-00805f8a6670},,,,rel:i18n.dll
+{1cd91b88-1dd2-11b2-92e1-ed22ed298000},,,,rel:xppref32.dll
+{6394eea8-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{0958b101-9ada-11d2-8ebc-00805f29f370},,,,rel:rdf.dll
+{9158c470-86e4-11d4-9be2-00e09872a416},,,,rel:necko.dll
+{4a6212db-accb-11d3-b765-0060b0b6cecb},,,,rel:caps.dll
+{2002f781-3960-11d3-b3c3-00805f8a6670},,,,rel:i18n.dll
+{7fa5237d-b0eb-438f-9e50-ca0166e63788},,,,rel:necko.dll
+{2d524fd6-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{8b042e22-6f87-11d3-b3c8-00805f8a6670},,,,rel:uconv.dll
+{a6cf90fc-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{660d8ca5-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{4f6b5e00-0c36-11d5-a535-0010a401eb10},,,,rel:cookie.dll
+{495eca49-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{a578e0a1-f76b-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{ba6151a2-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6803cac7-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{31cc4700-fc53-41d2-90d4-8d608f67ad39},,,,rel:xmlextras.dll
+{b57f97c2-0d70-11d3-8aae-00600811a836},,,,rel:uconv.dll
+{4aef38b7-6364-4e23-a5e7-12f837fbbd9c},,,,rel:gklayout.dll
+{660d8ca2-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{6394eeb5-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{cb3ede1a-0fa5-4e27-aafe-0f7801e5a1f1},,,,rel:imglib2.dll
+{ba61519f-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{2d524fda-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{ba6151b2-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{2d524fd9-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{6712fdd6-f978-11d4-a144-005004832142},,,,rel:i18n.dll
+{ba6151b6-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{aaab6710-0f2c-11d5-a53b-0010a401eb10},,,,rel:necko.dll
+{dbfd145d-3298-4f3c-902f-2c5e1a1494ce},,,,rel:imglib2.dll
+{ba6151ba-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{d9b1f97e-cfa0-80b6-fb92-9972e48e3dcc},,,,rel:uconv.dll
+{bfd0526d-834c-11d2-8eac-00805f29f370},,,,rel:rdf.dll
+{e638d761-8687-11d2-b530-000000000000},,,,rel:rdf.dll
+{ecea1b28-ae54-4047-8bbe-c624235106b4},,,,rel:gklayout.dll
+{0ddf4df8-4dbb-4133-8b79-9afb966514f5},,,,rel:gklayout.dll
+{a431b276-f77d-4b83-9b37-872cf2fbcc2a},,,,rel:uconv.dll
+{ba6151ac-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6803cacd-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{fe4f7592-c1fc-4662-ac83-538841318803},,,,rel:xpc3250.dll
+{ed0244e0-c144-11d2-8f4c-006008159b0c},,,,rel:editor.dll
+{9416bfb4-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{e14b66f6-bfc5-11d2-b57e-00105aa83b2f},,,,rel:gklayout.dll
+{1691e1f4-ee41-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{379c2774-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{a6cf90f5-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{6803cac9-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{d930e29b-6909-44e5-ab4b-af10d6923705},,,,rel:gkgfxwin.dll
+{a59da932-4091-11d5-a145-005004832142},,,,rel:uconv.dll
+{9d3f70da-86e9-11d4-95ec-00b0d03e37b7},,,,rel:gklayout.dll
+{2d524fd2-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{a2112d6a-0e28-421f-b46a-25c0b308cbd0},,,,rel:embedcomponents.dll
+{7526a738-9632-11d3-8cd9-0060b0fc14a3},,,,rel:jar50.dll
+{ff8c4d10-3194-11d3-9885-006008962422},,,,rel:xpc3250.dll
+{7b8556a4-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{ba6151b9-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{ea06d4e5-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{9416bfbf-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{62b778a6-bce3-456b-8c31-2865fbb68c91},,,,rel:necko.dll
+{9416bfb3-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6030f7ef-32ed-46a7-9a63-6a5d3f90445f},,,,rel:gklayout.dll
+{ba6151ab-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6803cacc-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{9f6d5d40-90e7-11d3-af80-00a024ffc08c},,,,rel:docshell.dll
+{8b5314bc-db01-11d2-96ce-0060b0fb9956},,,,rel:gkwidget.dll
+{6ddb050c-0d04-11d4-986e-00c04fa0cf4a},,,,rel:necko.dll
+{660d8ca7-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{7b8556a2-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{670ee5da-6ad5-11d7-9950-000393636592},,,,rel:embedcomponents.dll
+{7b8556a6-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{e38e53b9-5bb0-456a-b553-579370cb1567},,,,rel:xpc3250.dll
+{972d8d8f-f0da-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{ae52fe52-683a-437d-b661-de55f4e0a873},,,,rel:gklayout.dll
+{c7e410d4-85f2-11d3-9f63-006008a6efe9},,,,rel:necko.dll
+{76e92881-cddb-11d3-bf87-00105a1b0627},,,,rel:gklayout.dll
+{6049b264-c1e6-11d1-a827-0040959a28c9},,,,rel:gkgfxwin.dll
+{7b8556b2-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{7c657d13-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{66634f68-be19-42d0-a4ca-d1c21fa059b8},,,,rel:uconv.dll
+{bd6390c8-fbea-11d4-98f6-001083010e9b},,,,rel:docshell.dll
+{2e363d60-872e-11d2-b531-000000000000},,,,rel:gklayout.dll
+{a1b72850-a999-11d2-9119-006008a6edf6},,,,rel:i18n.dll
+{214c48a0-b57f-11d4-959c-0020183bf181},,,,rel:docshell.dll
+{f7c9f5f4-4451-41c3-a28a-5ba2447fbace},,,,rel:necko.dll
+{6394eea7-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{3a9cd622-264d-11d4-ba06-0060b0fc76dd},,,,rel:gklayout.dll
+{1f59b001-02c9-11d5-ae76-cc92f7db9e03},,,,rel:embedcomponents.dll
+{ba6151b1-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{e744a9a6-1d11-11b2-b95c-e5d67a34e6b3},,,,rel:necko.dll
+{6b8bdffc-3394-417d-be83-a81b7c0f63bf},,,,rel:docshell.dll
+{8852ab1f-0aa2-46ef-a147-a908896e0d0b},,,,rel:gklayout.dll
+{3b733c91-7223-11d3-b361-00a0cc3c1cde},,,,rel:gklayout.dll
+{6803cac5-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{6316c6ce-12d3-479e-8f53-e289351412b8},,,,rel:i18n.dll
+{6803cac4-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{5ba6d920-d4e9-11d3-a1a5-0050041caf44},,,,rel:necko.dll
+{822cb9ae-6421-4484-b3c3-00805f8a6670},,,,rel:uconv.dll
+{6394eeb7-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{1b117e16-0cad-11d4-986e-00c04fa0cf4a},,,,rel:jar50.dll
+{6394eeb2-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{bfd05264-834c-11d2-8eac-00805f29f371},,,,rel:gklayout.dll
+{7b8556a3-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{14c13684-1dd2-11b2-9463-bb10ba742554},,,,rel:appshell.dll
+{0e3afd3d-eb60-4c2b-963b-56d7c439f124},,,,rel:gklayout.dll
+{2d524fd7-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{b148eed2-236d-11d3-b35c-00a0cc3c1cde},,,,rel:gkwidget.dll
+{12bb8f16-2389-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{ed394ba0-5472-11d3-bbc8-0000861d1237},,,,rel:necko.dll
+{9c0ff6f4-deda-40e5-806c-b6cc449c21ce},,,,rel:uconv.dll
+{ec5bebb0-7b51-11d2-a848-0040959a28c9},,,,rel:gkgfxwin.dll
+{057b04d0-0ccf-11d2-beba-00805f8a66dc},,,,rel:docshell.dll
+{0a698c44-3bff-11d4-9649-00c0ca135b4e},,,,rel:uconv.dll
+{40c4883d-079f-43db-82a9-df0a59d37998},,,,rel:xpc3250.dll
+{d9b1f97f-cfa0-80b6-fb92-9972e48e3dcc},,,,rel:uconv.dll
+{319ff9c2-51d2-11d3-b3c3-00805f8a6670},,,,rel:uconv.dll
+{e042570c-62de-4bb6-a6e0-798e3c07b4df},,,,rel:embedcomponents.dll
+{c95f1832-c376-11d1-b721-00600891d8c9},,,,rel:gklayout.dll
+{b0ff4572-dae4-4bef-a092-83c1b88f6be9},,,,rel:necko.dll
+{5632bf70-51ec-11d3-9896-006008962422},,,,rel:xpc3250.dll
+{6394eebf-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{ba6151a9-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{379c2778-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{f9666720-801f-11d3-9399-00104ba0fd40},,,,rel:necko.dll
+{17491ba4-1dd2-11b2-aae3-de6b92dab620},,,,rel:necko.dll
+{d6008c40-4dad-11d2-b328-00805f8a3859},,,,rel:gklayout.dll
+{3a8a3a50-512c-11d4-9a54-000064657374},,,,rel:xmlextras.dll
+{adf42751-1cef-4ad2-aa8e-bcb849d8d31f},,,,rel:i18n.dll
+{c5de4da2-d667-42d2-b8c2-efdbcf3302ef},,,,rel:uconv.dll
+{9f6a0d2e-1dd1-11b2-a5b8-951f13c846f7},,,,rel:imglib2.dll
+{34587f4a-be18-43c0-9112-b782b08c0add},,,,rel:pipboot.dll
+{6394eeaa-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{a772eee4-0464-405d-a329-a29dfda3791a},,,,rel:docshell.dll
+{efc323e2-ec62-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{3a449110-66fd-11d4-9528-0020183bf181},,,,rel:webbrwsr.dll
+{2572e6b0-7439-11d4-b77a-00104b4119f8},,,,rel:gkwidget.dll
+{2b026890-5a2e-4981-ada2-a600358947b4},,,,rel:uconv.dll
+{b5e65b52-1dd1-11b2-ae8f-f0928ed88482},,,,rel:xpc3250.dll
+{2002f783-3960-11d3-b3c3-00805f8a6670},,,,rel:i18n.dll
+{1abdcc96-1dd2-11b2-b520-f8f59cdd67bc},,,,rel:gklayout.dll
+{a665e49a-f3e6-4fed-9f31-f7c568a29899},,,,rel:i18n.dll
+{ea06d4e2-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{cf0f71fd-fafd-4e2b-9fdc-134d972e16e2},,,,rel:necko.dll
+{a1fde867-e802-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{a578e0a3-f76b-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{f96f5ec9-755b-447e-b1f3-717d1a84bb41},,,,rel:gklayout.dll
+{9a45253b-eb8f-49f1-b925-e9ea90d3eb3a},,,,rel:gklayout.dll
+{ba615199-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{776588a6-86d5-47e2-b6b3-992810078202},,,,rel:uconv.dll
+{80d7e247-d4b8-45d7-bb59-6f1dd56f384c},,,,rel:gklayout.dll
+{a6cf9120-15b3-11d2-932e-00805f8add32},,,,rel:i18n.dll
+{2d524fd8-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{d8e716f9-c96e-4e84-ab12-980f5567e2a4},,,,rel:oji.dll
+{660d8ca4-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{26fb965c-9de6-11d3-bccc-0060b0fc76bd},,,,rel:editor.dll
+{660d8ca8-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{adea1880-1a8e-11d2-a82e-0040959a28c9},,,,rel:gkplugin.dll
+{ba6151a1-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{a6cf9059-15b3-11d2-932e-00805f8add32},,,,rel:docshell.dll
+{cc10c750-9ec3-11d2-b3ae-00805f8a6670},,,,rel:i18n.dll
+{12bb8f1b-2389-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{d9783472-8fe9-11d2-9d3c-0060088f9ff7},,,,rel:gklayout.dll
+{09f689e0-b4da-11d2-a68b-00104bde6048},,,,rel:gklayout.dll
+{96882b70-8a27-11d2-8eaf-00805f29f370},,,,rel:gklayout.dll
+{e86b337b-bf89-11d2-b3af-00805f8a6670},,,,rel:i18n.dll
+{218f2ac0-0a48-11d3-b3ba-00805f8a6670},,,,rel:i18n.dll
+{6049b261-c1e6-11d1-a827-0040959a28c9},,,,rel:gkgfxwin.dll
+{e34783f5-ac08-11d2-8d19-00805fc2500c},,,,rel:appshell.dll
+{6394eea2-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{bfd05264-834c-11d2-8eac-00805f29f370},,,,rel:rdf.dll
+{6394eeb3-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{9868b4ce-da08-11d3-8cda-0060b0fc14a3},,,,rel:necko.dll
+{ba6151b5-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{e9b301c0-e0e4-11d3-a1a8-0050041caf44},,,,rel:necko.dll
+{7ef2f07f-6e34-410b-8336-88acd1cd16b7},,,,rel:gklayout.dll
+{8d995d4f-adcc-4159-b7f1-e94af72eeb88},,,,rel:pipboot.dll
+{f1eac761-87e9-11d3-af80-00a024ffc08c},,,,rel:webbrwsr.dll
+{ba6151ae-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{1f13b201-39fa-11d6-a7f2-df501ff820dc},,,,rel:gklayout.dll
+{a3254cb0-8e20-11d2-8a98-00600811a836},,,,rel:uconv.dll
+{a1fde85f-e802-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{21b51de0-21a3-11d2-b6e0-00805f8a2676},,,,rel:gkwidget.dll
+{2d524fdc-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{a41661d5-1417-11d5-9882-00c04fa02f40},,,,rel:docshell.dll
+{d8c7d8a2-e84c-11d2-bf87-00105a1b0627},,,,rel:chrome.dll
+{7bd05c78-6a26-11d7-b16f-0003938a9d96},,,,rel:gklayout.dll
+{6394eeaf-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{929814d6-1dd2-11b2-8e08-82fa0a339b00},,,,rel:xpc3250.dll
+{a2027ec6-ba0d-4c72-805d-148233f5f33c},,,,rel:necko.dll
+{d4214e93-fb94-11d2-bdd8-00104bde6048},,,,rel:rdf.dll
+{495eca43-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{f6913e2e-1dd1-11b2-84be-f455dee342af},,,,rel:necko.dll
+{15671af5-39f9-4c70-8ce3-72c97111b52d},,,,rel:gklayout.dll
+{2d524fd4-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{77c0e42a-1dd2-11b2-8ebf-edc6606f2f4b},,,,rel:necko.dll
+{379c2777-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{21dd6a03-413c-11d3-b3c3-00805f8a6670},,,,rel:uconv.dll
+{a4048e94-1dd1-11b2-a676-8a06c086cc7d},,,,rel:rdf.dll
+{ce768990-5a4e-11d2-8164-006008119d7a},,,,rel:gkplugin.dll
+{ba6151bb-ec62-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{95f46161-d177-11d2-bf86-00105a1b0627},,,,rel:gklayout.dll
+{e1c61582-2a84-11d3-8cce-0060b0fc14a3},,,,rel:necko.dll
+{a0f827e2-8ab6-11d5-a14b-005004832142},,,,rel:uconv.dll
+{6394eeac-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{9d1001b1-e59a-456b-99dc-cc3f1283236e},,,,rel:gklayout.dll
+{2f977d4f-5485-11d4-87e2-0010a4e75ef2},,,,rel:xppref32.dll
+{660d8ca9-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{6394eebc-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{0704e7c0-a758-11d2-9119-006008a6edf6},,,,rel:i18n.dll
+{379c2775-ec77-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{920307b0-c6e8-11d2-8aa8-00600811a836},,,,rel:uconv.dll
+{541afcb2-a9a3-11d2-8ec5-00805f29f370},,,,rel:gklayout.dll
+{d60b3710-166d-11d5-a542-0010a401eb10},,,,rel:cookie.dll
+{64edb481-0c04-11d5-a73c-e964b968b0bc},,,,rel:embedcomponents.dll
+{af7a9951-aa48-11d2-b3ae-00805f8a6670},,,,rel:uconv.dll
+{43147b80-8a39-11d2-9938-0080c7cb1080},,,,rel:appshell.dll
+{f1d62b49-5051-48e2-9155-c3509428461e},,,,rel:necko.dll
+{fca3766a-434a-4ae7-83cf-0909e18a093a},,,,rel:necko.dll
+{fcacef22-2b40-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{7c657d15-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{0659cb83-faad-11d2-8e19-b206620a657c},,,,rel:appshell.dll
+{a21bfa01-f349-4394-a84c-8de5cf0737d0},,,,rel:embedcomponents.dll
+{ba615191-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{5534ddc0-dd96-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{dccbe7e4-7750-466b-a557-5ea36c8ff24e},,,,rel:necko.dll
+{58a1c31c-1dd2-11b2-a3f6-d36949d48268},,,,rel:necko.dll
+{d4f2b600-b5c1-11d6-b483-cc97c63e567c},,,,rel:gklayout.dll
+{7b8556b1-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{6fb64081-1da6-11d6-a7f2-9babb25552bc},,,,rel:xmlextras.dll
+{7ee2a4c0-4b93-17d3-ba18-0060b0f199a2},,,,rel:caps.dll
+{a08101ae-c0e8-4464-999e-e5a4d709a928},,,,rel:gklayout.dll
+{da72e7ee-4821-4452-802d-5eb2d865dd3c},,,,rel:imglib2.dll
+{9eb760f0-4380-11d2-b328-00805f8a3859},,,,rel:gklayout.dll
+{6803cac6-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{fcacef21-2b40-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{7b8556ad-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{35807600-35bd-11d5-bb6f-b9f2e9fee03c},,,,rel:embedcomponents.dll
+{660d8ca1-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{6394eeb4-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{495eca46-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{ba61519e-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6c84aec9-29a5-4264-8fbc-bee8f922ea67},,,,rel:necko.dll
+{feca3c34-205e-4ae5-bd1c-03c686ff012b},,,,rel:gklayout.dll
+{fb4fd28a-1dd1-11b2-8391-e14242c59a41},,,,rel:imglib2.dll
+{6394eeba-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{f24a14f0-4fa1-11d3-9894-006008962422},,,,rel:xpc3250.dll
+{0de2fbfa-6b7f-11d7-bbba-0003938a9d96},,,,rel:gklayout.dll
+{25029490-f132-11d2-9588-00805f369f95},,,,rel:necko.dll
+{e638d760-8687-11d2-b530-000000000001},,,,rel:rdf.dll
+{aa40253b-4c42-4056-8132-37bcd07862fd},,,,rel:gklayout.dll
+{4e4aae11-8901-46cc-8217-dad7c5415873},,,,rel:embedcomponents.dll
+{a0d6ad32-1dd1-11b2-aa55-a40187b54036},,,,rel:necko.dll
+{8b5314bb-db01-11d2-96ce-0060b0fb9956},,,,rel:gkwidget.dll
+{7baf62e0-8e61-11d2-8eb1-00805f29f370},,,,rel:rdf.dll
+{a6cf9063-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{9416bfc1-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{8c4506a1-55e6-11d3-91d9-00105aa3f7dc},,,,rel:i18n.dll
+{a6cf9115-15b3-11d2-932e-00805f8add32},,,,rel:gkgfxwin.dll
+{6394eeab-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{ba61519a-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{45c23a20-d71c-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{cf170391-79cc-11d3-be44-0020a6361667},,,,rel:gklayout.dll
+{36fa00c2-1dd2-11b2-be07-d16eeb4c50ed},,,,rel:imglib2.dll
+{275d800e-3f60-4896-adb7-d7f390ce0e42},,,,rel:necko.dll
+{a59da931-4091-11d5-a145-005004832142},,,,rel:uconv.dll
+{2d524fd1-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{ba6151ad-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{20557898-1dd2-11b2-8f65-9c462ee2bc95},,,,rel:imglib2.dll
+{2d96b3d1-c051-11d1-a827-0040959a28c9},,,,rel:gkwidget.dll
+{ba6151b8-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{ea06d4e4-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{9416bfb2-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{e7ba1480-1dea-11d3-830f-00104bed045e},,,,rel:gklayout.dll
+{6803cacb-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{a364930f-e353-49f1-ac69-91637eb8b757},,,,rel:gklayout.dll
+{0cd233e0-7a86-11d3-915c-006008a6edf6},,,,rel:i18n.dll
+{e7509b46-2eb2-410a-9d7c-c3ce73284d01},,,,rel:gklayout.dll
+{d673255d-1184-400a-b0b5-ee9d1295bd85},,,,rel:uconv.dll
+{bfd1a792-ad9f-11d3-bdc7-0050040a9b44},,,,rel:docshell.dll
+{9c8f9601-801a-11d2-98ba-00805f297d89},,,,rel:txmgr.dll
+{c2f6ef7e-afd5-4be4-a1f5-c824efa4231b},,,,rel:gklayout.dll
+{7b8556aa-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{47433d1d-d9a7-4954-994f-f7a05cf87c2e},,,,rel:uconv.dll
+{c375fa80-150f-11d6-a618-0010a401eb10},,,,rel:necko.dll
+{51fa28c7-74c0-4b85-9c46-d03faa7b696b},,,,rel:necko.dll
+{d750a964-2d14-484c-b3aa-8ed7823b5c7b},,,,rel:gklayout.dll
+{6049b263-c1e6-11d1-a827-0040959a28c9},,,,rel:gkgfxwin.dll
+{064d9cee-1dd2-11b2-83e3-d25ab0193c26},,,,rel:xppref32.dll
+{fbc81170-1f69-11d3-9344-00104ba0fd40},,,,rel:necko.dll
+{84b0f182-c6c7-11d2-b3b0-00805f8a6670},,,,rel:uconv.dll
+{4275d3f4-752a-427a-b432-14d5dda1c20b},,,,rel:cookie.dll
+{6c392c62-1ab1-4de7-bfc6-ed4f9fc7749a},,,,rel:gklayout.dll
+{2d524fd3-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{2bc2ad62-ad5d-4b7b-a9db-f74ae203c527},,,,rel:uconv.dll
+{9e3b6c90-2f75-11d3-8cd0-0060b0fc14a3},,,,rel:necko.dll
+{ba6151b0-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{df71c6f0-ec53-11d2-bdca-000064657374},,,,rel:rdf.dll
+{ba6151b4-1dfa-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{2d524fdb-ae74-11d3-abf7-0004aceefa51},,,,rel:uconv.dll
+{495eca45-0a5c-11d4-a135-005004832142},,,,rel:uconv.dll
+{a1fde861-e802-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{bfc310d2-38a0-11d3-8cd3-0060b0fc14a3},,,,rel:gklayout.dll
+{e11a6080-4daa-11d2-b328-00805f8a3859},,,,rel:gklayout.dll
+{ba6151bc-ec62-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{5871a422-1dd2-11b2-ab3f-e2e56be5da9c},,,,rel:imglib2.dll
+{0e4e7d00-f71a-439f-9178-1a71ff11b55f},,,,rel:gklayout.dll
+{2ea2e7d0-4095-11d3-9144-006008a6edf6},,,,rel:i18n.dll
+{6394eeb1-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{c272fee0-c7e9-11d3-8cda-0060b0fc14a3},,,,rel:necko.dll
+{a6cf90e3-15b3-11d2-932e-00805f8add32},,,,rel:gklayout.dll
+{d164e770-4157-11d4-9a42-000064657374},,,,rel:xmlextras.dll
+{aa699204-1dd1-11b2-84a9-a280c268e4fb},,,,rel:gkgfxwin.dll
+{301dea42-6850-4cda-8945-81f7dbc2186b},,,,rel:necko.dll
+{471f4944-1dd2-11b2-87ac-90be0a51d609},,,,rel:embedcomponents.dll
+{6bd13476-1dd2-11b2-bbef-f0ccb5fa64b6},@mozilla.org/moz/jsloader;1,,JS component loader,rel:xpc3250.dll
+{c8e518c1-47ae-11d3-91cd-00105aa3f7dc},,,,rel:i18n.dll
+{510a86bb-6019-4ed1-bb4f-965cffd23ece},,,,rel:necko.dll
+{3d262d00-8b5a-11d2-8eb0-00805f29f370},,,,rel:gklayout.dll
+{9cc39ff1-dd5d-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{7e677795-c582-4cd1-9e8d-8271b3474d2a},,,,rel:embedcomponents.dll
+{2ec62893-3b35-48fa-ab1d-5e68a9f45f08},,,,rel:necko.dll
+{ce002b28-92b7-4701-8621-cc925866fb87},,,,rel:cookie.dll
+{c95f1831-c376-11d1-b721-00600891d8c9},,,,rel:gklayout.dll
+{cf3a0e06-1dd1-11b2-a904-ac1d6da77a02},,,,rel:necko.dll
+{9416bfb1-1f93-11d3-b3bf-00805f8a6670},,,,rel:uconv.dll
+{6394eebe-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{7b8556af-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{d2800356-c2d7-4e05-a884-79fe566af1cf},,,,rel:uconv.dll
+{77cfaaf2-1cf4-11d3-8aaf-00600811a836},,,,rel:uconv.dll
+{cb6593e0-f9b2-11d2-bdd6-000064657374},,,,rel:xpc3250.dll
+{f0acde16-1dd1-11b2-9e35-f5786fff5a66},,,,rel:necko.dll
+{56e2ada8-4631-11d4-ba11-001083023c1e},,,,rel:gklayout.dll
+{fc886801-e768-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{4f76e100-d71c-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{a6cf9112-15b3-11d2-932e-00805f8add32},,,,rel:gkparser.dll
+{fcacef24-2b40-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{5c5af390-34be-11d5-a03b-0010a4ef48c9},,,,rel:gklayout.dll
+{7c657d17-ec5e-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{6394eea9-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{3f6fe6a1-ac0a-11d2-b3ae-00805f8a6670},,,,rel:uconv.dll
+{ef565d0a-ab9a-4a13-9160-0644cdfd859a},,,,rel:cookie.dll
+{60047bb2-91c0-11d3-8cd9-0060b0fc14a3},,,,rel:necko.dll
+{ecd55a01-2780-11d5-a73c-ca641a6813bc},,,,rel:embedcomponents.dll
+{2002f782-3960-11d3-b3c3-00805f8a6670},,,,rel:i18n.dll
+{bbef8185-c628-4cc1-b53e-e61e74c2451a},,,,rel:necko.dll
+{9ef9fa14-1dd1-11b2-9d65-d72d6d1f025e},,,,rel:necko.dll
+{7b8556a8-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{7584ce90-5b25-11d3-a175-0050041caf44},,,,rel:necko.dll
+{ea06d4e1-2b3d-11d3-b3bf-00805f8a6670},,,,rel:i18n.dll
+{4611d482-960a-11d4-8eb0-b617661b6f7c},,,,rel:gkparser.dll
+{d85a17c1-aa7c-11d2-9b8c-00805f8a16d9},,,,rel:i18n.dll
+{1f1ce501-663a-11d3-b7a0-be426e4e69bc},,,,rel:appshell.dll
+{d7193600-78e0-11d2-a846-0040959a28c9},,,,rel:gkgfxwin.dll
+{7b8556b0-ec79-11d2-8aac-00600811a836},,,,rel:uconv.dll
+{a1fde85e-e802-11d4-9885-00c04fa0cf4b},,,,rel:gklayout.dll
+{6803cac8-1e3b-11d5-a145-005004832142},,,,rel:uconv.dll
+{cd6bd59c-75c8-451b-831b-b81b7c03dc53},,,,rel:xmlextras.dll
+{07ac4e3a-ee18-4e37-b29f-532be4be0609},,,,rel:xmlextras.dll
+{6394eea1-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{660d8ca3-f763-11d2-8aad-00600811a836},,,,rel:uconv.dll
+{6394eeb6-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{bd57cee8-1dd1-11b2-9fe7-95cf4709aea3},,,,rel:gkwidget.dll
+{31246420-a2f7-4933-ae71-79bbd5d94b04},,,,rel:gklayout.dll
+{1f34bc80-1bc7-11d6-a384-d705dd0746fc},,,,rel:gklayout.dll
+{49b38f12-6193-11d3-b3c5-00805f8a6670},,,,rel:uconv.dll
+{2f977d53-5485-11d4-87e2-0010a4e75ef2},,,,rel:gkgfxwin.dll
+{38e7ef10-58df-11d2-8164-006008119d7a},,,,rel:oji.dll
+{fb8cbf4e-4701-4ba1-b1d6-5388e041fb67},,,,rel:necko.dll
+{6049b260-c1e6-11d1-a827-0040959a28c9},,,,rel:gkgfxwin.dll
+{6394eea5-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{dc26e0e0-ca94-11d1-a9a4-00805f8a7ac4},,,,rel:xppref32.dll
+{6394eeb9-fc3d-11d2-b3b8-00805f8a6670},,,,rel:uconv.dll
+{0320e073-79c7-4dae-8055-81bed8b8db96},,,,rel:jar50.dll
+
+[CONTRACTIDS]
+@mozilla.org/intl/unicode/encoder;1?charset=Big5,{efc323e2-ec62-11d2-8aac-00600811a836}
+@mozilla.org/image/decoder;2?type=image/x-xbm,{dbfd145d-3298-4f3c-902f-2c5e1a1494ce}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-14,{6394eea1-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/oji/jvm-mgr;1,{38e7ef10-58df-11d2-8164-006008119d7a}
+@mozilla.org/intl/unicode/decoder;1?charset=x-windows-949,{9416bfbf-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-6,{660d8ca8-f763-11d2-8aad-00600811a836}
+@mozilla.org/js/xpc/ContextStack;1,{ff8c4d10-3194-11d3-9885-006008962422}
+@mozilla.org/nsdispatchsupport;1,{40c4883d-079f-43db-82a9-df0a59d37998}
+@mozilla.org/network/mime-hdrparam;1,{1f4dbcf7-245c-4c8c-943d-8a1da0495e8a}
+@mozilla.org/gfx/renderingcontext;1,{6049b261-c1e6-11d1-a827-0040959a28c9}
+@mozilla.org/layout/contentserializer;1?mimetype=application/xml,{4aef38b7-6364-4e23-a5e7-12f837fbbd9c}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-arabic,{6803cac7-1e3b-11d5-a145-005004832142}
+@mozilla.org/xmlextras/domparser;1,{3a8a3a50-512c-11d4-9a54-000064657374}
+@mozilla.org/streamconv;1?from=x-compress&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
+@mozilla.org/network/protocol-proxy-service;1,{e9b301c0-e0e4-11d3-a1a8-0050041caf44}
+@mozilla.org/widget/clipboardhelper;1,{77221d5a-1dd2-11b2-8c69-c710f15d2ed5}
+@mozilla.org/network/server-socket;1,{2ec62893-3b35-48fa-ab1d-5e68a9f45f08}
+@mozilla.org/browser/session-history-transaction;1,{bfd1a792-ad9f-11d3-bdc7-0050040a9b44}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-turkish,{7b8556a4-ec79-11d2-8aac-00600811a836}
+@mozilla.org/layout/element-factory;1?namespace=http://www.w3.org/1999/xhtml,{a6cf90fc-15b3-11d2-932e-00805f8add32}
+@mozilla.org/intl/saveascharset;1,{0cd233e0-7a86-11d3-915c-006008a6edf6}
+@mozilla.org/network/http-authenticator;1?scheme=basic,{fca3766a-434a-4ae7-83cf-0909e18a093a}
+@mozilla.org/intl/platformcharset;1,{84b0f182-c6c7-11d2-b3b0-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-greek,{7b8556b1-ec79-11d2-8aac-00600811a836}
+@mozilla.org/streamconv;1?from=text/plain&to=text/html,{9ef9fa14-1dd1-11b2-9d65-d72d6d1f025e}
+@mozilla.org/intl/stringcharsetdetect;1?type=zhtw_parallel_state_machine,{ea06d4e6-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/embedcomp/rangefind;1,{471f4944-1dd2-11b2-87ac-90be0a51d609}
+@mozilla.org/image/decoder;2?type=image/jpg,{5871a422-1dd2-11b2-ab3f-e2e56be5da9c}
+@mozilla.org/gfx/unscriptable-region;1,{e12752f0-ee9a-11d1-a82a-0040959a28c9}
+@mozilla.org/network/mime-input-stream;1,{58a1c31c-1dd2-11b2-a3f6-d36949d48268}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-8,{5534ddc0-dd96-11d2-8aac-00600811a836}
+@mozilla.org/embedding/browser/nsCommandHandler;1,{3a449110-66fd-11d4-9528-0020183bf181}
+@mozilla.org/sound;1,{b148eed2-236d-11d3-b35c-00a0cc3c1cde}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-6,{660d8ca3-f763-11d2-8aad-00600811a836}
+@mozilla.org/embedding/browser/content-policy;1,{f66bc334-1dd1-11b2-bab2-90e04fe15c19}
+@mozilla.org/layout/nodeinfomanager;1,{ae52fe52-683a-437d-b661-de55f4e0a873}
+@mozilla.org/plugin/manager;1,{ce768990-5a4e-11d2-8164-006008119d7a}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-2022-CN,{ba615199-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/texttransform;1?type=hankakutozenkaku,{8f666a11-04a0-11d3-b3b9-00805f8a6670}
+@mozilla.org/intl/charsetdetect;1?type=ruprob,{2002f781-3960-11d3-b3c3-00805f8a6670}
+@mozilla.org/streamconv;1?from=text/gopher-dir&to=application/http-index-format,{ea617873-3b73-4efd-a2c4-fc39bfab809d}
+@mozilla.org/xul/xul-popup-listener;1,{3986b301-097c-11d3-bf87-00105a1b0627}
+@mozilla.org/layout/documentEncoder;1?type=application/xml,{e7ba1480-1dea-11d3-830f-00104bed045e}
+@mozilla.org/image/decoder;2?type=image/gif,{797bec5a-1dd2-11b2-a7f8-ca397e0179c4}
+@mozilla.org/libjar/zip-reader;1,{7526a738-9632-11d3-8cd9-0060b0fc14a3}
+@mozilla.org/widget/htmlformatconverter;1,{948a0023-e3a7-11d2-96cf-0060b0fb9956}
+@mozilla.org/intl/unicode/encoder;1?charset=x-user-defined,{9416bfb4-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=x-viet-tcvn5712,{6394eead-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/streamconv;1?from=application/http-index-format&to=text/html,{cf0f71fd-fafd-4e2b-9fdc-134d972e16e2}
+@mozilla.org/network/stream-transport-service;1,{0885d4f8-f7b8-4cda-902e-94ba38bc256e}
+@mozilla.org/streamconv;1?from=multipart/mixed&to=*/*,{7584ce90-5b25-11d3-a175-0050041caf44}
+@mozilla.org/intl/charsetalias;1,{98d41c21-ccf3-11d2-b3b1-00805f8a6670}
+@mozilla.org/network/protocol;1?name=https,{dccbe7e4-7750-466b-a557-5ea36c8ff24e}
+@mozilla.org/content/plugin/document-loader-factory;1,{0ddf4df8-4dbb-4133-8b79-9afb966514f5}
+@mozilla.org/embedcomp/profile-sharing-setup;1,{2f977d58-5485-11d4-87e2-0010a4e75ef2}
+@mozilla.org/embedcomp/controller-command-group;1,{ecd55a01-2780-11d5-a73c-ca641a6813bc}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-devanagari,{6803cac5-1e3b-11d5-a145-005004832142}
+@mozilla.org/uriloader/external-helper-app-service;1,{a7f800e0-4306-11d4-98d0-001083010e9b}
+@mozilla.org/scriptsecuritymanager;1,{7ee2a4c0-4b93-17d3-ba18-0060b0f199a2}
+@mozilla.org/network/protocol;1?name=ftp,{25029490-f132-11d2-9588-00805f369f95}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1253,{7b8556ad-ec79-11d2-8aac-00600811a836}
+@mozilla.org/network/protocol/about;1?what=buildconfig,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/layout/element-factory;1?namespace=http://www.w3.org/XML/1998/namespace,{cf170391-79cc-11d3-be44-0020a6361667}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1257,{a578e0a4-f76b-11d2-8aac-00600811a836}
+@mozilla.org/embedcomp/find;1,{57cf9383-3405-11d5-be5b-aa20fa2cf37c}
+@mozilla.org/network/unichar-stream-loader;1,{9445791f-fa4c-4669-b174-df5032bb67b3}
+@mozilla.org/pref-relativefile;1,{2f977d4f-5485-11d4-87e2-0010a4e75ef2}
+@mozilla.org/intl/scriptabledateformat;1,{2ea2e7d0-4095-11d3-9144-006008a6edf6}
+@mozilla.org/network/downloader;1,{510a86bb-6019-4ed1-bb4f-965cffd23ece}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-16BE,{ba6151ad-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-7,{77cfaaf2-1cf4-11d3-8aaf-00600811a836}
+@mozilla.org/intl/charsetdetect;1?type=ko_parallel_state_machine,{ea06d4e1-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/socket;2?type=socks,{8dbe7246-1dd2-11b2-9b8f-b9a849e4403a}
+@mozilla.org/content/syncload-dom-service;1,{0e4e7d00-f71a-439f-9178-1a71ff11b55f}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-arabic,{6803cac6-1e3b-11d5-a145-005004832142}
+@mozilla.org/intl/charsetdetect;1?type=cjk_parallel_state_machine,{fcacef24-2b40-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=KOI8-U,{6394eea6-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/content/post-content-iterator;1,{a6cf90e3-15b3-11d2-932e-00805f8add32}
+@mozilla.org/pref-localizedstring;1,{064d9cee-1dd2-11b2-83e3-d25ab0193c26}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-6-E,{495eca45-0a5c-11d4-a135-005004832142}
+@mozilla.org/libjar/zip-reader-cache;1,{1b117e16-0cad-11d4-986e-00c04fa0cf4a}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-936,{9416bfc1-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/sync-stream-listener;1,{439400d3-6f23-43db-8b06-8aafe1869bd8}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM850,{2d524fd6-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/rdf/resource-factory;1,{0f78da56-8321-11d2-8eac-00805f29f370}
+@mozilla.org/browser/global-history;2,{2e9b69dd-9087-438c-8b5d-f77b553abefb}
+@mozilla.org/network/protocol;1?name=resource,{e64f152a-9f07-11d3-8cda-0060b0fc14a3}
+@mozilla.org/imgmanager;1,{d60b3710-166d-11d5-a542-0010a401eb10}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1256,{ba6151a2-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-3,{660d8ca5-f763-11d2-8aad-00600811a836}
+@mozilla.org/network/url-parser;1?auth=yes,{275d800e-3f60-4896-adb7-d7f390ce0e42}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-32LE,{ba6151b6-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/scriptableinterfaces;1,{fe4f7592-c1fc-4662-ac83-538841318803}
+@mozilla.org/network/idn-service;1,{62b778a6-bce3-456b-8c31-2865fbb68c91}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-ukrainian,{6394eeaa-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/gfx/image/frame;2,{aa699204-1dd1-11b2-84a9-a280c268e4fb}
+@mozilla.org/network/input-stream-channel;1,{6ddb050c-0d04-11d4-986e-00c04fa0cf4a}
+@mozilla.org/content/generated-content-iterator;1,{a364930f-e353-49f1-ac69-91637eb8b757}
+@mozilla.org/embedcomp/prompt-service;1,{a2112d6a-0e28-421f-b46a-25c0b308cbd0}
+@mozilla.org/intl/unicode/encoder;1?charset=x-johab,{d9b1f97e-cfa0-80b6-fb92-9972e48e3dcc}
+@mozilla.org/network/protocol/about;1?what=bloat,{f9666720-801f-11d3-9399-00104ba0fd40}
+@mozilla.org/layout/xul-boxobject-listbox;1,{c2710d40-6f4d-4b7f-9778-76ae5166648c}
+@mozilla.org/layout/xul-boxobject-editor;1,{8852ab1f-0aa2-46ef-a147-a908896e0d0b}
+@mozilla.org/layout/documentEncoder;1?type=application/xhtml+xml,{e7ba1480-1dea-11d3-830f-00104bed045e}
+@mozilla.org/network/protocol/about;1?what=,{1f1ce501-663a-11d3-b7a0-be426e4e69bc}
+@mozilla.org/intl/semanticunitscanner;1,{adf42751-1cef-4ad2-aa8e-bcb849d8d31f}
+@mozilla.org/layout/xul-boxobject-scrollbox;1,{56e2ada8-4631-11d4-ba11-001083023c1e}
+@mozilla.org/rdf/datasource;1?name=in-memory-datasource,{bfd0526d-834c-11d2-8eac-00805f29f370}
+@mozilla.org/rdf/datasource;1?name=composite-datasource,{e638d761-8687-11d2-b530-000000000000}
+@mozilla.org/intl/unicode/decoder;1?charset=us-ascii,{ba6151b9-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/stream-loader;1,{5ba6d920-d4e9-11d3-a1a5-0050041caf44}
+@mozilla.org/layout/contentserializer;1?mimetype=text/html,{9d3f70da-86e9-11d4-95ec-00b0d03e37b7}
+@mozilla.org/network/protocol;1?name=javascript,{bfc310d2-38a0-11d3-8cd3-0060b0fc14a3}
+@mozilla.org/intl/unicode/encoder;1?charset=x-windows-949,{9416bfbe-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/async-stream-listener;1,{60047bb2-91c0-11d3-8cd9-0060b0fc14a3}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-8-I,{495eca48-0a5c-11d4-a135-005004832142}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-15,{6394eea2-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-3,{660d8ca0-f763-11d2-8aad-00600811a836}
+@mozilla.org/network/url-parser;1?auth=maybe,{ff41913b-546a-4bff-9201-dc9b2c032eba}
+@mozilla.org/streamconv;1?from=application/mac-binhex40&to=*/*,{301dea42-6850-4cda-8945-81f7dbc2186b}
+@mozilla.org/gfx/printsettings-service;1,{841387c8-72e6-484b-9296-bf6eea80d58a}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM866,{ba6151a9-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/content/generated-subtree-content-iterator;1,{9a45253b-eb8f-49f1-b925-e9ea90d3eb3a}
+@mozilla.org/embedcomp/base-command-controller;1,{bf88b48c-fd8e-40b4-ba36-c7c3ad6d8ac9}
+@mozilla.org/xul/xul-template-builder;1,{3d262d00-8b5a-11d2-8eb0-00805f29f370}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-9,{7b8556a9-ec79-11d2-8aac-00600811a836}
+@mozilla.org/gfx/blender;1,{6049b264-c1e6-11d1-a827-0040959a28c9}
+@mozilla.org/network/protocol/about;1?what=credits,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/intl/stringcharsetdetect;1?type=zhcn_parallel_state_machine,{ea06d4e5-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/js/xpc/XPConnect;1,{cb6593e0-f9b2-11d2-bdd6-000064657374}
+@mozilla.org/image/container;1,{5e04ec5e-1dd2-11b2-8fda-c4db5fb666e0}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-romanian,{6394eeb8-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/embedcomp/cookieprompt-service;1,{ce002b28-92b7-4701-8621-cc925866fb87}
+@mozilla.org/intl/converter-input-stream;1,{2bc2ad62-ad5d-4b7b-a9db-f74ae203c527}
+@mozilla.org/image/decoder;2?type=image/x-icon,{cb3ede1a-0fa5-4e27-aafe-0f7801e5a1f1}
+@mozilla.org/permissionmanager;1,{4f6b5e00-0c36-11d5-a535-0010a401eb10}
+@mozilla.org/DOM/Level2/CSS/computedStyleDeclaration;1,{ecea1b28-ae54-4047-8bbe-c624235106b4}
+@mozilla.org/xmlextras/xmlserializer;1,{a6cf9124-15b3-11d2-932e-00805f8add32}
+@mozilla.org/xbl;1,{64f300a1-c88c-11d3-97fb-00400553eef0}
+@mozilla.org/layout/contentserializer;1?mimetype=application/vnd.mozilla.xul+xml,{4aef38b7-6364-4e23-a5e7-12f837fbbd9c}
+@mozilla.org/intl/stringcharsetdetect;1?type=cjk_parallel_state_machine,{fcacef22-2b40-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-cyrillic,{6394eeb9-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/gfx/devicecontextspec;1,{d7193600-78e0-11d2-a846-0040959a28c9}
+@mozilla.org/streamconv;1?from=multipart/byteranges&to=*/*,{7584ce90-5b25-11d3-a175-0050041caf44}
+@mozilla.org/editor/editorcontroller;1,{26fb965c-9de6-11d3-bccc-0060b0fc76bd}
+@mozilla.org/cookie/permission;1,{ef565d0a-ab9a-4a13-9160-0644cdfd859a}
+@mozilla.org/intl/texttosuburi;1,{8b042e22-6f87-11d3-b3c8-00805f8a6670}
+@mozilla.org/xmlextras/xpointerresult;1,{31cc4700-fc53-41d2-90d4-8d608f67ad39}
+@mozilla.org/network/protocol/about;1?what=about,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/image/loader;1,{9f6a0d2e-1dd1-11b2-a5b8-951f13c846f7}
+@mozilla.org/intl/utf8converterservice;1,{2b026890-5a2e-4981-ada2-a600358947b4}
+@mozilla.org/streamconv;1?from=application/x-vnd.mozilla.maybe-text&to=*/*,{a2027ec6-ba0d-4c72-805d-148233f5f33c}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1257,{a578e0a2-f76b-11d2-8aad-00600811a836}
+@mozilla.org/textservices/textservicesdocument;1,{019718e3-cdb5-11d2-8d3c-000000000000}
+@mozilla.org/rdf/datasource;1?name=files,{e638d760-8687-11d2-b530-000000000001}
+@mozilla.org/intl/unicode/decoder;1?charset=KOI8-R,{6394eea5-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/security/entropy;1,{34587f4a-be18-43c0-9112-b782b08c0add}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-romanian,{6394eea8-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/network/standard-url;1,{de9472d0-8034-11d3-9399-00104ba0fd40}
+@mozilla.org/intl/charsetdetect;1?type=zhcn_parallel_state_machine,{ea06d4e2-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-icelandic,{6394eebb-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-gujarati,{6803cacb-1e3b-11d5-a145-005004832142}
+@mozilla.org/layout/caret;1,{e14b66f6-bfc5-11d2-b57e-00105aa83b2f}
+@mozilla.org/browser/global-history;1,{a772eee4-0464-405d-a329-a29dfda3791a}
+@mozilla.org/network/resumable-entity-id;1,{e744a9a6-1d11-11b2-b95c-e5d67a34e6b3}
+@mozilla.org/layout/contentserializer;1?mimetype=application/xhtml+xml,{4aef38b7-6364-4e23-a5e7-12f837fbbd9c}
+@mozilla.org/intl/unicode/encoder;1?charset=x-gbk,{ba61519b-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/appshell/appShellService;1,{43147b80-8a39-11d2-9938-0080c7cb1080}
+@mozilla.org/network/protocol/about;1?what=mozilla,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/network/protocol/about;1?what=plugins,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/secure_browser_ui;1,{cc75499a-1dd1-11b2-8a82-ca410ac907b8}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-8,{7c657d18-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/image/decoder;2?type=image/png,{36fa00c2-1dd2-11b2-be07-d16eeb4c50ed}
+@mozilla.org/image/decoder;2?type=image/xbm,{dbfd145d-3298-4f3c-902f-2c5e1a1494ce}
+@mozilla.org/gfx/fontlist;1,{6a8c0dd4-1dd2-11b2-9a8f-f82f9df25b07}
+@mozilla.org/network/protocol/about;1?what=logo,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/intl/unicode/encoder;1?charset=T.61-8bit,{ba6151af-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=T.61-8bit,{ba6151b4-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/embedcomp/appstartup-notifier;1,{1f59b001-02c9-11d5-ae76-cc92f7db9e03}
+@mozilla.org/widget/clipboard;1,{8b5314ba-db01-11d2-96ce-0060b0fb9956}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-14,{6394eeb1-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/dom/window-controller;1,{7bd05c78-6a26-11d7-b16f-0003938a9d96}
+@mozilla.org/intl/unicode/encoder;1?charset=x-adobe-euro,{822cb9ae-6421-4484-b3c3-00805f8a6670}
+@mozilla.org/intl/charsetdetect;1?type=zh_parallel_state_machine,{fcacef23-2b40-11d3-b3bf-00805f8a6670}
+@mozilla.org/layout/contentserializer;1?mimetype=text/plain,{6030f7ef-32ed-46a7-9a63-6a5d3f90445f}
+@mozilla.org/cookiemanager;1,{aaab6710-0f2c-11d5-a53b-0010a401eb10}
+@mozilla.org/gfx/devicecontextspecfactory;1,{ec5bebb0-7b51-11d2-a848-0040959a28c9}
+@mozilla.org/cookieService;1,{c375fa80-150f-11d6-a618-0010a401eb10}
+@mozilla.org/embedcomp/controller-command-table;1,{670ee5da-6ad5-11d7-9950-000393636592}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-turkish,{7b8556b2-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM850,{2d524fd0-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/network/protocol;1?name=wyciwyg,{e7509b46-2eb2-410a-9d7c-c3ce73284d01}
+@mozilla.org/intl/charsetdetect;1?type=zhtw_parallel_state_machine,{ea06d4e3-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-10,{ba6151b0-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=x-viet-vps,{6394eeb0-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/network/protocol;1?name=chrome,{61ba33c0-3031-11d3-8cd0-0060b0fc14a3}
+@mozilla.org/network/load-group;1,{e1c61582-2a84-11d3-8cce-0060b0fc14a3}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-gujarati,{6803caca-1e3b-11d5-a145-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=x-euc-tw,{379c2776-ec77-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1252,{7b8556ac-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM862,{2d524fda-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/xptinfo/loader;1&type=zip,{0320e073-79c7-4dae-8055-81bed8b8db96}
+@mozilla.org/layout/xul-boxobject-iframe;1,{9580e69b-8fd6-414e-80cd-3a1821017646}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1258,{6394eea3-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/network/protocol;1?name=about,{9e3b6c90-2f75-11d3-8cd0-0060b0fc14a3}
+@mozilla.org/image/decoder;2?type=image/x-png,{36fa00c2-1dd2-11b2-be07-d16eeb4c50ed}
+@mozilla.org/network/protocol/about;1?what=cache,{9158c470-86e4-11d4-9be2-00e09872a416}
+@mozilla.org/principal;1,{36102b6b-7b62-451a-a1c8-a0d456c92dc5}
+@mozilla.org/intl/unicode/encoder;1?charset=EUC-JP,{45c23a20-d71c-11d2-8aac-00600811a836}
+@mozilla.org/intl/charsetdetect;1?type=ja_parallel_state_machine,{12bb8f1b-2389-11d3-b3bf-00805f8a6670}
+@mozilla.org/xmlextras/xmlhttprequest;1,{d164e770-4157-11d4-9a42-000064657374}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-2022-KR,{ba61519f-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-5,{660d8ca7-f763-11d2-8aad-00600811a836}
+@mozilla.org/appshell/commandLineService;1,{e34783f5-ac08-11d2-8d19-00805fc2500c}
+@mozilla.org/xbl/binding-manager;1,{15671af5-39f9-4c70-8ce3-72c97111b52d}
+@mozilla.org/image/decoder;2?type=image/pjpeg,{5871a422-1dd2-11b2-ab3f-e2e56be5da9c}
+@mozilla.org/intl/nslanguageatomservice;1,{a6cf9120-15b3-11d2-932e-00805f8add32}
+@mozilla.org/intl/unicode/encoder;1?charset=Adobe-Symbol-Encoding,{21dd6a02-413c-11d3-b3c3-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-roman,{7b8556a1-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-16LE,{ba6151b5-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1251,{a578e0a1-f76b-11d2-8aad-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-15,{6394eeb2-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/network/request-observer-proxy;1,{51fa28c7-74c0-4b85-9c46-d03faa7b696b}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1255,{ba6151a1-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=x-johab,{d9b1f97f-cfa0-80b6-fb92-9972e48e3dcc}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-6-E,{495eca47-0a5c-11d4-a135-005004832142}
+@mozilla.org/content/css-parser;1,{2e363d60-872e-11d2-b531-000000000000}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1250,{7c657d14-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=x-viet-vps,{6394eec0-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-32BE,{ba6151b3-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/nslocaleservice;1,{c8e518c1-47ae-11d3-91cd-00105aa3f7dc}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-7,{77cfaaf1-1cf4-11d3-8aaf-00600811a836}
+@mozilla.org/network/urichecker;1,{cf3a0e06-1dd1-11b2-a904-ac1d6da77a02}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-874,{6394eeb4-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/docloaderservice;1,{057b04d0-0ccf-11d2-beba-00805f8a66dc}
+@mozilla.org/intl/unicode/decoder;1?charset=Big5,{efc323e1-ec62-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-5,{660d8ca2-f763-11d2-8aad-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=x-user-defined,{9416bfb2-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/preferences;1,{dc26e0e0-ca94-11d1-a9a4-00805f8a7ac4}
+@mozilla.org/image/request;1,{20557898-1dd2-11b2-8f65-9c462ee2bc95}
+@mozilla.org/parser/parser-service;1,{a6cf9112-15b3-11d2-932e-00805f8add32}
+@mozilla.org/gfx/fontmetrics;1,{6049b263-c1e6-11d1-a827-0040959a28c9}
+@mozilla.org/intl/stringcharsetdetect;1?type=ukprob,{2002f784-3960-11d3-b3c3-00805f8a6670}
+@mozilla.org/js/xpc/ID;1,{f24a14f0-4fa1-11d3-9894-006008962422}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-32BE,{ba6151ae-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/layout/element-factory;1?namespace=http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul,{76e92881-cddb-11d3-bf87-00105a1b0627}
+@mozilla.org/browser/session-history-entry;1,{bfd1a791-ad9f-11d3-bdc7-0050040a9b44}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-farsi,{6803cac8-1e3b-11d5-a145-005004832142}
+@mozilla.org/userinfo;1,{14c13684-1dd2-11b2-9463-bb10ba742554}
+@mozilla.org/layout/plaintextsink;1,{6030f7ef-32ed-46a7-9a63-6a5d3f90445f}
+@mozilla.org/intl/unicode/encoder;1?charset=GEOSTD8,{6394eebe-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM852,{2d524fd7-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-2,{7c657d11-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/autocopy;1,{8775ca39-4072-4cc0-92d3-a7c2b820089c}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-roman,{7b8556af-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/stringbundle;1,{d85a17c1-aa7c-11d2-9b8c-00805f8a16d9}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-croatian,{6394eeb7-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/gfx/devicecontext;1,{6049b262-c1e6-11d1-a827-0040959a28c9}
+@mozilla.org/network/input-stream-pump;1,{ccd0e960-7947-4635-b70e-4c661b63d675}
+@mozilla.org/intl/entityconverter;1,{8c4506a1-55e6-11d3-91d9-00105aa3f7dc}
+@mozilla.org/security/script/nameset;1,{7c02eadc-0076-4d03-998d-80d779c48589}
+@mozilla.org/prefetch-service;1,{6b8bdffc-3394-417d-be83-a81b7c0f63bf}
+@mozilla.org/content/range-utils;1,{a6cf9126-15b3-11d2-932e-00805f8add32}
+@mozilla.org/moz/jsloader;1,{6bd13476-1dd2-11b2-bbef-f0ccb5fa64b6}
+@mozilla.org/widget/appshell/win;1,{2d96b3df-c051-11d1-a827-0040959a28c9}
+@mozilla.org/rdf/datasource;1?name=local-store,{df71c6f0-ec53-11d2-bdca-000064657374}
+@mozilla.org/preferences-service;1,{1cd91b88-1dd2-11b2-92e1-ed22ed298000}
+@mozilla.org/intl/unicode/encoder;1?charset=hkscs-1,{a59da931-4091-11d5-a145-005004832142}
+@mozilla.org/streamconv;1?from=gzip&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
+@mozilla.org/streamconv;1?from=application/x-unknown-content-type&to=*/*,{7d7008a0-c49a-11d3-9b22-0080c7cb1080}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-ce,{7b8556a2-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/scriptableunicodeconverter,{0a698c44-3bff-11d4-9649-00c0ca135b4e}
+@mozilla.org/network/protocol;1?name=jar,{c7e410d4-85f2-11d3-9f63-006008a6efe9}
+@mozilla.org/gfx/printsession;1,{2f977d53-5485-11d4-87e2-0010a4e75ef2}
+@mozilla.org/mime;1,{a7f800e0-4306-11d4-98d0-001083010e9b}
+@mozilla.org/image/decoder;2?type=image/x-xbitmap,{dbfd145d-3298-4f3c-902f-2c5e1a1494ce}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1258,{6394eeb3-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encodehelper;1,{1767fc50-caa4-11d2-8aa9-00600811a836}
+@mozilla.org/intl/charsetdetectionadaptor;1,{12bb8f17-2389-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=VISCII,{6394eebf-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=Big5-HKSCS,{ba6151bc-ec62-11d2-8aac-00600811a836}
+@mozilla.org/streamconv;1?from=deflate&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
+@mozilla.org/layout/htmlsanitizer;1,{feca3c34-205e-4ae5-bd1c-03c686ff012b}
+@mozilla.org/layout/documentEncoder;1?type=text/xml,{e7ba1480-1dea-11d3-830f-00104bed045e}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-2,{7b8556a6-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-8,{660d8ca9-f763-11d2-8aad-00600811a836}
+@mozilla.org/embedcomp/printingprompt-service;1,{e042570c-62de-4bb6-a6e0-798e3c07b4df}
+@mozilla.org/charset-converter-manager;1,{3c1c0163-9bd0-11d3-9d09-0050040007b2}
+@mozilla.org:/content/content-area-dragdrop;1,{1f34bc80-1bc7-11d6-a384-d705dd0746fc}
+@mozilla.org/layout/documentEncoder;1?type=text/html,{e7ba1480-1dea-11d3-830f-00104bed045e}
+@mozilla.org/rdf/rdf-service;1,{bfd05264-834c-11d2-8eac-00805f29f370}
+@mozilla.org/layout/content-policy;1,{0e3afd3d-eb60-4c2b-963b-56d7c439f124}
+@mozilla.org/browser/history-entry;1,{a41661d5-1417-11d5-9882-00c04fa02f40}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-10,{ba6151ab-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/protocol/about;1?what=config,{f0acde16-1dd1-11b2-9e35-f5786fff5a66}
+@mozilla.org/layout/xul-boxobject-menu;1,{aa40253b-4c42-4056-8132-37bcd07862fd}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM864i,{2d524fdc-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/embedcomp/command-params;1,{f7fa4581-238e-11d5-a73c-ab64fb68f2bc}
+@mozilla.org/intl/unicode/encoder;1?charset=x-koreanjamo-0,{47433d1d-d9a7-4954-994f-f7a05cf87c2e}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM857,{2d524fd9-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/uriloader;1,{9f6d5d40-90e7-11d3-af80-00a024ffc08c}
+@mozilla.org/intl/unicode/encoder;1?charset=GB2312,{379c2777-ec77-11d2-8aac-00600811a836}
+@mozilla.org/layout/xul-boxobject-tree;1,{3b581fd4-3497-426c-8f61-3658b971cb80}
+@mozilla.org/intl/fontpackageservice;1,{6712fdd6-f978-11d4-a144-005004832142}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-16LE,{ba6151b7-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=jis_0201,{ba615191-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=EUC-KR,{379c2778-ec77-11d2-8aac-00600811a836}
+@mozilla.org/layout/documentEncoder;1?type=text/plain,{e7ba1480-1dea-11d3-830f-00104bed045e}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-hebrew,{6803cacd-1e3b-11d5-a145-005004832142}
+@mozilla.org/xmlextras-domci-extender;1,{6fb64081-1da6-11d6-a7f2-9babb25552bc}
+@mozilla.org/filepicker;1,{bd57cee8-1dd1-11b2-9fe7-95cf4709aea3}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-gurmukhi,{6803cace-1e3b-11d5-a145-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-2022-JP,{4f76e100-d71c-11d2-8aac-00600811a836}
+@mozilla.org/plugin/host;1,{adea1880-1a8e-11d2-a82e-0040959a28c9}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1250,{7b8556aa-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-16,{a0f827e1-8ab6-11d5-a14b-005004832142}
+@mozilla.org/layout/htmlfragmentsink;2,{13111d00-ce81-11d6-8082-ecf3665af67c}
+@mozilla.org/image/decoder;2?type=image/bmp,{78c61626-4d1f-4843-9364-4652d98ff6e1}
+@mozilla.org/intl/unicode/decoder;1?charset=VISCII,{6394eeae-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/streamconv;1?from=x-gzip&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-IR-111,{9416bfb3-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM864,{2d524fdb-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/content/namespacemanager;1,{d9783472-8fe9-11d2-9d3c-0060088f9ff7}
+@mozilla.org/network/protocol;1?name=http,{4f47e42e-4d23-4dd3-bfda-eb29255e9ea3}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-ukrainian,{6394eeba-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/embedcomp/command-manager;1,{64edb481-0c04-11d5-a73c-e964b968b0bc}
+@mozilla.org/intl/collation;1,{aa13e4a0-a5ac-11d2-9119-006008a6edf6}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1251,{a578e0a3-f76b-11d2-8aac-00600811a836}
+@mozilla.org/network/buffered-input-stream;1,{9226888e-da08-11d3-8cda-0060b0fc14a3}
+@mozilla.org/intl/stringcharsetdetect;1?type=ruprob,{2002f783-3960-11d3-b3c3-00805f8a6670}
+@mozilla.org/gfx/drawing-surface;1,{199c7040-cab0-11d2-a849-0040959a28c9}
+@mozilla.org/network/io-thread-pool;1,{f1d62b49-5051-48e2-9155-c3509428461e}
+@mozilla.org/widgets/child_window/win;1,{2d96b3d1-c051-11d1-a827-0040959a28c9}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1255,{ba6151a3-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=Shift_JIS,{e28ab250-d66d-11d2-8aac-00600811a836}
+@mozilla.org/widget/bidikeyboard;1,{2572e6b0-7439-11d4-b77a-00104b4119f8}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-7,{7b8556a8-ec79-11d2-8aac-00600811a836}
+@mozilla.org/content/subtree-content-iterator;1,{a6cf90e5-15b3-11d2-932e-00805f8add32}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-16BE,{ba6151b2-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/protocol;1?name=file,{fbc81170-1f69-11d3-9344-00104ba0fd40}
+@mozilla.org/txttohtmlconv;1,{77c0e42a-1dd2-11b2-8ebf-edc6606f2f4b}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-devanagari,{6803cac4-1e3b-11d5-a145-005004832142}
+@mozilla.org/embedding/browser/nsWebBrowser;1,{f1eac761-87e9-11d3-af80-00a024ffc08c}
+@mozilla.org/intl/unicode/decoder;1?charset=Shift_JIS,{0e6892c1-a9ad-11d2-b3ae-00805f8a6670}
+@mozilla.org/widget/dragservice;1,{8b5314bb-db01-11d2-96ce-0060b0fb9956}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-hebrew,{6803cacc-1e3b-11d5-a145-005004832142}
+@mozilla.org/content/dom-selection;1,{c87a37fc-8109-4ce2-a322-8cdec925379f}
+@mozilla.org/intl/unicode/encoder;1?charset=x-viet-tcvn5712,{6394eebd-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/content/frameloader,{712603da-f245-4503-a541-b049cb0681ae}
+@mozilla.org/intl/metacharset;1,{218f2ac0-0a48-11d3-b3ba-00805f8a6670}
+@mozilla.org/widgets/window/win;1,{2d96b3d0-c051-11d1-a827-0040959a28c9}
+@mozilla.org/content/pre-content-iterator;1,{80d7e247-d4b8-45d7-bb59-6f1dd56f384c}
+@mozilla.org/view-manager;1,{c95f1831-c376-11d1-b721-00600891d8c9}
+@mozilla.org/moz/jssubscript-loader;1,{929814d6-1dd2-11b2-8e08-82fa0a339b00}
+@mozilla.org/content/element/html;1?name=option,{a6cf90f5-15b3-11d2-932e-00805f8add32}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1254,{7c657d17-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=x-gbk,{ba61519e-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-6-I,{495eca44-0a5c-11d4-a135-005004832142}
+@mozilla.org/dirIndex;1,{f6913e2e-1dd1-11b2-84be-f455dee342af}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-croatian,{6394eea7-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/appshell/window-mediator;1,{0659cb83-faad-11d2-8e19-b206620a657c}
+@mozilla.org/network/simple-uri;1,{e0da1d70-2f7b-11d3-8cd0-0060b0fc14a3}
+@mozilla.org/intl/unicode/encoder;1?charset=x-u-escaped,{319ff9c3-51d2-11d3-b3c3-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=GEOSTD8,{6394eeaf-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-8,{660d8ca4-f763-11d2-8aad-00600811a836}
+@mozilla.org/layout/xul-boxobject-browser;1,{31246420-a2f7-4933-ae71-79bbd5d94b04}
+@mozilla.org/gfx/image;1,{6049b260-c1e6-11d1-a827-0040959a28c9}
+@mozilla.org/intl/unicharutil;1,{cc10c750-9ec3-11d2-b3ae-00805f8a6670}
+@mozilla.org/intl/stringcharsetdetect;1?type=ko_parallel_state_machine,{ea06d4e4-2b3d-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decodehelper;1,{9cc39ff1-dd5d-11d2-8aac-00600811a836}
+@mozilla.org/browser/shistory-internal;1,{dd335422-b8b8-11d3-bdc8-0050040a9b44}
+@mozilla.org/scripterror;1,{e38e53b9-5bb0-456a-b553-579370cb1567}
+@mozilla.org/intl/unicode/encoder;1?charset=x-tamilttf-0,{a431b276-f77d-4b83-9b37-872cf2fbcc2a}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-13,{ba6151ac-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=TIS-620,{c5de4da2-d667-42d2-b8c2-efdbcf3302ef}
+@mozilla.org/network/async-stream-copier;1,{e746a8b1-c97a-4fc5-baa4-66607521bd08}
+@mozilla.org/image/cache;1,{fb4fd28a-1dd1-11b2-8391-e14242c59a41}
+@mozilla.org/intl/unicodenormalizer;1,{a665e49a-f3e6-4fed-9f31-f7c568a29899}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-16,{d673255d-1184-400a-b0b5-ee9d1295bd85}
+@mozilla.org/xmlextras/fixptrevaluator;1,{cd6bd59c-75c8-451b-831b-b81b7c03dc53}
+@mozilla.org/intl/charsetdetect;1?type=ukprob,{2002f782-3960-11d3-b3c3-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-icelandic,{6394eeab-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/embedding/browser/nsWebBrowserPersist;1,{7e677795-c582-4cd1-9e8d-8271b3474d2a}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-8-E,{495eca49-0a5c-11d4-a135-005004832142}
+@mozilla.org/network/file-input-stream;1,{be9a53ae-c7e9-11d3-8cda-0060b0fc14a3}
+@mozilla.org/uriloader/external-protocol-service;1,{a7f800e0-4306-11d4-98d0-001083010e9b}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-1,{a3254cb0-8e20-11d2-8a98-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-11,{776588a6-86d5-47e2-b6b3-992810078202}
+@mozilla.org/intl/unicode/encoder;1?charset=x-imap4-modified-utf7,{b57f97c2-0d70-11d3-8aae-00600811a836}
+@mozilla.org/layout/htmlfragmentsink;1,{d4f2b600-b5c1-11d6-b483-cc97c63e567c}
+@mozilla.org/rdf/xml-parser;1,{a4048e94-1dd1-11b2-a676-8a06c086cc7d}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-cyrillic,{6394eea9-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM862,{2d524fd4-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/intl/unicode/decoder;1?charset=GB2312,{379c2774-ec77-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-13,{ba6151b1-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-IR-111,{9416bfb1-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/editor/htmleditor;1,{ed0244e0-c144-11d2-8f4c-006008159b0c}
+@mozilla.org/network/http-auth-manager;1,{36b63ef3-e0fa-4c49-9fd4-e065e85568f4}
+@mozilla.org/xul/xul-document;1,{541afcb2-a9a3-11d2-8ec5-00805f29f370}
+@mozilla.org/intl/unicode/encoder;1?charset=KOI8-U,{6394eeb6-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-gurmukhi,{6803cacf-1e3b-11d5-a145-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-ce,{7b8556b0-ec79-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-936,{9416bfc0-1f93-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=HZ-GB-2312,{ba61519a-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-874,{6394eea4-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/widget/lookandfeel;1,{21b51de0-21a3-11d2-b6e0-00805f8a2676}
+@mozilla.org/intl/unicode/encoder;1?charset=gb18030,{a59da932-4091-11d5-a145-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=x-zapf-dingbats,{21dd6a03-413c-11d3-b3c3-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=x-tscii,{d2800356-c2d7-4e05-a884-79fe566af1cf}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-4,{660d8ca6-f763-11d2-8aad-00600811a836}
+@mozilla.org/rdf/content-sink;1,{0958b101-9ada-11d2-8ebc-00805f29f370}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM855,{2d524fd8-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/network/socket-provider-service;1,{ed394ba0-5472-11d3-bbc8-0000861d1237}
+@mozilla.org/intl/unicode/encoder;1?charset=us-ascii,{ba6151ba-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=TIS-620,{66634f68-be19-42d0-a4ca-d1c21fa059b8}
+@mozilla.org/network/protocol;1?name=default,{bd6390c8-fbea-11d4-98f6-001083010e9b}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-7,{af7a9951-aa48-11d2-b3ae-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-16,{a0f827e2-8ab6-11d5-a14b-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM864i,{2d524fdd-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/gfx/fontenumerator;1,{a6cf9115-15b3-11d2-932e-00805f8add32}
+@mozilla.org/network/socket-transport-service;1,{c07e81e0-ef12-11d2-92b6-00105a1b0d64}
+@mozilla.org/js/xpc/RuntimeService;1,{b5e65b52-1dd1-11b2-ae8f-f0928ed88482}
+@mozilla.org/content/element/html;1?name=img,{d6008c40-4dad-11d2-b328-00805f8a3859}
+@mozilla.org/intl/unicode/encoder;1?charset=x-mac-farsi,{6803cac9-1e3b-11d5-a145-005004832142}
+@mozilla.org/network/stream-listener-tee;1,{831f8f13-7aa8-485f-b02e-77c881cc5773}
+@mozilla.org/gfx/printerenumerator;1,{a6cf9129-15b3-11d2-932e-00805f8add32}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1253,{af7a9952-aa48-11d2-b3ae-00805f8a6670}
+@mozilla.org/layout/xul-boxobject-popup;1,{6c392c62-1ab1-4de7-bfc6-ed4f9fc7749a}
+@mozilla.org/xul/xul-controllers;1,{1f5c1721-7dc3-11d3-bf87-00105a1b0627}
+@mozilla.org/embedcomp/dialogparam;1,{4e4aae11-8901-46cc-8217-dad7c5415873}
+@mozilla.org/layout/xul-boxobject;1,{d750a964-2d14-484c-b3aa-8ed7823b5c7b}
+@mozilla.org/intl/unicode/decoder;1?charset=x-u-escaped,{319ff9c2-51d2-11d3-b3c3-00805f8a6670}
+@mozilla.org/streamconv;1?from=compress&to=uncompressed,{66230b2b-17fa-4bd3-abf4-07986151022d}
+@mozilla.org/intl/unicode/decoder;1?charset=UTF-32LE,{ba6151b8-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/gfx/screenmanager;1,{c401eb80-f9ea-11d3-bb6f-e732b73ebe7c}
+@mozilla.org/rdf/container;1,{d4214e93-fb94-11d2-bdd8-00104bde6048}
+@mozilla.org/intl/unicode/decoder;1?charset=EUC-KR,{379c2775-ec77-11d2-8aac-00600811a836}
+@mozilla.org/rdf/xml-serializer;1,{0032d852-1dd2-11b2-95f7-e0a1910ed2da}
+@mozilla.org/network/dns-service;1,{b0ff4572-dae4-4bef-a092-83c1b88f6be9}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1256,{ba6151a4-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/content/document-loader-factory;1,{fc886801-e768-11d4-9885-00c04fa0cf4b}
+@mozilla.org/streamConverters;1,{892ffeb0-3f80-11d3-a16c-0050041caf44}
+@mozilla.org/intl/unicode/decoder;1?charset=EUC-JP,{3f6fe6a1-ac0a-11d2-b3ae-00805f8a6670}
+@mozilla.org/intl/stringbundle/text-override;1,{6316c6ce-12d3-479e-8f53-e289351412b8}
+@mozilla.org/intl/unicode/encoder;1?charset=HZ-GB-2312,{ba61519d-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/network/socket;2?type=socks4,{f7c9f5f4-4451-41c3-a28a-5ba2447fbace}
+@mozilla.org/docloader;1,{dbe63944-d434-11d3-98b1-001083010e9b}
+@mozilla.org/network/buffered-output-stream;1,{9868b4ce-da08-11d3-8cda-0060b0fc14a3}
+@mozilla.org/intl/unicode/encoder;1?charset=IBM866,{ba6151aa-1dfa-11d3-b3bf-00805f8a6670}
+@mozilla.org/locale/win32-locale;1,{d92d57c3-ba1d-11d2-af0c-0060089fe59b}
+@mozilla.org/widget/toolkit/win;1,{2d96b3e0-c051-11d1-a827-0040959a28c9}
+@mozilla.org/js/xpc/Exception;1,{5632bf70-51ec-11d3-9896-006008962422}
+@mozilla.org/xmlextras/xpointerevaluator;1,{07ac4e3a-ee18-4e37-b29f-532be4be0609}
+@mozilla.org/widget/transferable;1,{8b5314bc-db01-11d2-96ce-0060b0fb9956}
+@mozilla.org/webshell;1,{a6cf9059-15b3-11d2-932e-00805f8add32}
+@mozilla.org/image/container;1?type=image/gif,{da72e7ee-4821-4452-802d-5eb2d865dd3c}
+@mozilla.org/embedcomp/jsconsole-service;1,{35807600-35bd-11d5-bb6f-b9f2e9fee03c}
+@mozilla.org/rdf/container-utils;1,{d4214e92-fb94-11d2-bdd8-00104bde6048}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM852,{2d524fd1-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/rdf/datasource;1?name=xml-datasource,{7baf62e0-8e61-11d2-8eb1-00805f29f370}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM855,{2d524fd2-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/editor/texteditor;1,{e197cc01-cfe1-11d4-8eb0-87ae406dfd3f}
+@mozilla.org/chrome/chrome-native-theme;1,{d930e29b-6909-44e5-ab4b-af10d6923705}
+@mozilla.org/network/http-authenticator;1?scheme=digest,{17491ba4-1dd2-11b2-aae3-de6b92dab620}
+@mozilla.org/intl/collation-factory;1,{a1b72850-a999-11d2-9119-006008a6edf6}
+@mozilla.org/intl/unicode/decoder;1?charset=Big5-HKSCS,{ba6151bb-ec62-11d2-8aac-00600811a836}
+@mozilla.org/intl/unicode/encoder;1?charset=windows-1254,{7b8556ae-ec79-11d2-8aac-00600811a836}
+@mozilla.org/systemprincipal;1,{4a6212db-accb-11d3-b765-0060b0b6cecb}
+@mozilla.org/streamconv;1?from=multipart/x-mixed-replace&to=*/*,{7584ce90-5b25-11d3-a175-0050041caf44}
+@mozilla.org/network/file-output-stream;1,{c272fee0-c7e9-11d3-8cda-0060b0fc14a3}
+@mozilla.org/content/http-startup;1,{c2f6ef7e-afd5-4be4-a1f5-c824efa4231b}
+@mozilla.org/embedcomp/window-watcher;1,{a21bfa01-f349-4394-a84c-8de5cf0737d0}
+@mozilla.org/view;1,{c95f1832-c376-11d1-b721-00600891d8c9}
+@mozilla.org/xul/xul-prototype-cache;1,{3a0a0fc1-8349-11d3-be47-00104bde6048}
+@mozilla.org/intl/unicode/encoder;1?charset=UTF-16,{49b38f12-6193-11d3-b3c5-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=gb18030,{a59da935-4091-11d5-a145-005004832142}
+@mozilla.org/network/url-parser;1?auth=no,{78804a84-8173-42b6-bb94-789f0816a810}
+@mozilla.org/intl/unicode/decoder;1?charset=x-imap4-modified-utf7,{b57f97c1-0d70-11d3-8aae-00600811a836}
+@mozilla.org/content/range;1,{56ad2981-8a87-11d2-918c-0080c8e44db5}
+@mozilla.org/intl/unicode/encoder;1?charset=KOI8-R,{6394eeb5-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/streamconv;1?from=text/ftp-dir&to=application/http-index-format,{14c0e880-623e-11d3-a178-0050041caf44}
+@mozilla.org/transactionmanager;1,{9c8f9601-801a-11d2-98ba-00805f297d89}
+@mozilla.org/scroll-port-view;1,{3b733c91-7223-11d3-b361-00a0cc3c1cde}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-2022-JP,{3f6fe6a2-ac0a-11d2-b3ae-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-9,{7c657d13-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/gfx/region;1,{da5b130a-1dd1-11b2-ad47-f455b1814a78}
+@mozilla.org/network/cache-service;1,{6c84aec9-29a5-4264-8fbc-bee8f922ea67}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-1,{920307b0-c6e8-11d2-8aa8-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=x-euc-tw,{379c2771-ec77-11d2-8aac-00600811a836}
+@mozilla.org/network/protocol/about;1?what=blank,{3decd6c8-30ef-11d3-8cd0-0060b0fc14a3}
+@mozilla.org/intl/unicode/decoder;1?charset=x-mac-greek,{7b8556a3-ec79-11d2-8aac-00600811a836}
+@mozilla.org/network/protocol/about;1?what=cache-entry,{7fa5237d-b0eb-438f-9e50-ca0166e63788}
+@mozilla.org/layout/element-factory;1?namespace=http://www.w3.org/1998/Math/MathML,{68b9fbda-f230-45a9-bf92-dbbbd4ac8555}
+@mozilla.org/intl/stringcharsetdetect;1?type=ja_parallel_state_machine,{12bb8f1c-2389-11d3-b3bf-00805f8a6670}
+@mozilla.org/browser/shistory;1,{7294fe9c-14d8-11d5-9882-00c04fa02f40}
+@mozilla.org/intl/unicode/encoder;1?charset=armscii-8,{6394eebc-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-11,{9c0ff6f4-deda-40e5-806c-b6cc449c21ce}
+@mozilla.org/layout/contentserializer;1?mimetype=text/xml,{4aef38b7-6364-4e23-a5e7-12f837fbbd9c}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM857,{2d524fd3-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-8-E,{495eca42-0a5c-11d4-a135-005004832142}
+@mozilla.org/intl/unicode/encoder;1?charset=ISO-8859-6-I,{495eca46-0a5c-11d4-a135-005004832142}
+@mozilla.org/dirIndexParser;1,{a0d6ad32-1dd1-11b2-aa55-a40187b54036}
+@mozilla.org/nsSecurityWarningDialogs;1,{8d995d4f-adcc-4159-b7f1-e94af72eeb88}
+@mozilla.org/PopupWindowManager;1,{4275d3f4-752a-427a-b432-14d5dda1c20b}
+@mozilla.org/network/simple-stream-listener;1,{fb8cbf4e-4701-4ba1-b1d6-5388e041fb67}
+@mozilla.org/intl/unicode/decoder;1?charset=armscii-8,{6394eeac-fc3d-11d2-b3b8-00805f8a6670}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-8-I,{495eca43-0a5c-11d4-a135-005004832142}
+@mozilla.org/network/io-service;1,{9ac9e770-18bc-11d3-9337-00104ba0fd40}
+@mozilla.org/network/http-authenticator;1?scheme=ntlm,{bbef8185-c628-4cc1-b53e-e61e74c2451a}
+@mozilla.org/oji/jvm-auth-tools;1,{d8e716f9-c96e-4e84-ab12-980f5567e2a4}
+@mozilla.org/intl/unicode/decoder;1?charset=IBM864,{2d524fd5-ae74-11d3-abf7-0004aceefa51}
+@mozilla.org/xul/xul-tree-builder;1,{1abdcc96-1dd2-11b2-b520-f8f59cdd67bc}
+@mozilla.org/docshell/urifixup;1,{214c48a0-b57f-11d4-959c-0020183bf181}
+@mozilla.org/intl/unicode/decoder;1?charset=ISO-8859-4,{660d8ca1-f763-11d2-8aad-00600811a836}
+@mozilla.org/intl/unicode/decoder;1?charset=windows-1252,{7c657d15-ec5e-11d2-8aac-00600811a836}
+@mozilla.org/intl/stringcharsetdetect;1?type=zh_parallel_state_machine,{fcacef21-2b40-11d3-b3bf-00805f8a6670}
+@mozilla.org/document-charset-info;1,{d25e0511-2bae-11d4-9d10-0050040007b2}
+@mozilla.org/intl/lwbrk;1,{e86b337b-bf89-11d2-b3af-00805f8a6670}
+@mozilla.org/image/decoder;2?type=image/jpeg,{5871a422-1dd2-11b2-ab3f-e2e56be5da9c}
+@mozilla.org/xul/xul-sort-service;1,{bfd05264-834c-11d2-8eac-00805f29f371}
+@mozilla.org/layout/htmlCopyEncoder;1,{7f915b01-98fc-11d4-8eb0-a803f80ff1bc}
+@mozilla.org/intl/xmlencoding;1,{12bb8f16-2389-11d3-b3bf-00805f8a6670}
+@mozilla.org/chrome/chrome-registry;1,{d8c7d8a2-e84c-11d2-bf87-00105a1b0627}
+
+[CATEGORIES]
+Charset Encoders,UTF-16,
+Charset Encoders,ISO-8859-8-E,
+Charset Encoders,ISO-8859-4,
+Charset Encoders,ISO-8859-16,
+Charset Encoders,UTF-32LE,
+Charset Encoders,TIS-620,
+Charset Encoders,ISO-IR-111,
+Charset Encoders,windows-1252,
+Charset Encoders,windows-1251,
+Charset Encoders,UTF-16BE,
+Charset Encoders,x-mac-ukrainian,
+Charset Encoders,IBM852,
+Charset Encoders,x-mac-roman,
+Charset Encoders,ISO-8859-7,
+Charset Encoders,x-mac-ce,
+Charset Encoders,ISO-8859-15,
+Charset Encoders,Adobe-Symbol-Encoding,
+Charset Encoders,IBM857,
+Charset Encoders,gb18030,
+Charset Encoders,x-viet-tcvn5712,
+Charset Encoders,IBM862,
+Charset Encoders,KOI8-U,
+Charset Encoders,ISO-8859-2,
+Charset Encoders,armscii-8,
+Charset Encoders,ISO-8859-10,
+Charset Encoders,UTF-8,
+Charset Encoders,us-ascii,
+Charset Encoders,hkscs-1,
+Charset Encoders,HZ-GB-2312,
+Charset Encoders,ISO-2022-JP,
+Charset Encoders,x-gbk,
+Charset Encoders,windows-1257,
+Charset Encoders,ISO-8859-14,
+Charset Encoders,x-mac-hebrew,
+Charset Encoders,ISO-8859-6-I,
+Charset Encoders,x-johab,
+Charset Encoders,ISO-8859-5,
+Charset Encoders,KOI8-R,
+Charset Encoders,x-imap4-modified-utf7,
+Charset Encoders,VISCII,
+Charset Encoders,windows-1258,
+Charset Encoders,ISO-8859-8,
+Charset Encoders,EUC-KR,
+Charset Encoders,x-mac-gurmukhi,
+Charset Encoders,Big5,
+Charset Encoders,IBM864,
+Charset Encoders,windows-1250,
+Charset Encoders,x-tamilttf-0,
+Charset Encoders,IBM864i,
+Charset Encoders,x-euc-tw,
+Charset Encoders,ISO-8859-8-I,
+Charset Encoders,UTF-16LE,
+Charset Encoders,x-mac-icelandic,
+Charset Encoders,GB2312,
+Charset Encoders,windows-1255,
+Charset Encoders,x-windows-949,
+Charset Encoders,x-mac-romanian,
+Charset Encoders,T.61-8bit,
+Charset Encoders,ISO-8859-3,
+Charset Encoders,ISO-8859-11,
+Charset Encoders,UTF-7,
+Charset Encoders,Shift_JIS,
+Charset Encoders,x-mac-devanagari,
+Charset Encoders,jis_0201,
+Charset Encoders,UTF-32BE,
+Charset Encoders,x-mac-turkish,
+Charset Encoders,IBM866,
+Charset Encoders,windows-1256,
+Charset Encoders,x-mac-farsi,
+Charset Encoders,GEOSTD8,
+Charset Encoders,x-koreanjamo-0,
+Charset Encoders,EUC-JP,
+Charset Encoders,x-mac-croatian,
+Charset Encoders,ISO-8859-6,
+Charset Encoders,x-mac-greek,
+Charset Encoders,ISO-8859-9,
+Charset Encoders,x-mac-cyrillic,
+Charset Encoders,x-mac-gujarati,
+Charset Encoders,ISO-8859-6-E,
+Charset Encoders,Big5-HKSCS,
+Charset Encoders,windows-1253,
+Charset Encoders,ISO-8859-1,
+Charset Encoders,ISO-8859-13,
+Charset Encoders,IBM850,
+Charset Encoders,x-zapf-dingbats,
+Charset Encoders,x-user-defined,
+Charset Encoders,x-mac-arabic,
+Charset Encoders,windows-874,
+Charset Encoders,windows-936,
+Charset Encoders,x-u-escaped,
+Charset Encoders,windows-1254,
+Charset Encoders,x-tscii,
+Charset Encoders,IBM855,
+Charset Encoders,x-viet-vps,
+JavaScript global static nameset,PrivilegeManager,@mozilla.org/security/script/nameset;1
+JavaScript global constructor,Image,@mozilla.org/content/element/html;1?name=img
+JavaScript global constructor,Option,@mozilla.org/content/element/html;1?name=option
+component-loader,text/javascript,@mozilla.org/moz/jsloader;1
+uconv-charset-titles,chrome://global/locale/charsetTitles.properties,
+content-policy,@mozilla.org/imgmanager;1,@mozilla.org/imgmanager;1
+content-policy,@mozilla.org/embedding/browser/content-policy;1,@mozilla.org/embedding/browser/content-policy;1
+@mozilla.org/streamconv;1,?from=text/ftp-dir&to=application/http-index-format,
+charset-detectors,cjk_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=cjk_parallel_state_machine
+charset-detectors,ko_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=ko_parallel_state_machine
+charset-detectors,ruprob,@mozilla.org/intl/charsetdetect;1?type=ruprob
+charset-detectors,off,off
+charset-detectors,zhcn_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=zhcn_parallel_state_machine
+charset-detectors,zhtw_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=zhtw_parallel_state_machine
+charset-detectors,zh_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=zh_parallel_state_machine
+charset-detectors,ja_parallel_state_machine,@mozilla.org/intl/charsetdetect;1?type=ja_parallel_state_machine
+charset-detectors,ukprob,@mozilla.org/intl/charsetdetect;1?type=ukprob
+uconv-charset-data,resource://gre/res/charsetData.properties,
+JavaScript DOM interface,nsIXMLHttpRequest,{7b3b3c62-9d53-4abc-bc89-c33ce78f439f}
+JavaScript DOM interface,nsIJSXMLHttpRequest,{9deabc90-28d5-41d3-a660-474f2254f4ba}
+Charset Decoders,UTF-16,
+Charset Decoders,ISO-8859-8-E,
+Charset Decoders,ISO-8859-4,
+Charset Decoders,ISO-8859-16,
+Charset Decoders,UTF-32LE,
+Charset Decoders,TIS-620,
+Charset Decoders,ISO-IR-111,
+Charset Decoders,windows-1252,
+Charset Decoders,windows-1251,
+Charset Decoders,UTF-16BE,
+Charset Decoders,x-mac-ukrainian,
+Charset Decoders,IBM852,
+Charset Decoders,x-mac-roman,
+Charset Decoders,ISO-8859-7,
+Charset Decoders,x-mac-ce,
+Charset Decoders,ISO-8859-15,
+Charset Decoders,IBM857,
+Charset Decoders,gb18030,
+Charset Decoders,x-viet-tcvn5712,
+Charset Decoders,IBM862,
+Charset Decoders,KOI8-U,
+Charset Decoders,ISO-8859-2,
+Charset Decoders,armscii-8,
+Charset Decoders,ISO-8859-10,
+Charset Decoders,UTF-8,
+Charset Decoders,us-ascii,
+Charset Decoders,HZ-GB-2312,
+Charset Decoders,ISO-2022-JP,
+Charset Decoders,x-gbk,
+Charset Decoders,windows-1257,
+Charset Decoders,ISO-8859-14,
+Charset Decoders,x-mac-hebrew,
+Charset Decoders,ISO-8859-6-I,
+Charset Decoders,x-johab,
+Charset Decoders,ISO-8859-5,
+Charset Decoders,KOI8-R,
+Charset Decoders,x-imap4-modified-utf7,
+Charset Decoders,VISCII,
+Charset Decoders,windows-1258,
+Charset Decoders,ISO-8859-8,
+Charset Decoders,EUC-KR,
+Charset Decoders,x-mac-gurmukhi,
+Charset Decoders,Big5,
+Charset Decoders,IBM864,
+Charset Decoders,windows-1250,
+Charset Decoders,EUC-JP,
+Charset Decoders,IBM864i,
+Charset Decoders,x-euc-tw,
+Charset Decoders,ISO-8859-8-I,
+Charset Decoders,UTF-16LE,
+Charset Decoders,x-mac-icelandic,
+Charset Decoders,GB2312,
+Charset Decoders,windows-1255,
+Charset Decoders,x-windows-949,
+Charset Decoders,ISO-2022-KR,
+Charset Decoders,x-mac-romanian,
+Charset Decoders,T.61-8bit,
+Charset Decoders,ISO-8859-3,
+Charset Decoders,ISO-8859-11,
+Charset Decoders,UTF-7,
+Charset Decoders,Shift_JIS,
+Charset Decoders,x-mac-devanagari,
+Charset Decoders,ISO-2022-CN,
+Charset Decoders,UTF-32BE,
+Charset Decoders,x-mac-turkish,
+Charset Decoders,IBM866,
+Charset Decoders,windows-1256,
+Charset Decoders,x-mac-farsi,
+Charset Decoders,GEOSTD8,
+Charset Decoders,x-mac-croatian,
+Charset Decoders,ISO-8859-6,
+Charset Decoders,x-mac-greek,
+Charset Decoders,ISO-8859-9,
+Charset Decoders,x-mac-cyrillic,
+Charset Decoders,x-mac-gujarati,
+Charset Decoders,ISO-8859-6-E,
+Charset Decoders,Big5-HKSCS,
+Charset Decoders,windows-1253,
+Charset Decoders,ISO-8859-1,
+Charset Decoders,ISO-8859-13,
+Charset Decoders,IBM850,
+Charset Decoders,x-user-defined,
+Charset Decoders,x-mac-arabic,
+Charset Decoders,windows-874,
+Charset Decoders,windows-936,
+Charset Decoders,x-u-escaped,
+Charset Decoders,windows-1254,
+Charset Decoders,IBM855,
+Charset Decoders,x-viet-vps,
+JavaScript global constructor prototype alias,Image,HTMLImageElement
+JavaScript global constructor prototype alias,Option,HTMLOptionElement
+app-startup,Script Security Manager,service,@mozilla.org/scriptsecuritymanager;1
+http-startup-category,Content UserAgent Setter,@mozilla.org/content/http-startup;1
+JavaScript DOM class,XPointerResult,@mozilla.org/xmlextras-domci-extender;1
+JavaScript DOM class,XMLHttpProgressEvent,@mozilla.org/xmlextras-domci-extender;1
+JavaScript DOM class,DOMParser,@mozilla.org/xmlextras-domci-extender;1
+JavaScript DOM class,XMLHttpRequest,@mozilla.org/xmlextras-domci-extender;1
+JavaScript DOM class,XMLSerializer,@mozilla.org/xmlextras-domci-extender;1
+Gecko-Content-Viewers,image/jpg,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/plain,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/gif,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/bmp,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,application/x-view-source,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/pjpeg,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/x-png,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,application/x-javascript,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/jpeg,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,mozilla.application/cached-xul,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/x-xbitmap,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/rdf,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,application/xml,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/png,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/css,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/x-xbm,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/x-icon,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/javascript,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,application/xhtml+xml,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,application/vnd.mozilla.xul+xml,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/xml,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,text/html,@mozilla.org/content/document-loader-factory;1
+Gecko-Content-Viewers,image/xbm,@mozilla.org/content/document-loader-factory;1
+content-sniffing-services,@mozilla.org/image/loader;1,@mozilla.org/image/loader;1
+parser-service-category,Meta Charset Service,@mozilla.org/intl/metacharset;1

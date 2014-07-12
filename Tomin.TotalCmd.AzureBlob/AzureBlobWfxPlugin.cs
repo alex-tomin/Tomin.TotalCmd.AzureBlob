@@ -157,8 +157,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			var blobPath = AzurePath.FromPath(remoteName);
 			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-			var blob = container.GetBlockBlobReference(blobPath.Path);
-
+			var blob = container.GetBlobReferenceFromServer(blobPath.Path);
 			using (var fileStream = File.OpenWrite(localName))
 			{
 				blob.DownloadToStream(fileStream);
@@ -234,12 +233,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				var blobPath = AzurePath.FromPath(remoteName);
 				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-				var blob = container.GetBlockBlobReference(blobPath.Path);
+				var blob = container.GetBlobReferenceFromServer(blobPath.Path);
 				blob.Delete();
 				return true;
 			}
 			catch (Exception ex)
 			{
+				OnError(ex);
 				return false;
 			}
 		}
