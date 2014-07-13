@@ -28,7 +28,7 @@ namespace Tomin.TotalCmd.AzureBlob.Misc
 		/// </summary>
 		public bool IsContainerOnly
 		{
-			get { return string.IsNullOrEmpty(Path); }
+			get { return string.IsNullOrEmpty(Path) && !string.IsNullOrEmpty(ContainerName); }
 		}
 
 		public static AzurePath FromPath(string remoteName)

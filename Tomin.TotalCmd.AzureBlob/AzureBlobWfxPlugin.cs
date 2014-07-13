@@ -15,6 +15,8 @@ using Tomin.TotalCmd.AzureBlob.Forms;
 using Tomin.TotalCmd.AzureBlob.Misc;
 using System.Windows.Forms;
 using Tomin.TotalCmd.AzureBlob.Properties;
+using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace Tomin.TotalCmd.AzureBlob
@@ -27,6 +29,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		private const string FakeFileName = "11FakeEmptyFile11";
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
+		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
 
 		public AzureBlobWfxPlugin()
 		{
@@ -48,6 +51,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 
 			var blobPath = AzurePath.FromPath(path);
+			Task.Run(() => CalculateSubfoldersLastWriteTime(blobPath));
 
 			if (blobPath.IsAccountOnly)
 			{
@@ -90,7 +94,6 @@ namespace Tomin.TotalCmd.AzureBlob
 					return FindNext(enumerator);
 				return findData;
 			}
-
 			return FindData.NoMoreFiles;
 		}
 
@@ -112,7 +115,7 @@ namespace Tomin.TotalCmd.AzureBlob
 					newContainer.CreateIfNotExists();
 					return true;
 				}
-				
+
 				//create virtual folder 
 
 				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
@@ -121,7 +124,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 				return true;
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				Request.MessageBox("Error while creating folder. Probably you used not allowed symbols in name. Message: " + ex.Message);
 				return false;
@@ -293,6 +296,12 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			var findData = new FindData(Uri.UnescapeDataString(blobItem.Uri.Segments.Last().TrimEnd('/')));
 			findData.Attributes |= FileAttributes.Directory;
+
+			if (directoryLastWriteTimeCache.ContainsKey(blobItem.Uri.AbsolutePath))
+				findData.LastWriteTime = directoryLastWriteTimeCache[blobItem.Uri.AbsolutePath];
+
+
+
 			return findData;
 		}
 
@@ -302,6 +311,64 @@ namespace Tomin.TotalCmd.AzureBlob
 			if (blobItem.Properties.LastModified != null)
 				findData.LastWriteTime = blobItem.Properties.LastModified.Value.ToLocalTime().DateTime;
 			return findData;
+		}
+
+
+		private void CalculateSubfoldersLastWriteTime(AzurePath blobPath)
+		{
+			List<IListBlobItem> blobList = new List<IListBlobItem>();
+
+			if (blobPath.IsAccountOnly)
+			{
+				var containers = blobClients[blobPath.StorageDisplayName].ListContainers();
+				foreach (var container in containers)
+				{
+					blobList.AddRange(container.ListBlobs(useFlatBlobListing: true));
+				}
+			}
+
+			else if (blobPath.IsContainerOnly)
+			{
+				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
+				blobList.AddRange(container.ListBlobs(useFlatBlobListing: true));
+			}
+			else
+			{
+				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
+				blobList.AddRange(container.GetDirectoryReference(blobPath.Path).ListBlobs(useFlatBlobListing: true));
+			}
+
+			foreach (var blob in blobList.OfType<ICloudBlob>())
+			{
+				foreach (var folder in GetFolders(blob.Uri.AbsolutePath))
+				{
+					if (blob.Properties.LastModified == null)
+						continue;
+
+					DateTime lastModified = blob.Properties.LastModified.Value.ToLocalTime().DateTime;
+					if (!directoryLastWriteTimeCache.ContainsKey(folder))
+					{
+						directoryLastWriteTimeCache[folder] = lastModified;
+					}
+					else
+					{
+						directoryLastWriteTimeCache[folder] = directoryLastWriteTimeCache[folder] > lastModified ? directoryLastWriteTimeCache[folder] : lastModified;			
+					}
+				}
+			}	
+		}
+
+		private IEnumerable<string> GetFolders(string path)
+		{
+			if (string.IsNullOrEmpty(path))
+				yield break;
+			for (int index = 1; ; index++)
+			{
+				index = path.IndexOf('/', index);
+				if (index == -1)
+					break;
+				yield return path.Substring(0, index+1);
+			}
 		}
 	}
 
