@@ -7,6 +7,7 @@ Prerequisites
 ---------------
 - .NET Framework 4.5
 - Azure SDK
+- To work with Development storage - latest Storage Emulator is required.
 
 Download
 ---------------
