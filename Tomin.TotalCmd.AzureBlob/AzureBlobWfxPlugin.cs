@@ -51,7 +51,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 
 			var blobPath = AzurePath.FromPath(path);
-			Task.Run(() => CalculateSubfoldersLastWriteTime(blobPath));
+			new Task(() => CalculateSubfoldersLastWriteTime(blobPath)).Start();
 
 			if (blobPath.IsAccountOnly)
 			{
@@ -187,9 +187,11 @@ namespace Tomin.TotalCmd.AzureBlob
 			return FileOperationResult.OK;
 		}
 
+		//TODO.
 		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
 		{
-			return base.FileCopy(source, target, overwrite, move, ri);
+			//return base.FileCopy(source, target, overwrite, move, ri);
+			throw new NotImplementedException("Copy to this target Copy/Move/Rename are not implemented yet.");
 		}
 
 		public override bool DirectoryRemove(string remoteName)

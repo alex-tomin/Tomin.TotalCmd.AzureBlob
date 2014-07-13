@@ -253,10 +253,10 @@
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient"/> class using the specified Blob and Table service endpoints
             and account credentials.
+            </summary>
             <param name="blobStorageUri">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object containing the Blob service endpoint to use to create the client.</param>
             <param name="tableStorageUri">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object containing the Table service endpoint to use to create the client.</param>
             <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
-            </summary>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.GetLogDirectory(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService)">
             <summary>
@@ -303,27 +303,27 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogs(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService)">
             <summary>
-            Returns an enumerable collection of logs stored as blobs, retrieved lazily.
+            Returns an enumerable collection of log blobs containing Analytics log records. The blobs are retrieved lazily.
             </summary>
             <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogs(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations,Microsoft.WindowsAzure.Storage.Blob.BlobListingDetails,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Returns an enumerable collection of logs stored as blobs, retrieved lazily.
+            Returns an enumerable collection of log blobs containing Analytics log records. The blobs are retrieved lazily.
             </summary>
             <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
-            <param name="operations">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations"/> enumeration value that indicates which log types to return.</param>
+            <param name="operations">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations"/> enumeration value that indicates the types of logging operations on which to filter the log blobs.</param>
             <param name="details">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobListingDetails"/> enumeration value that indicates whether or not blob metadata should be returned. Only <c>None</c> and <c>Metadata</c> are valid values. </param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Blob.ICloudBlob"/> and are retrieved lazily.</returns>
-            <remarks>Note that specifying a log type for the <paramref name="operations"/> parameter will return any log that contains the specified log type,
-            even if that log also includes other log types. Also note that the only currently supported values for the <paramref name="details"/> 
+            <remarks>Note that specifying a logging operation type for the <paramref name="operations"/> parameter will return any Analytics log blob that contains the specified logging operation,
+            even if that log blob also includes other types of logging operations. Also note that the only currently supported values for the <paramref name="details"/> 
             parameter are <c>None</c> and <c>Metadata</c>.</remarks>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogs(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,System.DateTimeOffset,System.Nullable{System.DateTimeOffset})">
             <summary>
-            Returns an enumerable collection of logs stored as blobs, retrieved lazily.
+            Returns an enumerable collection of log blobs containing Analytics log records. The blobs are retrieved lazily.
             </summary>
             <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
             <param name="startTime">A <see cref="T:System.DateTimeOffset"/> object representing the start time for which logs should be retrieved.</param>
@@ -332,19 +332,76 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogs(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,System.DateTimeOffset,System.Nullable{System.DateTimeOffset},Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations,Microsoft.WindowsAzure.Storage.Blob.BlobListingDetails,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Returns an enumerable collection of logs stored as blobs, retrieved lazily.
+            Returns an enumerable collection of log blobs containing Analytics log records. The blobs are retrieved lazily.
             </summary>
             <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
             <param name="startTime">A <see cref="T:System.DateTimeOffset"/> object representing the start of the time range for which logs should be retrieved.</param>
             <param name="endTime">A <see cref="T:System.DateTimeOffset"/> object representing the end of the time range for which logs should be retrieved.</param>
-            <param name="operations">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations"/> enumeration value that indicates which log types to return</param>
+            <param name="operations">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations"/> enumeration value that indicates the types of logging operations on which to filter the log blobs.</param>
             <param name="details">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobListingDetails"/> enumeration value that indicates whether or not blob metadata should be returned. Only <c>None</c> and <c>Metadata</c> are valid values. </param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Blob.ICloudBlob"/> and are retrieved lazily.</returns>
-            <remarks>Note that specifying a log type for the <paramref name="operations"/> parameter will return any log that contains the specified log type,
-            even if that log also includes other log types. Also note that the only currently supported values for the <paramref name="details"/> 
+            <remarks>Note that specifying a logging operation type for the <paramref name="operations"/> parameter will return any Analytics log blob that contains the specified logging operation,
+            even if that log blob also includes other types of logging operations. Also note that the only currently supported values for the <paramref name="details"/> 
             parameter are <c>None</c> and <c>Metadata</c>.</remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogRecords(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService)">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogRecords(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogRecords(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,System.DateTimeOffset,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
+            <param name="startTime">A <see cref="T:System.DateTimeOffset"/> object representing the start of the time range for which logs should be retrieved.</param>
+            <param name="endTime">A <see cref="T:System.DateTimeOffset"/> object representing the end of the time range for which logs should be retrieved.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ListLogRecords(Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService,System.DateTimeOffset,System.Nullable{System.DateTimeOffset},Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
+            <param name="startTime">A <see cref="T:System.DateTimeOffset"/> object representing the start of the time range for which logs should be retrieved.</param>
+            <param name="endTime">A <see cref="T:System.DateTimeOffset"/> object representing the end of the time range for which logs should be retrieved.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ParseLogBlobs(System.Collections.Generic.IEnumerable{Microsoft.WindowsAzure.Storage.Blob.ICloudBlob})">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="logBlobs">An enumerable collection of <see cref="T:Microsoft.WindowsAzure.Storage.Blob.ICloudBlob"/> objects from which to parse log records.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ParseLogBlob(Microsoft.WindowsAzure.Storage.Blob.ICloudBlob)">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="logBlob">The <see cref="T:Microsoft.WindowsAzure.Storage.Blob.ICloudBlob"/> object from which to parse log records.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.ParseLogStream(System.IO.Stream)">
+            <summary>
+            Returns an enumerable collection of Analytics log records, retrieved lazily.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> object from which to parse log records.</param>
+            <returns>An enumerable collection of objects that implement <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> and are retrieved lazily.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Analytics.CloudAnalyticsClient.CreateCapacityQuery">
             <summary>
@@ -368,6 +425,325 @@
             <param name="service">A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageService"/> enumeration value.</param>
             <param name="location">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageLocation"/> enumeration value.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableQuery"/> object.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord">
+            <summary>
+            Represents a Storage Analytics log entry.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.#ctor(Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecord"/> class based on a <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader"/> object.
+            <param name="reader">The <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader"/> object to use to populate the log record.</param>
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.VersionNumber">
+            <summary>
+            The version of Storage Analytics Logging used to record the entry.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the version number.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestStartTime">
+            <summary>
+            The time at which the request was received by the service, in UTC format.
+            </summary>
+            <value>A <see cref="T:System.DateTimeOffset"/> specifying the request start time.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.OperationType">
+            <summary>
+            The type of REST operation performed. 
+            </summary>
+            <value>A <see cref="T:System.String"/> specifying the operation type.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestStatus">
+            <summary>
+            The status of the requested operation.
+            </summary>
+            <value>A <see cref="T:System.String"/> indicating the request status.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.HttpStatusCode">
+            <summary>
+            The HTTP status code for the request. If the request is interrupted, this value may be set to Unknown.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the HTTP status code.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.EndToEndLatency">
+            <summary>
+            The total time in milliseconds to perform the requested operation, including the time required to read the
+            incoming request and send the response to the requester.
+            </summary>
+            <value>A <see cref="T:System.TimeSpan"/> indicating the end-to-end latency for the operation.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ServerLatency">
+            <summary>
+            The total time in milliseconds to perform the requested operation. This value does not include network 
+            latency (the time required to read the incoming request and send the response to the requester).
+            </summary>
+            <value>A <see cref="T:System.TimeSpan"/> indicating the server latency for the operation.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.AuthenticationType">
+            <summary>
+            Indicates whether the request was authenticated via Shared Key or a Shared Access Signature (SAS), or was anonymous.
+            </summary>
+            <value>A <see cref="T:System.String"/> indicating the authentication scheme.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequesterAccountName">
+            <summary>
+            The name of the storage account from which the request originated, if the request is authenticated via Shared Key. 
+            This field is <c>null</c> for anonymous requests and requests made via a shared access signature (SAS).
+            </summary>
+            <value>A <see cref="T:System.String"/> specifying the name of the storage account.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.OwnerAccountName">
+            <summary>
+            The account name of the service owner.
+            </summary>
+            <value>A <see cref="T:System.String"/> specifying the name of the storage account.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ServiceType">
+            <summary>
+            The storage service against which the request was made: blob, table, or queue.
+            </summary>
+            <value>A <see cref="T:System.String"/> indicating against which service the request was made.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestUrl">
+            <summary>
+            The complete URL of the request.
+            </summary>
+            <value>A <see cref="T:System.Uri"/> object.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestedObjectKey">
+            <summary>
+            The key of the requested object, as an encoded string. This field will always use the account name, 
+            even if a custom domain name has been configured.
+            </summary>
+            <value>A <see cref="T:System.String"/> object.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestIdHeader">
+            <summary>
+            The request ID assigned by the storage service. This is equivalent to the value of the x-ms-request-id header.
+            </summary>
+            <value>A <see cref="T:System.Guid"/> containing the request ID.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.OperationCount">
+            <summary>
+            The number of operations logged for a request, starting at index zero. Some requests require more than
+            one operation, such as Copy Blob, though most perform just one operation.
+            </summary>
+            <value>An integer containing the operation count.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequesterIPAddress">
+            <summary>
+            The IP address of the requester, including the port number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestVersionHeader">
+            <summary>
+            The storage service version specified when the request was made. This is equivalent to the value of the x-ms-version header.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the request version header.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestHeaderSize">
+            <summary>
+            The size of the request header, in bytes. If a request is unsuccessful, this value may be <c>null</c>.
+            </summary>
+            <value>A long containing the request header size.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestPacketSize">
+            <summary>
+            The size of the request packets read by the storage service, in bytes. If a request is unsuccessful, this value may be <c>null</c>.
+            </summary>
+            <value>A long containing the request packet size.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ResponseHeaderSize">
+            <summary>
+            The size of the response header, in bytes. If a request is unsuccessful, this value may be <c>null</c>.
+            </summary>
+            <value>A long containing the size of the response header in bytes.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ResponsePacketSize">
+            <summary>
+            The size of the response packets written by the storage service, in bytes. If a request is unsuccessful, this value may be <c>null</c>.
+            </summary>
+            <value>A long containing the packet size of the response header, in bytes.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestContentLength">
+            <summary>
+            The value of the Content-Length header for the request sent to the storage service. If the request was successful, 
+            this value is equal to request-packet-size. If a request is unsuccessful, this value may not be equal to 
+            request-packet-size, or it may be <c>null</c>.
+            </summary>
+            <value>A long containing the request content length, in bytes.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.RequestMD5">
+            <summary>
+            The value of either the Content-MD5 header or the x-ms-content-md5 header in the request as an encoded string.
+            The MD5 hash value specified in this field represents the content in the request. This field can be <c>null</c>.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the request MD5 value.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ServerMD5">
+            <summary>
+            The value of the MD5 hash calculated by the storage service, as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the server MD5 hash.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ETagIdentifier">
+            <summary>
+            The ETag identifier for the returned object as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the ETag for the resource.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.LastModifiedTime">
+            <summary>
+            The Last Modified Time (LMT) for the returned object as an encoded string. This field is <c>null</c> for operations that return multiple objects.
+            </summary>
+            <value>A <see cref="T:System.DateTimeOffset"/> specifying the last modified time.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ConditionsUsed">
+            <summary>
+            A semicolon-separated list, in the form of ConditionName=value, as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the conditions used for the request.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.UserAgentHeader">
+            <summary>
+            The User-Agent header value as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the value of the User-Agent header.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ReferrerHeader">
+            <summary>
+            The Referrer header value as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the value of the Referrer header.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecord.ClientRequestId">
+            <summary>
+            The value of the x-ms-client-request-id header, included in the request as an encoded string.
+            </summary>
+            <value>A <see cref="T:System.String"/> containing the client request ID.</value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader">
+            <summary>
+            Reads log record information from a stream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.FieldDelimiter">
+            <summary>
+            A delimiter that exists between fields in a log. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.RecordDelimiter">
+            <summary>
+            A delimiter that exists between logs. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.QuoteChar">
+            <summary>
+            The quote character.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.#ctor(System.IO.Stream,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader"/> class using the specified stream and buffer size.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> object to read from.</param>
+            <param name="bufferSize">An integer indicating the size of the buffer.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.HasMoreFieldsInRecord">
+            <summary>
+            Checks whether another field exists in the record.
+            </summary>
+            <returns>A boolean value indicating whether another field exists.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadString">
+            <summary>
+            Reads a string from the stream.
+            </summary>
+            <returns>The string value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadQuotedString">
+            <summary>
+            Reads a quoted string from the stream.
+            </summary>
+            <returns>The quote string value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.EndCurrentRecord">
+            <summary> 
+            Ends the current record by reading the record delimiter and adjusting internal state. 
+            </summary>
+            <remarks>The caller is expected to know when the record ends. </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadBool">
+            <summary>
+            Reads a bool from the stream.
+            </summary>
+            <returns>The boolean value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadDateTimeOffset(System.String)">
+            <summary>
+            Reads a <see cref="T:System.DateTimeOffset"/> value in a specific format from the stream.
+            </summary>
+            <param name="format">A string representing the DateTime format to use when parsing.</param>
+            <returns>The <see cref="T:System.DateTimeOffset"/> value read.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadTimeSpanInMS">
+            <summary>
+            Reads a <see cref="T:System.TimeSpan"/> value, represented as a number of milliseconds, from the stream.
+            </summary>
+            <returns>The <see cref="T:System.TimeSpan"/> value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadDouble">
+            <summary>
+            Reads a double from the stream.
+            </summary>
+            <returns>The double value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadGuid">
+            <summary>Reads a GUID value from the stream. </summary>
+            <returns>The <see cref="T:System.Guid"/> value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadInt">
+            <summary>Reads an integer value from the stream. </summary>
+            <returns>The integer value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadLong">
+            <summary> Reads a long value from the stream. </summary>
+            <returns>The long value read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.ReadUri">
+            <summary>
+            Read a Uri from the stream.
+            </summary>
+            <returns>The <see cref="T:System.Uri"/> object read from the stream.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.Dispose">
+            <summary>
+            Dispose this LogRecordStreamReader.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.Dispose(System.Boolean)">
+            <summary>
+            Dispose this LogRecordStreamReader
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.IsEndOfFile">
+            <summary>
+            Indicates whether this is the end of the file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Analytics.LogRecordStreamReader.Position">
+            <summary>
+            Checks the position of the stream.
+            </summary>
+            <value>A long containing the current position of the stream.</value>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Analytics.MetricsEntity">
             <summary>
@@ -1711,7 +2087,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.BeginGetServiceStats(System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Blob service.
+            Begins an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
             <param name="state">A user-defined object to be passed to the callback delegate.</param>
@@ -1719,7 +2095,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.BeginGetServiceStats(Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Blob service.
+            Begins an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -1729,27 +2105,27 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.EndGetServiceStats(System.IAsyncResult)">
             <summary>
-            Ends an asynchronous operation to get service stats for the Blob service.
+            Ends an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="asyncResult">An <see cref="T:System.IAsyncResult"/> that references the pending asynchronous operation.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> object.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetServiceStatsAsync">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Blob service.
+            Initiates an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetServiceStatsAsync(System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Blob service.
+            Initiates an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Blob service.
+            Initiates an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -1757,7 +2133,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Blob service.
+            Initiates an asynchronous operation to get service stats for the secondary Blob service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -1766,7 +2142,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetServiceStats(Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Gets service stats for the Blob service.
+            Gets service stats for the secondary Blob service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -1805,6 +2181,8 @@
             Returns a reference to the root container.
             </summary>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer"/> object.</returns>
+            <remarks>Note that the root container must be explicitly created, if it does not already exist, before
+            you can read from it or write to it.</remarks>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.GetContainerReference(System.String)">
             <summary>
@@ -1877,7 +2255,7 @@
             <summary>
             Gets or sets the default location mode for requests made via the Blob service client.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.CloudBlobClient.ServerTimeout">
             <summary>
@@ -14722,14 +15100,14 @@
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFile"/> class using an absolute URI to the file.
             </summary>
             <param name="fileAbsoluteUri">The absolute URI to the file.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFile.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.Auth.StorageCredentials)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFile"/> class using an absolute URI to the file.
             </summary>
             <param name="fileAbsoluteUri">The absolute URI to the file.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFile.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,System.String,Microsoft.WindowsAzure.Storage.File.CloudFileShare)">
             <summary>
@@ -15019,7 +15397,7 @@
             and account credentials.
             </summary>
             <param name="baseUri">The File service endpoint to use to create the client.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileClient.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.Auth.StorageCredentials)">
             <summary>
@@ -15027,7 +15405,7 @@
             and account credentials.
             </summary>
             <param name="storageUri">The File service endpoint to use to create the client.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileClient.GetShareReference(System.String)">
             <summary>
@@ -15652,15 +16030,15 @@
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> class using an absolute URI to the directory.
             </summary>
-            <param name="directoryAbsoluteUri">The absolute URI to the directory.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="directoryAbsoluteUri">A <see cref="T:System.Uri"/> object containing the absolute URI to the directory.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.Auth.StorageCredentials)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> class using an absolute URI to the directory.
             </summary>
-            <param name="directoryAbsoluteUri">The absolute URI to the directory.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="directoryAbsoluteUri">A <see cref="T:System.Uri"/> object containing the absolute URI to the directory.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,System.String,Microsoft.WindowsAzure.Storage.File.CloudFileShare)">
             <summary>
@@ -15681,15 +16059,15 @@
             <summary>
             Returns a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFile"/> object that represents a file in this directory.
             </summary>
-            <param name="fileName">The name of the file.</param>
-            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFile"/> object representing a reference to a file.</returns>
+            <param name="fileName">A <see cref="T:System.String"/> containing the name of the file.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFile"/> object.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.GetDirectoryReference(System.String)">
             <summary>
             Returns a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> object that represents a subdirectory within this directory.
             </summary>
-            <param name="itemName">The name of the subdirectory.</param>
-            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> object representing the subdirectory.</returns>
+            <param name="itemName">A <see cref="T:System.String"/> containing the name of the subdirectory.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> object.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.ParseQueryAndVerify(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.Auth.StorageCredentials)">
             <summary>
@@ -15700,45 +16078,45 @@
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.ServiceClient">
             <summary>
-            Gets a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileClient"/> object that represents the service client for the directory.
+            Gets a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileClient"/> object that specifies the endpoint for the File service.
             </summary>
-            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileClient"/> object that specifies the endpoint for the File service.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileClient"/> object.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.Uri">
             <summary>
-            Gets the URI that identifies the directory for the primary location.
+            Gets the directory's URI for the primary location.
             </summary>
-            <value>The URI to the directory, at the primary location.</value>
+            <value>A <see cref="T:System.Uri"/> specifying the absolute URI to the directory at the primary location.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.StorageUri">
             <summary>
             Gets the file directory's URIs for all locations.
             </summary>
-            <value>An object of type <see cref="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.StorageUri"/> containing the file directory's URIs for all locations.</value>
+            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.StorageUri"/> object containing the file directory's URIs for all locations.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.Properties">
             <summary>
             Gets a <see cref="T:Microsoft.WindowsAzure.Storage.File.FileDirectoryProperties"/> object that represents the directory's system properties.
             </summary>
-            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.FileDirectoryProperties"/> object containing the directory's properties.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.FileDirectoryProperties"/> object.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.Share">
             <summary>
             Gets a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileShare"/> object that represents the share for the directory.
             </summary>
-            <value>The share for the directory.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileShare"/> object.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.Parent">
             <summary>
             Gets a <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> object that represents the parent directory for the directory.
             </summary>
-            <value>The directory's parent directory.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory"/> object.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.File.CloudFileDirectory.Name">
             <summary>
             Gets the name of the directory.
             </summary>
-            <value>The name of the directory.</value>
+            <value>A <see cref="T:System.String"/> containing the name of the directory.</value>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.File.CloudFileShare">
             <summary>
@@ -16248,14 +16626,14 @@
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileShare"/> class.
             </summary>
             <param name="shareAddress">The absolute URI to the share.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.#ctor(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.Auth.StorageCredentials)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.File.CloudFileShare"/> class.
             </summary>
             <param name="shareAddress">The absolute URI to the share.</param>
-            <param name="credentials">The account credentials.</param>
+            <param name="credentials">A <see cref="T:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials"/> object.</param>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.#ctor(System.String,Microsoft.WindowsAzure.Storage.File.CloudFileClient)">
             <summary>
@@ -18923,7 +19301,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.BeginGetServiceStats(System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Queue service.
+            Begins an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
             <param name="state">A user-defined object to be passed to the callback delegate.</param>
@@ -18931,7 +19309,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.BeginGetServiceStats(Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Queue service.
+            Begins an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18941,27 +19319,27 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.EndGetServiceStats(System.IAsyncResult)">
             <summary>
-            Ends an asynchronous operation to get service stats for the Queue service.
+            Ends an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="asyncResult">An <see cref="T:System.IAsyncResult"/> that references the pending asynchronous operation.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> object.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.GetServiceStatsAsync">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Queue service.
+            Initiates an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.GetServiceStatsAsync(System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Queue service.
+            Initiates an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Queue service.
+            Initiates an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18969,7 +19347,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Queue service.
+            Initiates an asynchronous operation to get service stats for the secondary Queue service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18978,7 +19356,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.GetServiceStats(Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Gets service stats for the Queue service.
+            Gets service stats for the secondary Queue service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -19063,7 +19441,7 @@
             <summary>
             Gets or sets the default location mode for requests made via the Queue service client.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Queue.CloudQueueClient.ServerTimeout">
             <summary>
@@ -21060,7 +21438,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.BeginGetServiceStats(System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Table service.
+            Begins an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
             <param name="state">A user-defined object to be passed to the callback delegate.</param>
@@ -21068,7 +21446,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.BeginGetServiceStats(Microsoft.WindowsAzure.Storage.Table.TableRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
             <summary>
-            Begins an asynchronous operation to get service stats for the Table service.
+            Begins an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -21078,27 +21456,27 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.EndGetServiceStats(System.IAsyncResult)">
             <summary>
-            Ends an asynchronous operation to get service stats for the Table service.
+            Ends an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="asyncResult">An <see cref="T:System.IAsyncResult"/> that references the pending asynchronous operation.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> object.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.GetServiceStatsAsync">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Table service.
+            Initiates an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.GetServiceStatsAsync(System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Table service.
+            Initiates an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <see cref="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceStats"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Table.TableRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Table service.
+            Initiates an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -21106,7 +21484,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.GetServiceStatsAsync(Microsoft.WindowsAzure.Storage.Table.TableRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
             <summary>
-            Initiates an asynchronous operation to get service stats for the Table service.
+            Initiates an asynchronous operation to get service stats for the secondary Table service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -21115,7 +21493,7 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.GetServiceStats(Microsoft.WindowsAzure.Storage.Table.TableRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
-            Gets service stats for the Table service.
+            Gets service stats for the secondary Table service endpoint.
             </summary>
             <param name="requestOptions">A <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -21208,7 +21586,7 @@
             <summary>
             Gets or sets the default location mode for requests made via the Table service client.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Table.CloudTableClient.ServerTimeout">
             <summary>
@@ -24023,7 +24401,7 @@
             <summary>
             Gets or sets the location mode of the request.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.IRequestOptions.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.IRequestOptions.ServerTimeout">
             <summary>
@@ -24578,19 +24956,19 @@
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.StorageUri.op_Equality(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.StorageUri)">
             <summary>
-            Determines whether two <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instances have the same value.
+            Compares two <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> objects for equivalency.
             </summary>
-            <param name="uri1">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instance to compare with uri2.</param>
-            <param name="uri2">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instance to compare with uri1.</param>
-            <returns><c>true</c> if the <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instances are equivalent; otherwise, <c>false</c>.</returns>
+            <param name="uri1">The first <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object to compare.</param>
+            <param name="uri2">The second <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object to compare.</param>
+            <returns><c>true</c> if the <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> objects have equivalent values; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.StorageUri.op_Inequality(Microsoft.WindowsAzure.Storage.StorageUri,Microsoft.WindowsAzure.Storage.StorageUri)">
             <summary>
-            Determines whether two <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instances do not have the same value.
+            Compares two <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> objects for non-equivalency.
             </summary>
-            <param name="uri1">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instance to compare with uri2.</param>
-            <param name="uri2">A <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instance to compare with uri1.</param>
-            <returns><c>true</c> if the <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> instances are not equal; otherwise, <c>false</c>.</returns>
+            <param name="uri1">The first <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object to compare.</param>
+            <param name="uri2">The second <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> object to compare.</param>
+            <returns><c>true</c> if the <see cref="T:Microsoft.WindowsAzure.Storage.StorageUri"/> objects have non-equivalent values; otherwise, <c>false</c>.</returns>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.StorageUri.PrimaryUri">
             <summary>
@@ -26056,7 +26434,7 @@
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode">
             <summary>
-            Specifies the location mode used to decide which location the request should be sent to.
+            Specifies the location mode to indicate which location should receive the request.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode.PrimaryOnly">
@@ -26128,7 +26506,7 @@
             <summary>
             Gets the location mode for subsequent retries.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.RetryPolicies.RetryContext.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.RetryPolicies.RetryContext.CurrentRetryCount">
             <summary>
@@ -26175,7 +26553,7 @@
             <summary>
             Gets or sets the location mode for subsequent retries.
             </summary>
-            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> object.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.RetryPolicies.RetryInfo.RetryInterval">
             <summary>
@@ -26543,7 +26921,7 @@
             <summary>
             Gets or sets the location mode of the request.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.LocationMode"/> object indicating the location mode of the request.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value indicating the location mode of the request.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.ServerTimeout">
             <summary>
@@ -27370,24 +27748,14 @@
             Provides error code strings that are specific to the Blob service.
             </summary>
         </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidBlockId">
-            <summary>
-            Error code that may be returned when a block ID is invalid.
-            </summary>
-        </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.BlobNotFound">
-            <summary>
-            Error code that may be returned when a blob with the specified address cannot be found.
-            </summary>
-        </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.BlobAlreadyExists">
-            <summary>
-            Error code that may be returned when a client attempts to create a blob that already exists.
-            </summary>
-        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidBlobOrBlock">
             <summary>
             Error code that may be returned when the specified block or blob is invalid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidBlockId">
+            <summary>
+            Error code that may be returned when a block ID is invalid.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidBlockList">
@@ -27398,6 +27766,11 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.ContainerNotFound">
             <summary>
             The specified container was not found.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.BlobNotFound">
+            <summary>
+            Error code that may be returned when a blob with the specified address cannot be found.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.ContainerAlreadyExists">
@@ -27413,6 +27786,11 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.ContainerBeingDeleted">
             <summary>
             The specified container is being deleted.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.BlobAlreadyExists">
+            <summary>
+            Error code that may be returned when a client attempts to create a blob that already exists.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.LeaseNotPresentWithBlobOperation">
@@ -27480,19 +27858,54 @@
             Error code that may be returned when the lease ID matched, but the lease is breaking and cannot be changed.
             </summary>
         </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.CopyIdMismatch">
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InfiniteLeaseDurationRequired">
             <summary>
-            Error code that may be returned when the copy ID specified in an Abort Copy operation does not match the current pending copy ID.
+            Error code that may be returned when the destination of a copy operation has a lease of fixed duration.
             </summary>
         </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.NoPendingCopyOperation">
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.SnapshotsPresent">
             <summary>
-            Error code that may be returned when an Abort Copy operation is called when there is no pending copy.
+            Error code that may be returned when the operation is not permitted because the blob has snapshots.
             </summary>
         </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.PendingCopyOperation">
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidBlobType">
             <summary>
-            Error code that may be returned when an attempt to modify the destination of a pending copy is made.
+            Error code that may be returned when the blob type is invalid for this operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidVersionForPageBlobOperation">
+            <summary>
+            Error code that may be returned when the operation on page blobs uses a version prior to 2009-09-19.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InvalidPageRange">
+            <summary>
+            Error code that may be returned when the page range specified is invalid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.SequenceNumberConditionNotMet">
+            <summary>
+            Error code that may be returned when the sequence number condition specified was not met.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.SequenceNumberIncrementTooLarge">
+            <summary>
+            Error code that may be returned when the sequence number increment cannot be performed because it would result in overflow of the sequence number.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.SourceConditionNotMet">
+            <summary>
+            Error code that may be returned when the source condition specified using HTTP conditional header(s) is not met.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.TargetConditionNotMet">
+            <summary>
+            Error code that may be returned when the target condition specified using HTTP conditional header(s) is not met.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.CopyAcrossAccountsNotSupported">
+            <summary>
+            Error code that may be returned when the copy source account and destination account are not the same.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.CannotVerifyCopySource">
@@ -27500,9 +27913,19 @@
             Error code that may be returned when the source of a copy cannot be accessed.
             </summary>
         </member>
-        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.InfiniteLeaseDurationRequired">
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.PendingCopyOperation">
             <summary>
-            Error code that may be returned when the destination of a copy operation has a lease of fixed duration.
+            Error code that may be returned when an attempt to modify the destination of a pending copy is made.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.NoPendingCopyOperation">
+            <summary>
+            Error code that may be returned when an Abort Copy operation is called when there is no pending copy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobErrorCodeStrings.CopyIdMismatch">
+            <summary>
+            Error code that may be returned when the copy ID specified in an Abort Copy operation does not match the current pending copy ID.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobListingContext">
@@ -28896,7 +29319,7 @@
             <summary>
             Gets or sets the location mode of the request.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions.LocationMode"/> object indicating the location mode of the request.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value indicating the location mode of the request.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Queue.QueueRequestOptions.ServerTimeout">
             <summary>
@@ -30376,7 +30799,7 @@
             <summary>
             Gets or sets the location mode of the request.
             </summary>
-            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions.LocationMode"/> object indicating the location mode of the request.</value>
+            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value indicating the location mode of the request.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Table.TableRequestOptions.ServerTimeout">
             <summary>
@@ -30619,6 +31042,11 @@
             The minimum DateTime supported.
             </summary> 
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Table.Protocol.TableConstants.ODataProtocolVersion">
+            <summary>
+            The ODataProtocolVersion.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Table.Protocol.TableErrorCodeStrings">
             <summary>
             Provides error code strings that are specific to the Windows Azure Table service.
@@ -30767,6 +31195,11 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Table.Protocol.TableErrorCodeStrings.NotImplemented">
             <summary>
             The specified operation is not yet implemented.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Table.Protocol.TableErrorCodeStrings.HostInformationNotPresent">
+            <summary>
+            The required host information is not present in the request. You must send a non-empty Host header or include the absolute URI in the request line.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Table.Protocol.TableRequest">
@@ -32178,6 +32611,16 @@
             Constant for the queue service secondary location minute metrics table.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.AnalyticsConstants.LoggingVersionV1">
+            <summary>
+            Constant for default logging version.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.AnalyticsConstants.MetricsVersionV1">
+            <summary>
+            Constant for default metrics version.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Shared.Protocol.CorsHttpMethods">
             <summary>
             HTTP methods that are supported by CORS.
@@ -32911,6 +33354,62 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.ServerBusy">
             <summary>
             The server is busy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.RequestUrlFailedToParse">
+            <summary>
+            The url in the request could not be parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.InvalidAuthenticationInfo">
+            <summary>
+            The authentication information was not provided in the correct format. Verify the value of Authorization header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.InvalidResourceName">
+            <summary>
+            The specifed resource name contains invalid characters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.ConditionHeadersNotSupported">
+            <summary>
+            Condition headers are not supported.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.MultipleConditionHeadersNotSupported">
+            <summary>
+            Multiple condition headers are not supported.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.InsufficientAccountPermissions">
+            <summary>
+            Read-access geo-redundant replication is not enabled for the account, write operations to the secondary location are not allowed, 
+            or the account being accessed does not have sufficient permissions to execute this operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.AccountIsDisabled">
+            <summary>
+            The specified account is disabled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.AccountAlreadyExists">
+            <summary>
+            The specified account already exists.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.AccountBeingCreated">
+            <summary>
+            The specified account is in the process of being created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.ResourceAlreadyExists">
+            <summary>
+            The specified resource already exists.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.StorageErrorCodeStrings.ResourceTypeMismatch">
+            <summary>
+            The specified resource type does not match the type of the existing resource.
             </summary>
         </member>
     </members>
