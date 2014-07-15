@@ -5,8 +5,8 @@ Total Commander plugin for Azure Blob service
 
 Prerequisites
 ---------------
-- .NET Framework 4.5
-- Azure SDK
+- .NET Framework 4.0 Client Profile
+- Total Commander 8.0+
 - To work with Development storage - latest Storage Emulator is required.
 
 Download
@@ -21,7 +21,6 @@ Known issues
 ---------------
 - 64 bit not supported (cannot compile)
 - Cannot remove account once added (all blobs will be removed)
-- Only Block blobs are supported
 - Background copying not supported
 - No Progress
 

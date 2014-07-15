@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using Tomin.TotalCmd.AzureBlob.Properties;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Globalization;
 
 
 namespace Tomin.TotalCmd.AzureBlob
@@ -33,6 +34,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public AzureBlobWfxPlugin()
 		{
+			Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 		}
 
 		public override string PluginName
@@ -259,6 +261,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			return base.GetCustomIcon(ref remoteName, extractIconFlag, out icon);
 		}
+
 
 		//-- Helpers
 
