@@ -11,21 +11,22 @@ Prerequisites
 
 Download
 ---------------
-**Pre-Release:**
-https://github.com/alex-tomin/Tomin.TotalCmd.AzureBlob/releases/download/samplebuild/AzureBlob.zip
 
 **All Releases:**
 https://github.com/alex-tomin/Tomin.TotalCmd.AzureBlob/releases
 
 Known issues
 ---------------
-- 64 bit not supported (cannot compile)
 - Cannot remove account once added (all blobs will be removed)
 - Background copying not supported
 - No Progress
 
 Changes
 ---------------
+
+## 03 - Alfa
+- 64 bit support
+- Plugin Icon
 
 ## 0.2 - Alfa
 
