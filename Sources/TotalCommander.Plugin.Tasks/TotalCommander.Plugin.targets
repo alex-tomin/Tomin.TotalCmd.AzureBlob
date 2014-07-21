@@ -15,8 +15,13 @@
 
     <DllExport Source="$(OutputIL)" />
 
+		
+		<ItemGroup>
+			<IconFile Include="$(ApplicationIcon)" />
+		</ItemGroup>
+		
     <Copy SourceFiles="$(ApplicationIcon)" DestinationFolder="$(TargetDir)" Condition=" '$(ApplicationIcon)' != '' "/>
-    <WriteLinesToFile File="$(TargetDir)$(TargetName).rc" Lines='1 ICON "$(ApplicationIcon)"' Overwrite="true" Condition=" '$(ApplicationIcon)' != '' "/>
+    <WriteLinesToFile File="$(TargetDir)$(TargetName).rc" Lines="@(IconFile ->'1 ICON &quot;%(filename)%(extension)&quot;')" Overwrite="true" Condition=" '$(ApplicationIcon)' != '' "/>
     <RC ToolPath="$(MSBuildProjectDirectory)\..\..\Lib\Tools" 
 				Source="$(TargetDir)$(TargetName).rc" Condition=" '$(ApplicationIcon)' != '' ">
       <Output TaskParameter="Output" PropertyName="OutputRes"/>
@@ -27,10 +32,12 @@
     <ILAsm ToolPath="$(TargetedFrameworkDir)"
 			Source="$(OutputIL)" Platform="x64" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wfx64"/>
 
-    <Delete Files="$(TargetDir)$(ApplicationIcon);$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
+    <Delete Files="@(IconFile ->'$(TargetDir)%(filename)%(extension)');$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
   </Target>
 
-  <Target Name="GenerateTotalCommanderWcxPlugin">
+	
+	<!--Modify to make similar to above-->
+  <!--<Target Name="GenerateTotalCommanderWcxPlugin">
     <ILDasm Source="TotalCommander.Plugin.Exports.dll" OutputIL="$(TargetDir)TotalCommander.Plugin.Exports.il">
       <Output TaskParameter="OutputIL" PropertyName="OutputIL"/>
     </ILDasm>
@@ -47,4 +54,4 @@
 
     <Delete Files="$(TargetDir)$(ApplicationIcon);$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
   </Target>
-</Project>
+</Project>-->

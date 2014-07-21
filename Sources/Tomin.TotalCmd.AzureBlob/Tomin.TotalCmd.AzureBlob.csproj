@@ -55,7 +55,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>os-windows-multi-size.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\os-windows-multi-size.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -130,7 +130,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="os-windows-multi-size.ico" />
+    <Content Include="Resources\os-windows-multi-size.ico" />
     <Content Include="pluginst.inf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -146,20 +146,16 @@
     <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\Lib\MSBuild</MSBuildCommunityTasksPath>
   </PropertyGroup>
   <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets" />
- 
- <Target Name="GenerateWfxPlugin"  BeforeTargets="PostBuildEvent">
+  <Target Name="GenerateWfxPlugin" BeforeTargets="PostBuildEvent">
     <CallTarget Targets="GenerateTotalCommanderWfxPlugin" />
   </Target>
- 
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*" "C:\Program Files\TotalComander\Plugins\wfx\AzureBlob\" /Y /S</PostBuildEvent>
   </PropertyGroup>
-  
-   <Target Name="CreateZip" AfterTargets="GenerateWfxPlugin">
+  <Target Name="CreateZip" AfterTargets="GenerateWfxPlugin">
     <ItemGroup>
       <Binaries Include="$(TargetDir)\**\*.*" Exclude="$(TargetDir)\*.zip" />
     </ItemGroup>
     <Zip Files="@(Binaries)" WorkingDirectory="$(TargetDir)" ZipFileName="$(MSBuildProjectDirectory)\..\..\Build\$(TargetName).zip" />
   </Target>
-  
 </Project>
