@@ -9,12 +9,6 @@ Prerequisites
 - Total Commander 8.0+
 - To work with Development storage - latest Storage Emulator is required.
 
-Download
----------------
-
-**All Releases:**
-https://github.com/alex-tomin/Tomin.TotalCmd.AzureBlob/releases
-
 Known issues
 ---------------
 - Cannot remove account once added (all blobs will be removed)
@@ -37,6 +31,18 @@ Changes
 
 ## 0.1 - Alpha.
 The first release.
+
+Links
+---------------
+
+**All Releases:**
+https://github.com/alex-tomin/Tomin.TotalCmd.AzureBlob/releases
+
+**Plugin on Totalcmd.net (en):**
+http://www.totalcmd.net/plugring/Tomin.TotalCmd.AzureBlob.html
+
+**Plugin on wincmd.ru (rus):**
+http://wincmd.ru/plugring/Tomin.TotalCmd.AzureBlob.html
 
 Credits
 ---------------
