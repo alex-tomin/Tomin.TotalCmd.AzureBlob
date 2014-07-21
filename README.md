@@ -18,18 +18,17 @@ Known issues
 Changes
 ---------------
 
-## 03 - Alfa
+### 03 - Alfa
 - 64 bit support
 - Plugin Icon
 
-## 0.2 - Alfa
-
+### 0.2 - Alfa
 - Support page blobs
 - Remove dependency on Azure SDK
 - Show last modified time for directories
 - Downgraded to .Net 4.0 for wider support
 
-## 0.1 - Alpha.
+### 0.1 - Alpha.
 The first release.
 
 Links
