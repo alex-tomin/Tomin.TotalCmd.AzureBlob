@@ -50,18 +50,19 @@ namespace TotalCommander.Plugin.Tasks
 
         protected override string GenerateFullPathToTool()
         {
-            var sdkfilepath = ToolLocationHelper.GetPathToDotNetFrameworkSdkFile(ToolName, TargetDotNetFrameworkVersion.VersionLatest);
-            if (string.IsNullOrEmpty(sdkfilepath))
-            {
-                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SDKs\Windows"))
-                {
-                    if (key != null && key.GetValue("CurrentInstallFolder") != null)
-                    {
-                        sdkfilepath = Path.Combine(key.GetValue("CurrentInstallFolder").ToString(), "bin");
-                    }
-                }
-            }
-			return sdkfilepath;
+   //         var sdkfilepath = ToolLocationHelper.GetPathToDotNetFrameworkSdkFile(ToolName, TargetDotNetFrameworkVersion.VersionLatest);
+   //         if (string.IsNullOrEmpty(sdkfilepath))
+   //         {
+   //             using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Microsoft SDKs\Windows"))
+   //             {
+   //                 if (key != null && key.GetValue("CurrentInstallFolder") != null)
+   //                 {
+   //                     sdkfilepath = Path.Combine(key.GetValue("CurrentInstallFolder").ToString(), "bin");
+   //                 }
+   //             }
+   //         }
+			//return sdkfilepath;
+			throw new NotImplementedException("Please specify ToolPath parameter in msbuild targets");
         }
 
         protected override string GetWorkingDirectory()
@@ -80,6 +81,7 @@ namespace TotalCommander.Plugin.Tasks
             }
 
             builder.AppendSwitch("/nobar");
+			builder.AppendSwitch("/quoteallnames");
             builder.AppendSwitchIfNotNull("/output=", OutputIL);
             if (Encoding == null || Encoding.StartsWith("uni", StringComparison.InvariantCultureIgnoreCase))
             {

@@ -24,6 +24,19 @@ Known issues
 - Background copying not supported
 - No Progress
 
+Changes
+---------------
+
+## 0.2 - Alfa
+
+- Support page blobs
+- Remove dependency on Azure SDK
+- Show last modified time for directories
+- Downgraded to .Net 4.0 for wider support
+
+## 0.1 - Alpha.
+The first release.
+
 Credits
 ---------------
 Used total commander plugin framework for .NET: https://code.google.com/p/totalcommander-plugin-donnet/
