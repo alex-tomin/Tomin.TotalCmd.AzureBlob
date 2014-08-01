@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask TaskName="TotalCommander.Plugin.Tasks.DllExport" AssemblyFile="TotalCommander.Plugin.Tasks.dll"/>
+  <UsingTask TaskName="TotalCommander.Plugin.Tasks.ILDasm" AssemblyFile="TotalCommander.Plugin.Tasks.dll"/>
+  <UsingTask TaskName="TotalCommander.Plugin.Tasks.ILAsm" AssemblyFile="TotalCommander.Plugin.Tasks.dll"/>
+  <UsingTask TaskName="TotalCommander.Plugin.Tasks.RC" AssemblyFile="TotalCommander.Plugin.Tasks.dll"/>
+
+  <Target Name="GenerateTotalCommanderWfxPlugin" >
+    <ILDasm 
+			ToolPath="$(TargetFrameworkSDKToolsDirectory)"
+			Source="TotalCommander.Plugin.Exports.dll" OutputIL="$(TargetDir)TotalCommander.Plugin.Exports.il">
+      <Output TaskParameter="OutputIL" PropertyName="OutputIL"/>
+    </ILDasm>
+
+    <DllExport Source="$(OutputIL)" />
+
+		
+		<ItemGroup>
+			<IconFile Include="$(ApplicationIcon)" />
+		</ItemGroup>
+		
+    <Copy SourceFiles="$(ApplicationIcon)" DestinationFolder="$(TargetDir)" Condition=" '$(ApplicationIcon)' != '' "/>
+    <WriteLinesToFile File="$(TargetDir)$(TargetName).rc" Lines="@(IconFile ->'1 ICON &quot;%(filename)%(extension)&quot;')" Overwrite="true" Condition=" '$(ApplicationIcon)' != '' "/>
+    <RC ToolPath="$(MSBuildProjectDirectory)\..\..\Lib\Tools" 
+				Source="$(TargetDir)$(TargetName).rc" Condition=" '$(ApplicationIcon)' != '' ">
+      <Output TaskParameter="Output" PropertyName="OutputRes"/>
+    </RC>
+
+    <ILAsm ToolPath="$(TargetedFrameworkDir)"
+			Source="$(OutputIL)" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wfx"/>
+    <ILAsm ToolPath="$(TargetedFrameworkDir)"
+			Source="$(OutputIL)" Platform="x64" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wfx64"/>
+
+    <Delete Files="@(IconFile ->'$(TargetDir)%(filename)%(extension)');$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
+  </Target>
+
+	
+	<!--Modify to make similar to above-->
+  <!--<Target Name="GenerateTotalCommanderWcxPlugin">
+    <ILDasm Source="TotalCommander.Plugin.Exports.dll" OutputIL="$(TargetDir)TotalCommander.Plugin.Exports.il">
+      <Output TaskParameter="OutputIL" PropertyName="OutputIL"/>
+    </ILDasm>
+
+    <DllExport Source="$(OutputIL)" />
+
+    <Copy SourceFiles="$(ApplicationIcon)" DestinationFolder="$(TargetDir)" Condition=" '$(ApplicationIcon)' != '' "/>
+    <WriteLinesToFile File="$(TargetDir)$(TargetName).rc" Lines="1 ICON $(ApplicationIcon)" Overwrite="true" Condition=" '$(ApplicationIcon)' != '' "/>
+    <RC Source="$(TargetDir)$(TargetName).rc" Condition=" '$(ApplicationIcon)' != '' ">
+      <Output TaskParameter="Output" PropertyName="OutputRes"/>
+    </RC>
+
+    <ILAsm Source="$(OutputIL)" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wcx"/>
+
+    <Delete Files="$(TargetDir)$(ApplicationIcon);$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
+  </Target> -->
+</Project>
