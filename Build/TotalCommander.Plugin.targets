@@ -27,9 +27,15 @@
       <Output TaskParameter="Output" PropertyName="OutputRes"/>
     </RC>
 
-    <ILAsm ToolPath="$(TargetedFrameworkDir)"
+		<GetFrameworkPath>
+			<Output
+					TaskParameter="Path"
+					PropertyName="FrameworkPath" />
+		</GetFrameworkPath>
+
+		<ILAsm ToolPath="$(FrameworkPath)"
 			Source="$(OutputIL)" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wfx"/>
-    <ILAsm ToolPath="$(TargetedFrameworkDir)"
+		<ILAsm ToolPath="$(FrameworkPath)"
 			Source="$(OutputIL)" Platform="x64" Resource="$(OutputRes)" Output="$(TargetDir)$(TargetName).wfx64"/>
 
     <Delete Files="@(IconFile ->'$(TargetDir)%(filename)%(extension)');$(TargetDir)TotalCommander.Plugin.Exports.il;$(TargetDir)TotalCommander.Plugin.Exports.res;$(TargetDir)$(TargetName).rc;$(TargetDir)$(TargetName).res" ContinueOnError="true"/>
