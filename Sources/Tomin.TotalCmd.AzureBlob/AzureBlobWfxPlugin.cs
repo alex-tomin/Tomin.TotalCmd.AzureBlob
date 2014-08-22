@@ -26,9 +26,6 @@ namespace Tomin.TotalCmd.AzureBlob
 {
 	public class AzureBlobWfxPlugin : TotalCommanderWfxPlugin
 	{
-
-		private const string AddNewStorageText = "<Add New Storage...>.";
-		private const string DoNotUseDelete = "!WARN: do not use Del/F8 in this folder.";
 		private const string FakeFileName = "11FakeEmptyFile11";
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
@@ -39,50 +36,18 @@ namespace Tomin.TotalCmd.AzureBlob
 			Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 		}
 
-		public override string PluginName
-		{
-			get { return "AzureBlob"; }
-		}
+		public override string PluginName { get { return "AzureBlob"; } }
 
 		public override FindData FindFirst(string path, out IEnumerator enumerator)
 		{
 			//Debugger.Launch();
-			//root folder.
 
 			var currentNode = Root.Instance.GetItemByPath(path);
+#warning rebind doesn't work
+			//currentNode.LoadChildren();
 			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+
 			return FindNext(enumerator);
-
-			//old code
-
-			if (path == "\\")
-			{
-				enumerator = GetStorageAccounts().GetEnumerator();
-				//enumerator = Root.Instance.Children.Select(x => x.ToFindData()).GetEnumerator();
-				return FindNext(enumerator);
-			}
-
-			var blobPath = AzurePath.FromPath(path);
-			new Task(() => CalculateSubfoldersLastWriteTime(blobPath)).Start();
-
-			if (blobPath.IsAccountOnly)
-			{
-				enumerator = blobClients[blobPath.StorageDisplayName].ListContainers().GetEnumerator();
-				return FindNext(enumerator);
-			}
-
-			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-
-			if (blobPath.IsContainerOnly)
-			{
-				enumerator = container.ListBlobs().GetEnumerator();
-				return FindNext(enumerator);
-			}
-			else
-			{
-				enumerator = container.GetDirectoryReference(blobPath.Path).ListBlobs().GetEnumerator();
-				return FindNext(enumerator);
-			}
 		}
 
 		public override FindData FindNext(IEnumerator enumerator)
@@ -93,83 +58,26 @@ namespace Tomin.TotalCmd.AzureBlob
 			if (enumerator.Current is FindData)
 				return (FindData)enumerator.Current;
 
-			if (enumerator.Current is CloudBlobContainer)
-				return ContainerToFindData((CloudBlobContainer)enumerator.Current);
-
-			if (enumerator.Current is CloudBlobDirectory)
-				return DirectoryToFindData((CloudBlobDirectory)enumerator.Current);
-
-			if (enumerator.Current is ICloudBlob)
-			{
-				FindData findData = BlobToFindData((ICloudBlob)enumerator.Current);
-				if (findData.FileName.Contains(FakeFileName))
-					return FindNext(enumerator);
-				return findData;
-			}
-			return FindData.NoMoreFiles;
-		}
-
-		public override bool DirectoryCreate(string path)
-		{
-			try
-			{
-				var blobPath = AzurePath.FromPath(path);
-
-				if (blobPath.IsAccountOnly)
-				{
-					Request.MessageBox("You canot create Account. Use " + AddNewStorageText + " below");
-					return false;
-				}
-
-				if (blobPath.IsContainerOnly)
-				{
-					var newContainer = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-					newContainer.CreateIfNotExists();
-					return true;
-				}
-
-				//create virtual folder 
-
-				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-				var blob = container.GetBlockBlobReference(String.Format("{0}/{1}", blobPath.Path, FakeFileName));
-				blob.UploadText(string.Empty);
-
-				return true;
-			}
-			catch (Exception ex)
-			{
-				Request.MessageBox("Error while creating folder. Probably you used not allowed symbols in name. Message: " + ex.Message);
-				return false;
-			}
+			throw new InvalidOperationException("Enumerator Type is not defined");
 		}
 
 		public override ExecuteResult ExecuteOpen(TotalCommanderWindow window, ref string remoteName)
 		{
 			var item = Root.Instance.GetItemByPath(remoteName);
 			return item.ExecuteOpen(window, ref remoteName);
-
-
-			if (!remoteName.Contains(AddNewStorageText))
-				return ExecuteResult.YourSelf;
-
-			//adding new storage account
-			var addStorageDialog = new AddStorageDialog();
-			if (addStorageDialog.ShowDialog() != DialogResult.OK)
-				return ExecuteResult.OK;
-
-			var blobConfig = addStorageDialog.StorageConfigInfo;
-
-			if (blobClients.ContainsKey(blobConfig.StorageDisplayName))
-				throw new Exception("Display Name already exists. Please give another name.");
-
-			Settings.Default.BlobConfigs.Add(blobConfig);
-			ReloadBlobClientsFromConfig();
-			Settings.Default.Save();
-
-			//redirect to Root folder, so it reflects the newly added folder
-			remoteName = @"\";
-			return ExecuteResult.SymLink;
 		}
+
+		public override bool DirectoryCreate(string path)
+		{
+			int lastSlashIndex = path.LastIndexOf('\\');
+			string existingFolderPath = path.Substring(0, lastSlashIndex);
+			string newFolderName = path.Substring(lastSlashIndex + 1);
+
+			var directory = Root.Instance.GetItemByPath(existingFolderPath);
+			return directory.CreateDirectory(newFolderName);
+		}
+
+
 
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
 		{
@@ -215,13 +123,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				var blobPath = AzurePath.FromPath(remoteName);
 
-				if (blobPath.IsAccountOnly)
-				{
-					Settings.Default.BlobConfigs.Remove(new BlobConfig { StorageDisplayName = blobPath.StorageDisplayName });
-					Settings.Default.Save();
-					blobClients.Remove(blobPath.StorageDisplayName);
-					return true;
-				}
+				//if (blobPath.IsAccountOnly)
+				//{
+				//	Settings.Default.BlobConfigs.Remove(new BlobConfig { StorageDisplayName = blobPath.StorageDisplayName });
+				//	Settings.Default.Save();
+				//	blobClients.Remove(blobPath.StorageDisplayName);
+				//	return true;
+				//}
 
 				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
 
@@ -269,9 +177,14 @@ namespace Tomin.TotalCmd.AzureBlob
 			StringBuilder uiMessage = new StringBuilder("Error Occured: ")
 				.Append(error.Message);
 			if (error.InnerException != null)
-				uiMessage.AppendFormat ("\nInner Exception: {0}", error.InnerException.Message);
+				uiMessage.AppendFormat("\nInner Exception: {0}", error.InnerException.Message);
 			Request.MessageBox(uiMessage.ToString());
 			Log.ImportantError(error.ToString());
+		}
+
+		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
+		{
+			
 		}
 
 		public override CustomIconResult GetCustomIcon(ref string remoteName, CustomIconFlags extractIconFlag, out System.Drawing.Icon icon)
@@ -280,61 +193,8 @@ namespace Tomin.TotalCmd.AzureBlob
 		}
 
 
-		//-- Helpers
 
-		private IEnumerable<FindData> GetStorageAccounts()
-		{
-			if (!blobClients.Any())
-				ReloadBlobClientsFromConfig();
-
-			return blobClients.Keys.Select(x => new FindData(x, FileAttributes.Directory))
-				.Concat(new[] { 
-					new FindData(AddNewStorageText),
-					new FindData(DoNotUseDelete)
-				});
-		}
-
-		private static void ReloadBlobClientsFromConfig()
-		{
-			blobClients = Settings.Default.BlobConfigs.ToDictionary(
-						s => s.StorageDisplayName,
-						s => s.UseDevelopmentStorage
-							? CloudStorageAccount.DevelopmentStorageAccount.CreateCloudBlobClient()
-							: new CloudStorageAccount(new StorageCredentials(s.AccountName, s.AccountKey), s.UseSsl).CreateCloudBlobClient()
-					);
-		}
-
-		private FindData ContainerToFindData(CloudBlobContainer container)
-		{
-			var findData = new FindData(container.Name);
-			findData.Attributes |= FileAttributes.Directory;
-			if (container.Properties.LastModified != null)
-				findData.LastWriteTime = container.Properties.LastModified.Value.ToLocalTime().DateTime;
-
-			return findData;
-		}
-
-		private FindData DirectoryToFindData(CloudBlobDirectory blobItem)
-		{
-			var findData = new FindData(Uri.UnescapeDataString(blobItem.Uri.Segments.Last().TrimEnd('/')));
-			findData.Attributes |= FileAttributes.Directory;
-
-			if (directoryLastWriteTimeCache.ContainsKey(blobItem.Uri.AbsolutePath))
-				findData.LastWriteTime = directoryLastWriteTimeCache[blobItem.Uri.AbsolutePath];
-
-
-
-			return findData;
-		}
-
-		private FindData BlobToFindData(ICloudBlob blobItem)
-		{
-			var findData = new FindData(Uri.UnescapeDataString(blobItem.Uri.Segments.Last().TrimEnd('/')), blobItem.Properties.Length);
-			if (blobItem.Properties.LastModified != null)
-				findData.LastWriteTime = blobItem.Properties.LastModified.Value.ToLocalTime().DateTime;
-			return findData;
-		}
-
+		//TODO: calculate folder times;
 
 		private void CalculateSubfoldersLastWriteTime(AzurePath blobPath)
 		{
@@ -374,10 +234,10 @@ namespace Tomin.TotalCmd.AzureBlob
 					}
 					else
 					{
-						directoryLastWriteTimeCache[folder] = directoryLastWriteTimeCache[folder] > lastModified ? directoryLastWriteTimeCache[folder] : lastModified;			
+						directoryLastWriteTimeCache[folder] = directoryLastWriteTimeCache[folder] > lastModified ? directoryLastWriteTimeCache[folder] : lastModified;
 					}
 				}
-			}	
+			}
 		}
 
 		private IEnumerable<string> GetFolders(string path)
@@ -389,7 +249,7 @@ namespace Tomin.TotalCmd.AzureBlob
 				index = path.IndexOf('/', index);
 				if (index == -1)
 					break;
-				yield return path.Substring(0, index+1);
+				yield return path.Substring(0, index + 1);
 			}
 		}
 	}

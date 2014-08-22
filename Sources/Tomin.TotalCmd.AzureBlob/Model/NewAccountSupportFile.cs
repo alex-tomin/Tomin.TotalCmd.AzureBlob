@@ -11,14 +11,14 @@ using Tomin.TotalCmd.AzureBlob.Configuration;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
-	public class NewAccountSupportFile : FileSystemItem
+	public class NewAccountSupportFile : FileSystemItemBase
 	{
 		/// <summary>
 		/// Initializes a new instance of the NewAccountSupportFile class.
 		/// </summary>
 		/// <param name="parent"></param>
 		/// <param name="name"></param>
-		public NewAccountSupportFile(string name, FileSystemItem parent)
+		public NewAccountSupportFile(string name, FileSystemItemBase parent)
 			: base(name, parent)
 		{ }
 		public override bool IsFolder
@@ -26,7 +26,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			get { return false; }
 		}
 
-		protected override Task<IEnumerable<FileSystemItem>> LoadChildrenInternalAsync()
+		protected override Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
 			throw new InvalidOperationException("File cannot be enumerated");
 		}

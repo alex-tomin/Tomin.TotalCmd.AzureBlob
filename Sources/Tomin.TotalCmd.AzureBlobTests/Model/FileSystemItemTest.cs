@@ -15,12 +15,12 @@ namespace Tomin.TotalCmd.AzureBlobTests.Model
 		[TestMethod]
 		public void RebindChildren_Success()
 		{
-			var root = new Mock<FileSystemItem>("", null, null);
-			root.Protected().Setup<Task<IEnumerable<FileSystemItem>>>("LoadChildrenInternalAsync").Returns(Task.FromResult(
+			var root = new Mock<FileSystemItemBase>("", null, null);
+			root.Protected().Setup<Task<IEnumerable<FileSystemItemBase>>>("LoadChildrenInternalAsync").Returns(Task.FromResult(
 				new [] { 
-							new Mock<FileSystemItem>("testName", root.Object, null).Object,
-							new Mock<FileSystemItem>("testName1", root.Object, null).Object,
-							new Mock<FileSystemItem>("testName2", root.Object, null).Object,
+							new Mock<FileSystemItemBase>("testName", root.Object, null).Object,
+							new Mock<FileSystemItemBase>("testName1", root.Object, null).Object,
+							new Mock<FileSystemItemBase>("testName2", root.Object, null).Object,
 				}.AsEnumerable()
 			));
 

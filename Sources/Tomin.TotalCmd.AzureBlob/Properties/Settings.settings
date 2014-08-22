@@ -1,19 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Tomin.TotalCmd.AzureBlob.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="BlobConfigs" Type="System.Collections.Generic.List&lt;Tomin.TotalCmd.AzureBlob.Configuration.BlobConfig&gt;" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;ArrayOfBlobConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                        xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-     &lt;BlobConfig&gt;
-             &lt;StorageDisplayName&gt;(Development)&lt;/StorageDisplayName&gt;
-             &lt;AccountName /&gt;
-             &lt;AccountKey /&gt;
-              &lt;UseSsl&gt;true&lt;/UseSsl&gt;
-              &lt;UseDevelopmentStorage&gt;true&lt;/UseDevelopmentStorage&gt;
-      &lt;/BlobConfig&gt;
-&lt;/ArrayOfBlobConfig&gt;</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

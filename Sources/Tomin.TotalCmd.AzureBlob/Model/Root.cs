@@ -10,7 +10,7 @@ using Tomin.TotalCmd.AzureBlob.Configuration;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
-	public class Root : FileSystemItem
+	public class Root : FileSystemItemBase
 	{
 		private const string AddNewStorageText = "<Add New Storage...>.";
 		private Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
@@ -36,13 +36,13 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		/// Returns Storage Accounts
 		/// </summary>
 		/// <returns></returns>
-		protected override Task<IEnumerable<FileSystemItem>> LoadChildrenInternalAsync()
+		protected override Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
 			ReinitializeBlobClients();
 
 			return Task.FromResult(
 				blobClients.Select(x => new StorageAccount(x.Key, this, x.Value))
-				.Concat<FileSystemItem>(new[] { 
+				.Concat<FileSystemItemBase>(new[] { 
 					new NewAccountSupportFile(AddNewStorageText, this),
 				}));
 		}
@@ -57,13 +57,13 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 					);
 		}
 
-		public FileSystemItem GetItemByPath(string path)
+		public FileSystemItemBase GetItemByPath(string path)
 		{
 			if (path == "\\")
 				return instance;
 			var levels = path.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
 
-			FileSystemItem currentItem = instance;
+			FileSystemItemBase currentItem = instance;
 			foreach (string level in levels)
 			{
 				currentItem = currentItem[level];
@@ -72,6 +72,11 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			}
 
 			return currentItem;
+		}
+
+		public override bool CreateDirectory(string folderName)
+		{
+			throw new NotImplementedException(string.Format("Please double click on special item below {0} to add a new account", AddNewStorageText));
 		}
 	}
 }

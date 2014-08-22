@@ -8,9 +8,9 @@ using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
-	abstract public class FileSystemItem
+	abstract public class FileSystemItemBase
 	{
-		private Dictionary<string, FileSystemItem> childrenDictionary = new Dictionary<string, FileSystemItem>();
+		private Dictionary<string, FileSystemItemBase> childrenDictionary = new Dictionary<string, FileSystemItemBase>();
 
 		/// <summary>
 		/// 
@@ -27,7 +27,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		/// </summary>
 		/// <param name="parent"></param>
 		/// <param name="name"></param>
-		public FileSystemItem(string name, FileSystemItem parent, DateTime? LastWriteTime = null)
+		public FileSystemItemBase(string name, FileSystemItemBase parent, DateTime? LastWriteTime = null)
 		{
 			Parent = parent;
 			Name = name;
@@ -35,7 +35,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		}
 
 
-		public FileSystemItem this[string name]
+		public FileSystemItemBase this[string name]
 		{
 			get
 			{
@@ -45,21 +45,23 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			}
 		}
 
-		public FileSystemItem Parent { get; private set; }
+		public FileSystemItemBase Parent { get; private set; }
 
-		public IEnumerable<FileSystemItem> Children
+		public IEnumerable<FileSystemItemBase> Children
 		{
 			get
 			{
 				if (!childrenDictionary.Any())
 					LoadChildren();
 
-				//TODO: errorHandling;
-				var ignoreMe = LoadChildrenAsync();
+#warning - redesign, calculate upfront;
+				if (IsFolder)
+					LastWriteTime = childrenDictionary.Values.Max(x => x.LastWriteTime);
 
 				return childrenDictionary.Values;
 			}
 		}
+
 
 		public string Name { get; private set; }
 
@@ -70,22 +72,23 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		public abstract bool IsFolder { get; }
 
 
-		private async Task LoadChildrenAsync()
+		public async Task LoadChildrenAsync()
 		{
 			var updatedList = await LoadChildrenInternalAsync();
 			RebindChildren(updatedList);
 			RaiseChildrenLoaded();
 		}
 
-		private void LoadChildren()
+		public void LoadChildren()
 		{
 			var updatedList = LoadChildrenInternalAsync().Result;
 			RebindChildren(updatedList);
 		}
 
-		private void RebindChildren(IEnumerable<FileSystemItem> newChildren)
+#warning review race conditions
+		private void RebindChildren(IEnumerable<FileSystemItemBase> newChildren)
 		{
-			foreach (FileSystemItem newItem in newChildren)
+			foreach (FileSystemItemBase newItem in newChildren)
 			{
 				var correspondingOldItem = this[newItem.Name];
 				if (correspondingOldItem != null)
@@ -122,13 +125,20 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return findData;
 		}
 
-		protected abstract Task<IEnumerable<FileSystemItem>> LoadChildrenInternalAsync();
+		protected abstract Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync();
 
 		#region TotalCmd Plugin Functions
 
 		public virtual ExecuteResult ExecuteOpen(TotalCommanderWindow window, ref string remoteName)
 		{
 			return ExecuteResult.YourSelf;
+		}
+
+		public virtual bool CreateDirectory(string folderName)
+		{
+			if (!IsFolder)
+				return false;
+			throw new NotImplementedException("Creating sub directory is not yet implemented");
 		}
 		#endregion
 	}

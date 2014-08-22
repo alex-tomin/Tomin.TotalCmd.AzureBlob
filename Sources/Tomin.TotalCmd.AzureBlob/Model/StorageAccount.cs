@@ -8,9 +8,9 @@ using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
-	internal class StorageAccount : FileSystemItem
+	internal class StorageAccount : FileSystemItemBase
 	{
-		public StorageAccount(string name, FileSystemItem parent, CloudBlobClient blobClient): base(name, parent)
+		public StorageAccount(string name, FileSystemItemBase parent, CloudBlobClient blobClient): base(name, parent)
 		{
 			BlobClient = blobClient;
 		}
@@ -26,13 +26,21 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		/// returns Blob Containers
 		/// </summary>
 		/// <returns></returns>
-		protected override async Task <IEnumerable<FileSystemItem>> LoadChildrenInternalAsync()
+		protected override async Task <IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
 			return await Task.Run(() => 
 				BlobClient.ListContainers().Select( 
-					c=> new BlobContainer(c.Name, this, BlobClient, c.Properties.LastModified) )
+					c=> new BlobContainer(c.Name, this, c, c.Properties.LastModified) )
 			);
 			
+		}
+
+		public override bool CreateDirectory(string containerName)
+		{
+			//create container
+			var newContainer = BlobClient.GetContainerReference(containerName);
+			newContainer.CreateIfNotExists();
+			return true;
 		}
 
 	}

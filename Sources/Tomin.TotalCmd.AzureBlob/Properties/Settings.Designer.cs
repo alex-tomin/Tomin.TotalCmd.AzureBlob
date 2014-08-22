@@ -22,27 +22,5 @@ namespace Tomin.TotalCmd.AzureBlob.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-8""?>
-<ArrayOfBlobConfig xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
-                        xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-     <BlobConfig>
-             <StorageDisplayName>(Development)</StorageDisplayName>
-             <AccountName />
-             <AccountKey />
-              <UseSsl>true</UseSsl>
-              <UseDevelopmentStorage>true</UseDevelopmentStorage>
-      </BlobConfig>
-</ArrayOfBlobConfig>")]
-        public global::System.Collections.Generic.List<Tomin.TotalCmd.AzureBlob.Configuration.BlobConfig> BlobConfigs {
-            get {
-                return ((global::System.Collections.Generic.List<Tomin.TotalCmd.AzureBlob.Configuration.BlobConfig>)(this["BlobConfigs"]));
-            }
-            set {
-                this["BlobConfigs"] = value;
-            }
-        }
     }
 }
