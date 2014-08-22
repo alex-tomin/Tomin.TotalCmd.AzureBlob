@@ -41,6 +41,9 @@
     <Reference Include="FluentAssertions.Core">
       <HintPath>..\..\Lib\NuGet\FluentAssertions.3.1.229\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\Lib\NuGet\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +62,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AzureBlobWfxPluginTests.cs" />
+    <Compile Include="Model\FileSystemItemTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

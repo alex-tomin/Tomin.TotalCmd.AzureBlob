@@ -18,6 +18,8 @@ using Tomin.TotalCmd.AzureBlob.Properties;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Globalization;
+using Tomin.TotalCmd.AzureBlob.Model;
+using System.Text;
 
 
 namespace Tomin.TotalCmd.AzureBlob
@@ -46,9 +48,17 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			//Debugger.Launch();
 			//root folder.
+
+			var currentNode = Root.Instance.GetItemByPath(path);
+			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+			return FindNext(enumerator);
+
+			//old code
+
 			if (path == "\\")
 			{
 				enumerator = GetStorageAccounts().GetEnumerator();
+				//enumerator = Root.Instance.Children.Select(x => x.ToFindData()).GetEnumerator();
 				return FindNext(enumerator);
 			}
 
@@ -135,6 +145,10 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override ExecuteResult ExecuteOpen(TotalCommanderWindow window, ref string remoteName)
 		{
+			var item = Root.Instance.GetItemByPath(remoteName);
+			return item.ExecuteOpen(window, ref remoteName);
+
+
 			if (!remoteName.Contains(AddNewStorageText))
 				return ExecuteResult.YourSelf;
 
@@ -155,7 +169,6 @@ namespace Tomin.TotalCmd.AzureBlob
 			//redirect to Root folder, so it reflects the newly added folder
 			remoteName = @"\";
 			return ExecuteResult.SymLink;
-
 		}
 
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
@@ -253,8 +266,12 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override void OnError(Exception error)
 		{
-			Request.MessageBox(error.Message);
-			Log.ImportantError(error.Message);
+			StringBuilder uiMessage = new StringBuilder("Error Occured: ")
+				.Append(error.Message);
+			if (error.InnerException != null)
+				uiMessage.AppendFormat ("\nInner Exception: {0}", error.InnerException.Message);
+			Request.MessageBox(uiMessage.ToString());
+			Log.ImportantError(error.ToString());
 		}
 
 		public override CustomIconResult GetCustomIcon(ref string remoteName, CustomIconFlags extractIconFlag, out System.Drawing.Icon icon)
