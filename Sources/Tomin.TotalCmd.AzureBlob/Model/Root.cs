@@ -59,7 +59,6 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public FileSystemItemBase GetItemByPath(string path)
 		{
-#warning doesn't work if path is new
 			if (path == "\\")
 				return instance;
 			var levels = path.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);

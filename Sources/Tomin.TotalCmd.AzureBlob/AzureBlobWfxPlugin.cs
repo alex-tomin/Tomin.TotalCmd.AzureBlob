@@ -12,7 +12,6 @@ using TotalCommander.Plugin;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Tomin.TotalCmd.AzureBlob.Configuration;
 using Tomin.TotalCmd.AzureBlob.Forms;
-using Tomin.TotalCmd.AzureBlob.Misc;
 using System.Windows.Forms;
 using Tomin.TotalCmd.AzureBlob.Properties;
 using System.Threading.Tasks;
@@ -29,6 +28,9 @@ namespace Tomin.TotalCmd.AzureBlob
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
 
+		//TODO: multithreaded support
+		private bool deletionStarted = false;
+
 		public AzureBlobWfxPlugin()
 		{
 			Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
@@ -39,6 +41,12 @@ namespace Tomin.TotalCmd.AzureBlob
 		public override FindData FindFirst(string path, out IEnumerator enumerator)
 		{
 			//Debugger.Launch();
+
+			if (deletionStarted)
+			{
+				enumerator = Enumerable.Empty<FindData>().GetEnumerator();
+				return FindNext(enumerator);
+			}
 
 			var currentNode = Root.Instance.GetItemByPath(path);
 #warning rebind doesn't work
@@ -91,49 +99,11 @@ namespace Tomin.TotalCmd.AzureBlob
 			return directory.UploadFile(localName, newFolderName, copyFlags);
 		}
 
-
-		//TODO.
-		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
+		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
 		{
-			//return base.FileCopy(source, target, overwrite, move, ri);
-			throw new NotImplementedException("Copy to this target Copy/Move/Rename are not implemented yet.");
-		}
-
-		public override bool DirectoryRemove(string remoteName)
-		{
-			try
+			if (operation == StatusOperation.Delete && origin == StatusOrigin.Start)
 			{
-				var blobPath = AzurePath.FromPath(remoteName);
-
-				//if (blobPath.IsAccountOnly)
-				//{
-				//	Settings.Default.BlobConfigs.Remove(new BlobConfig { StorageDisplayName = blobPath.StorageDisplayName });
-				//	Settings.Default.Save();
-				//	blobClients.Remove(blobPath.StorageDisplayName);
-				//	return true;
-				//}
-
-				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-
-				//no folders - only container
-				if (blobPath.IsContainerOnly)
-				{
-					container.Delete();
-				}
-				else
-				{
-					var blobs = blobClients[blobPath.StorageDisplayName].ListBlobs(remoteName.Replace('\\', '/').Trim('/'), true);
-					foreach (var blob in blobs)
-					{
-						((ICloudBlob)blob).Delete();
-					}
-				}
-
-				return true;
-			}
-			catch
-			{
-				return false;
+				deletionStarted = true;
 			}
 		}
 
@@ -141,10 +111,9 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			try
 			{
-				var blobPath = AzurePath.FromPath(remoteName);
-				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-				var blob = container.GetBlobReferenceFromServer(blobPath.Path);
-				blob.Delete();
+				deletionStarted = false;
+				var item = Root.Instance.GetItemByPath(remoteName);
+				item.Delete();
 				return true;
 			}
 			catch (Exception ex)
@@ -154,6 +123,21 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 		}
 
+		public override bool DirectoryRemove(string remoteName)
+		{
+			return FileRemove(remoteName);
+		}
+
+
+		//TODO.
+		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
+		{
+			//return base.FileCopy(source, target, overwrite, move, ri);
+			throw new NotImplementedException("Copy to this target Copy/Move/Rename are not implemented yet.");
+		}
+
+
+
 		public override void OnError(Exception error)
 		{
 			StringBuilder uiMessage = new StringBuilder("Error Occured: ")
@@ -162,11 +146,6 @@ namespace Tomin.TotalCmd.AzureBlob
 				uiMessage.AppendFormat("\nInner Exception: {0}", error.InnerException.Message);
 			Request.MessageBox(uiMessage.ToString());
 			Log.ImportantError(error.ToString());
-		}
-
-		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
-		{
-
 		}
 
 		public override CustomIconResult GetCustomIcon(ref string remoteName, CustomIconFlags extractIconFlag, out System.Drawing.Icon icon)
@@ -179,65 +158,6 @@ namespace Tomin.TotalCmd.AzureBlob
 			get
 			{
 				return BackgroundFlags.AskUser;
-			}
-		}
-
-		//TODO: calculate folder times;
-
-		private void CalculateSubfoldersLastWriteTime(AzurePath blobPath)
-		{
-			List<IListBlobItem> blobList = new List<IListBlobItem>();
-
-			if (blobPath.IsAccountOnly)
-			{
-				var containers = blobClients[blobPath.StorageDisplayName].ListContainers();
-				foreach (var container in containers)
-				{
-					blobList.AddRange(container.ListBlobs(useFlatBlobListing: true));
-				}
-			}
-
-			else if (blobPath.IsContainerOnly)
-			{
-				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-				blobList.AddRange(container.ListBlobs(useFlatBlobListing: true));
-			}
-			else
-			{
-				var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-				blobList.AddRange(container.GetDirectoryReference(blobPath.Path).ListBlobs(useFlatBlobListing: true));
-			}
-
-			foreach (var blob in blobList.OfType<ICloudBlob>())
-			{
-				foreach (var folder in GetFolders(blob.Uri.AbsolutePath))
-				{
-					if (blob.Properties.LastModified == null)
-						continue;
-
-					DateTime lastModified = blob.Properties.LastModified.Value.ToLocalTime().DateTime;
-					if (!directoryLastWriteTimeCache.ContainsKey(folder))
-					{
-						directoryLastWriteTimeCache[folder] = lastModified;
-					}
-					else
-					{
-						directoryLastWriteTimeCache[folder] = directoryLastWriteTimeCache[folder] > lastModified ? directoryLastWriteTimeCache[folder] : lastModified;
-					}
-				}
-			}
-		}
-
-		private IEnumerable<string> GetFolders(string path)
-		{
-			if (string.IsNullOrEmpty(path))
-				yield break;
-			for (int index = 1; ; index++)
-			{
-				index = path.IndexOf('/', index);
-				if (index == -1)
-					break;
-				yield return path.Substring(0, index + 1);
 			}
 		}
 	}

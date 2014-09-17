@@ -42,6 +42,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return FileOperationResult.OK;
 		}
 
+		public override void Delete()
+		{
+			CloudBlob.Delete();
+		}
 
 	}
 }

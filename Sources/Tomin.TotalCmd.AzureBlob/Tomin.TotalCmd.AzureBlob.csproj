@@ -94,7 +94,6 @@
   <ItemGroup>
     <Compile Include="AzureBlobWfxPlugin.cs" />
     <Compile Include="Configuration\StorageAccountsConfig.cs" />
-    <Compile Include="Misc\AzurePath.cs" />
     <Compile Include="Configuration\BlobConfig.cs" />
     <Compile Include="Forms\AddStorageDialog.cs">
       <SubType>Form</SubType>

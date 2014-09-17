@@ -68,5 +68,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			blob.UploadFromFile(localName, FileMode.Open);
 			return FileOperationResult.OK;
 		}
+
+		public override void Delete()
+		{
+			CloudBlobContainer.Delete();
+		}
 	}
 }

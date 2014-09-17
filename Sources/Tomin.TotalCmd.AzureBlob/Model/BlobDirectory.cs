@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using TotalCommander.Plugin.Wfx;
+using System.Threading.Tasks;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -25,7 +26,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public CloudBlobDirectory CloudBlobDirectory { get; private set; }
 
-		protected override async System.Threading.Tasks.Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
+		protected override async Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
 			BlobContinuationToken continuationToken = null;
 			List<IListBlobItem> blobs = new List<IListBlobItem>();
@@ -39,7 +40,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 			List<FileSystemItemBase> resultItems = new List<FileSystemItemBase>();
 			foreach (IListBlobItem blob in blobs)
-			{	
+			{
 				string blobName = Uri.UnescapeDataString(blob.Uri.Segments.Last().TrimEnd('/'));
 
 				if (blob is CloudBlobDirectory)
@@ -48,7 +49,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				{
 					if (blobName == FakeFileName)
 						continue;
-					
+
 					resultItems.Add(new BlobItem(blobName, this, (ICloudBlob)blob));
 				}
 				else
@@ -72,5 +73,28 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return FileOperationResult.OK;
 		}
 
+		public override void Delete()
+		{
+#warning make delete operation async?
+			BlobContinuationToken continuationToken = null;
+			List<IListBlobItem> blobs = new List<IListBlobItem>();
+			do
+			{
+				var listingResult = CloudBlobDirectory.ListBlobsSegmented(true, BlobListingDetails.None, 100, continuationToken, null, null);
+				continuationToken = listingResult.ContinuationToken;
+				blobs.AddRange(listingResult.Results);
+			}
+			while (continuationToken != null);
+
+			//TODO: refactor a bit;
+			foreach (IListBlobItem blob in blobs)
+			{
+				if (blob is ICloudBlob)
+				{
+					((ICloudBlob)blob).Delete();
+				}
+			}
+
+		}
 	}
 }

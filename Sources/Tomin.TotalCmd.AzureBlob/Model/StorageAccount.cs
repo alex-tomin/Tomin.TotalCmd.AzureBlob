@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tomin.TotalCmd.AzureBlob.Configuration;
 using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
@@ -43,5 +44,9 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return true;
 		}
 
+		public override void Delete()
+		{
+			StorageAccountsConfig.RemoveConfig(Name);
+		}
 	}
 }

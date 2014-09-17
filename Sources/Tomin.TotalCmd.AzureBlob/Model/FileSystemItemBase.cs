@@ -161,6 +161,11 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new NotImplementedException("You cannot create files in this level. Select a subfolder");
 		}
 
+		public virtual void Delete()
+		{
+			throw new NotImplementedException("Delete operation is not implemented on this type");
+		}
+
 		#endregion
 	}
 }
