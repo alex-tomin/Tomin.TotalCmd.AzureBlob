@@ -19,7 +19,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		private Root()
 			: base(String.Empty, null, null)
 		{
-
+			LoadChildren();
 		}
 
 		public static Root Instance
@@ -59,6 +59,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public FileSystemItemBase GetItemByPath(string path)
 		{
+#warning doesn't work if path is new
 			if (path == "\\")
 				return instance;
 			var levels = path.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);

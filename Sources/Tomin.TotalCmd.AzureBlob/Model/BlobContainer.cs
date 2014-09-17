@@ -1,9 +1,11 @@
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -58,6 +60,13 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			var blob = CloudBlobContainer.GetBlockBlobReference(String.Format("{0}/{1}", folderName, BlobDirectory.FakeFileName));
 			blob.UploadText(string.Empty);
 			return true;
+		}
+
+		public override FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags)
+		{
+			var blob = CloudBlobContainer.GetBlockBlobReference(remoteName);
+			blob.UploadFromFile(localName, FileMode.Open);
+			return FileOperationResult.OK;
 		}
 	}
 }

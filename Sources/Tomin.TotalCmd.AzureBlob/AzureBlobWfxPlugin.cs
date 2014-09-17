@@ -26,8 +26,6 @@ namespace Tomin.TotalCmd.AzureBlob
 {
 	public class AzureBlobWfxPlugin : TotalCommanderWfxPlugin
 	{
-		private const string FakeFileName = "11FakeEmptyFile11";
-
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
 
@@ -44,7 +42,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var currentNode = Root.Instance.GetItemByPath(path);
 #warning rebind doesn't work
-			//currentNode.LoadChildren();
+//			currentNode.LoadChildren();
 			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
 
 			return FindNext(enumerator);
@@ -77,38 +75,22 @@ namespace Tomin.TotalCmd.AzureBlob
 			return directory.CreateDirectory(newFolderName);
 		}
 
-
-
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
 		{
-			var blobPath = AzurePath.FromPath(remoteName);
-			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-			var blob = container.GetBlobReferenceFromServer(blobPath.Path);
-			using (var fileStream = File.OpenWrite(localName))
-			{
-				blob.DownloadToStream(fileStream);
-			}
-
-
-			return FileOperationResult.OK;
+			var blobItem = Root.Instance.GetItemByPath(remoteName);
+			return blobItem.DownloadFile(remoteName, ref  localName, copyFlags, ri);
 		}
 
 		public override FileOperationResult FilePut(string localName, ref string remoteName, CopyFlags copyFlags)
 		{
-			var blobPath = AzurePath.FromPath(remoteName);
+			int lastSlashIndex = remoteName.LastIndexOf('\\');
+			string existingFolderPath = remoteName.Substring(0, lastSlashIndex);
+			string newFolderName = remoteName.Substring(lastSlashIndex + 1);
 
-			if (blobPath.IsAccountOnly || blobPath.IsContainerOnly)
-			{
-				Request.MessageBox("You cannot create files in this level. Select a subfolder.");
-				return FileOperationResult.UserAbort;
-			}
-
-			var container = blobClients[blobPath.StorageDisplayName].GetContainerReference(blobPath.ContainerName);
-			var blob = container.GetBlockBlobReference(blobPath.Path);
-			blob.UploadFromFile(localName, FileMode.Open);
-
-			return FileOperationResult.OK;
+			var directory = Root.Instance.GetItemByPath(existingFolderPath);
+			return directory.UploadFile(localName, newFolderName, copyFlags);
 		}
+
 
 		//TODO.
 		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
@@ -184,7 +166,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
 		{
-			
+
 		}
 
 		public override CustomIconResult GetCustomIcon(ref string remoteName, CustomIconFlags extractIconFlag, out System.Drawing.Icon icon)
@@ -192,7 +174,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			return base.GetCustomIcon(ref remoteName, extractIconFlag, out icon);
 		}
 
-
+		public override BackgroundFlags BackgroundSupport
+		{
+			get
+			{
+				return BackgroundFlags.AskUser;
+			}
+		}
 
 		//TODO: calculate folder times;
 

@@ -39,6 +39,9 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		{
 			get
 			{
+				if (!childrenDictionary.Any())
+					LoadChildren();
+
 				if (!childrenDictionary.ContainsKey(name))
 					return null;
 				return childrenDictionary[name];
@@ -90,9 +93,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		{
 			foreach (FileSystemItemBase newItem in newChildren)
 			{
-				var correspondingOldItem = this[newItem.Name];
-				if (correspondingOldItem != null)
-					newItem.childrenDictionary = correspondingOldItem.childrenDictionary;
+				if (!childrenDictionary.ContainsKey(newItem.Name))
+					continue;
+
+				newItem.childrenDictionary = childrenDictionary[newItem.Name].childrenDictionary;
 			}
 
 			childrenDictionary = newChildren.ToDictionary(i => i.Name);
@@ -140,6 +144,23 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				return false;
 			throw new NotImplementedException("Creating sub directory is not yet implemented");
 		}
+
+		public virtual FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
+		{
+			if (IsFolder)
+				throw new InvalidOperationException("Invalid opertion on Folder");
+
+			throw new NotImplementedException("Not Imlemented yet");
+		}
+
+		public virtual FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags)
+		{
+			if (!IsFolder)
+				throw new InvalidOperationException("Invalid opertion on File");
+
+			throw new NotImplementedException("You cannot create files in this level. Select a subfolder");
+		}
+
 		#endregion
 	}
 }

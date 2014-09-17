@@ -1,8 +1,10 @@
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -37,13 +39,18 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 			List<FileSystemItemBase> resultItems = new List<FileSystemItemBase>();
 			foreach (IListBlobItem blob in blobs)
-			{
+			{	
+				string blobName = Uri.UnescapeDataString(blob.Uri.Segments.Last().TrimEnd('/'));
+
 				if (blob is CloudBlobDirectory)
-					resultItems.Add(
-						new BlobDirectory(Uri.UnescapeDataString(blob.Uri.Segments.Last().TrimEnd('/')), this, (CloudBlobDirectory)blob));
+					resultItems.Add(new BlobDirectory(blobName, this, (CloudBlobDirectory)blob));
 				else if (blob is ICloudBlob)
-					resultItems.Add(
-						new BlobItem(Uri.UnescapeDataString(blob.Uri.Segments.Last().TrimEnd('/')), this, (ICloudBlob)blob));
+				{
+					if (blobName == FakeFileName)
+						continue;
+					
+					resultItems.Add(new BlobItem(blobName, this, (ICloudBlob)blob));
+				}
 				else
 					throw new InvalidOperationException("Blob type is unknown");
 			}
@@ -56,6 +63,13 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			var blob = CloudBlobDirectory.GetBlockBlobReference(String.Format("{0}/{1}", folderName, BlobDirectory.FakeFileName));
 			blob.UploadText(string.Empty);
 			return true;
+		}
+
+		public override FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags)
+		{
+			var blob = CloudBlobDirectory.GetBlockBlobReference(remoteName);
+			blob.UploadFromFile(localName, FileMode.Open);
+			return FileOperationResult.OK;
 		}
 
 	}

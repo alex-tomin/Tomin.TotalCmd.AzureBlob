@@ -1,8 +1,10 @@
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -15,6 +17,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				LastWriteTime = blob.Properties.LastModified.Value.ToLocalTime().DateTime;
 			
 			FileSize = blob.Properties.Length;
+			CloudBlob = blob;
 		}
 
 		public override bool IsFolder
@@ -22,18 +25,22 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			get { return false; }
 		}
 
+		public ICloudBlob CloudBlob { get; private set; }
+
 		protected override async System.Threading.Tasks.Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
-			throw new Exception("not impl");
+			throw new InvalidOperationException("Operation not supported on File items");
 		}
 
-			//		if (enumerator.Current is ICloudBlob)
-			//{
-			//	FindData findData = BlobToFindData((ICloudBlob)enumerator.Current);
-			//	if (findData.FileName.Contains(FakeFileName))
-			//		return FindNext(enumerator);
-			//	return findData;
-			//}
+		public override FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
+		{
+			using (var fileStream = File.OpenWrite(localName))
+			{
+				CloudBlob.DownloadToStream(fileStream);
+			}
+
+			return FileOperationResult.OK;
+		}
 
 
 	}
