@@ -72,6 +72,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			}
 
 			return currentItem;
+
 		}
 
 		public override bool CreateDirectory(string folderName)

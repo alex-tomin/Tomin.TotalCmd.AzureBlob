@@ -43,6 +43,9 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 					LoadChildren();
 
 				if (!childrenDictionary.ContainsKey(name))
+					LoadChildren();
+
+				if (!childrenDictionary.ContainsKey(name))
 					return null;
 				return childrenDictionary[name];
 			}
@@ -61,7 +64,8 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				if (IsFolder)
 					LastWriteTime = childrenDictionary.Values.Max(x => x.LastWriteTime);
 
-				return childrenDictionary.Values;
+				//TODO: use some attribute - like invisible file to make decupling
+				return childrenDictionary.Values.Where(i=>i.Name != BlobDirectory.FakeFileName);
 			}
 		}
 
@@ -89,7 +93,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		}
 
 #warning review race conditions
-		private void RebindChildren(IEnumerable<FileSystemItemBase> newChildren)
+		protected void RebindChildren(IEnumerable<FileSystemItemBase> newChildren)
 		{
 			foreach (FileSystemItemBase newItem in newChildren)
 			{

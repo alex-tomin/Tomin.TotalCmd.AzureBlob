@@ -42,16 +42,27 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			//Debugger.Launch();
 
-			if (deletionStarted)
-			{
-				enumerator = Enumerable.Empty<FindData>().GetEnumerator();
-				return FindNext(enumerator);
-			}
-
 			var currentNode = Root.Instance.GetItemByPath(path);
+
+			if (deletionStarted)
+				if (currentNode is BlobDirectory)
+				{
+					//get all files in a flat way
+					//TODO: get from cache
+					//((BlobDirectory)currentNode).LoadAllSubItems();
+					enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+				}
+				else
+				{
+					//don't enumerate items - proceed to folder deletion immediately
+					enumerator = Enumerable.Empty<FindData>().GetEnumerator();
+				}
+			else
+			{
 #warning rebind doesn't work
-//			currentNode.LoadChildren();
-			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+				currentNode.LoadChildren();
+				enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+			}
 
 			return FindNext(enumerator);
 		}

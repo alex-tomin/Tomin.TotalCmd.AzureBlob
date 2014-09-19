@@ -47,9 +47,6 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 					resultItems.Add(new BlobDirectory(blobName, this, (CloudBlobDirectory)blob));
 				else if (blob is ICloudBlob)
 				{
-					if (blobName == FakeFileName)
-						continue;
-
 					resultItems.Add(new BlobItem(blobName, this, (ICloudBlob)blob));
 				}
 				else
@@ -77,6 +74,21 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		{
 #warning make delete operation async?
 			BlobContinuationToken continuationToken = null;
+			do
+			{
+				var listingResult = CloudBlobDirectory.ListBlobsSegmented(true, BlobListingDetails.None, 100, continuationToken, null, null);
+				continuationToken = listingResult.ContinuationToken;
+				Parallel.ForEach(
+					listingResult.Results.OfType<ICloudBlob>(),
+					c =>c.Delete()
+				);
+			}
+			while (continuationToken != null);
+		}
+
+		public void LoadAllSubItems()
+		{
+			BlobContinuationToken continuationToken = null;
 			List<IListBlobItem> blobs = new List<IListBlobItem>();
 			do
 			{
@@ -86,15 +98,18 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			}
 			while (continuationToken != null);
 
-			//TODO: refactor a bit;
-			foreach (IListBlobItem blob in blobs)
+
+			foreach (ICloudBlob blob in blobs.OfType<ICloudBlob>().OrderBy(x => x.Name))
 			{
-				if (blob is ICloudBlob)
-				{
-					((ICloudBlob)blob).Delete();
-				}
+				throw new Exception("not implemented");
+#warning - implement hierarchy
+				//TODO: create hierarchy here
 			}
 
+
+			//b => new BlobItem(
+			//	Uri.UnescapeDataString(b.Uri.Segments.Last().TrimEnd('/'))
+			//	, this, b));
 		}
 	}
 }
