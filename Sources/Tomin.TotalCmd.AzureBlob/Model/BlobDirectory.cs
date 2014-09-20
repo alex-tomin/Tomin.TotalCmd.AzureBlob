@@ -72,7 +72,6 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public override void Delete()
 		{
-#warning make delete operation async?
 			BlobContinuationToken continuationToken = null;
 			do
 			{
@@ -80,7 +79,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				continuationToken = listingResult.ContinuationToken;
 				Parallel.ForEach(
 					listingResult.Results.OfType<ICloudBlob>(),
-					c =>c.Delete()
+					c => c.Delete()
 				);
 			}
 			while (continuationToken != null);
@@ -98,18 +97,39 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			}
 			while (continuationToken != null);
 
+			FillChildren(blobs.OfType<ICloudBlob>());
+		}
 
-			foreach (ICloudBlob blob in blobs.OfType<ICloudBlob>().OrderBy(x => x.Name))
+		private void FillChildren(IEnumerable<ICloudBlob> blobList)
+		{
+			List<FileSystemItemBase> directChildren = new List<FileSystemItemBase>();
+			var lookup = blobList.ToLookup(b =>
+				{
+					string subPath = b.Name.Substring(CloudBlobDirectory.Prefix.Length);
+					int slashIndex = subPath.IndexOf('/');
+					return slashIndex != -1 ? subPath.Substring(0, slashIndex) : string.Empty;
+				});
+
+			foreach (var folder in lookup)
 			{
-				throw new Exception("not implemented");
-#warning - implement hierarchy
-				//TODO: create hierarchy here
+				string subDirName = folder.Key;
+				if (string.IsNullOrEmpty(subDirName))
+				{
+					directChildren.AddRange(
+						folder.Select(b => new BlobItem(
+							Uri.UnescapeDataString(b.Uri.Segments.Last().TrimEnd('/')),
+							this, b)));
+				}
+				else
+				{
+					var subDir = new BlobDirectory(subDirName, this, CloudBlobDirectory.GetDirectoryReference(subDirName));
+					subDir.FillChildren(folder);
+					directChildren.Add(subDir);
+				}
 			}
 
+			RebindChildren(directChildren);
 
-			//b => new BlobItem(
-			//	Uri.UnescapeDataString(b.Uri.Segments.Last().TrimEnd('/'))
-			//	, this, b));
 		}
 	}
 }

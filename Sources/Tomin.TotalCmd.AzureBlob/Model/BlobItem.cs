@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using TotalCommander.Plugin.Wfx;
+using System.Threading.Tasks;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -27,7 +28,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public ICloudBlob CloudBlob { get; private set; }
 
-		protected override async System.Threading.Tasks.Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
+		protected override async Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
 			throw new InvalidOperationException("Operation not supported on File items");
 		}

@@ -25,11 +25,18 @@ namespace Tomin.TotalCmd.AzureBlob
 {
 	public class AzureBlobWfxPlugin : TotalCommanderWfxPlugin
 	{
+		enum DeletionState
+		{
+			None = 0,
+			Initiated,
+			Enumerated
+		}
+
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
 
 		//TODO: multithreaded support
-		private bool deletionStarted = false;
+		private DeletionState deletionState = DeletionState.None;
 
 		public AzureBlobWfxPlugin()
 		{
@@ -44,26 +51,28 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var currentNode = Root.Instance.GetItemByPath(path);
 
-			if (deletionStarted)
+			if (deletionState == DeletionState.Initiated)
+			{
 				if (currentNode is BlobDirectory)
 				{
 					//get all files in a flat way
-					//TODO: get from cache
-					//((BlobDirectory)currentNode).LoadAllSubItems();
-					enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
+					((BlobDirectory)currentNode).LoadAllSubItems();
+					deletionState = DeletionState.Enumerated; //TotalCMD triggers enumeration twice, we want only once.
 				}
 				else
 				{
 					//don't enumerate items - proceed to folder deletion immediately
 					enumerator = Enumerable.Empty<FindData>().GetEnumerator();
+					return FindNext(enumerator);
 				}
-			else
+			}
+			else if (deletionState == DeletionState.None)
 			{
 #warning rebind doesn't work
 				currentNode.LoadChildren();
-				enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
 			}
-
+			
+			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
 			return FindNext(enumerator);
 		}
 
@@ -114,7 +123,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			if (operation == StatusOperation.Delete && origin == StatusOrigin.Start)
 			{
-				deletionStarted = true;
+				deletionState = DeletionState.Initiated;
 			}
 		}
 
@@ -122,7 +131,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			try
 			{
-				deletionStarted = false;
+				deletionState = DeletionState.None;
 				var item = Root.Instance.GetItemByPath(remoteName);
 				item.Delete();
 				return true;
