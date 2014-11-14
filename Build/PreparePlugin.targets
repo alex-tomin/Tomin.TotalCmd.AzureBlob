@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+	<PropertyGroup>
+		<FinalBuildFolder>$(MSBuildProjectDirectory)\..\..\Build</FinalBuildFolder>
+		<ArtifactsFolder>$(MSBuildProjectDirectory)\..\..\Artifacts</ArtifactsFolder>
+		<TotalCmdFodler>$(ArtifactsFolder)\TotalCmd\v_8.51a</TotalCmdFodler>
+		<TotalCommanderTargetFolder>$(FinalBuildFolder)\TotalCmd</TotalCommanderTargetFolder>
+		<MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\Lib\MSBuild</MSBuildCommunityTasksPath>
+	</PropertyGroup>
+		
+	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets" />
+
+	<ItemGroup>
+		<Binaries Include="$(TargetDir)\**\*.*" Exclude="$(TargetDir)\*.zip" />
+	</ItemGroup>
+
+	<Target Name="CreateZip" AfterTargets="GenerateWfxPlugin">
+		<Zip Files="@(Binaries)" WorkingDirectory="$(TargetDir)" ZipFileName="$(FinalBuildFolder)\$(TargetName).zip" />
+	</Target>
+
+	<Target Name="PrepareTotalCmd" AfterTargets="CreateZip">
+		<!--Copy TotalCmd to target and then copy plugin to wfx fodler-->
+		<ItemGroup>
+			<TotalCmd Include="$(TotalCmdFodler)\**\*.*"/>
+		</ItemGroup>
+		<Copy SourceFiles="@(TotalCmd)" DestinationFolder="$(TotalCommanderTargetFolder)\%(RecursiveDir)" SkipUnchangedFiles="true" />
+		<Copy SourceFiles="@(Binaries)" DestinationFolder="$(TotalCommanderTargetFolder)\Plugins\wfx\AzureBlob\%(RecursiveDir)" SkipUnchangedFiles="true" />
+	</Target>
+
+</Project>

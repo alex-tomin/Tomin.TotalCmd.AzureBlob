@@ -34,6 +34,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+	<StartAction>Program</StartAction>
+	<StartProgram>$(MSBuildProjectDirectory)\..\..\Build\TotalCmd\TOTALCMD64.EXE</StartProgram>
+	<StartWorkingDirectory>$(MSBuildProjectDirectory)\..\..\Build\TotalCmd\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -150,20 +153,10 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\Build\TotalCommander.Plugin.targets" />
-  <PropertyGroup>
-    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\Lib\MSBuild</MSBuildCommunityTasksPath>
-  </PropertyGroup>
-  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets" />
-  <Target Name="GenerateWfxPlugin" BeforeTargets="PostBuildEvent">
+  <Import Project="..\..\Build\PreparePlugin.targets" />
+
+  <Target Name="GenerateWfxPlugin" BeforeTargets="AfterBuild">
     <CallTarget Targets="GenerateTotalCommanderWfxPlugin" />
   </Target>
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*" "C:\Program Files\TotalComander\Plugins\wfx\AzureBlob\" /Y /S</PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="CreateZip" AfterTargets="GenerateWfxPlugin">
-    <ItemGroup>
-      <Binaries Include="$(TargetDir)\**\*.*" Exclude="$(TargetDir)\*.zip" />
-    </ItemGroup>
-    <Zip Files="@(Binaries)" WorkingDirectory="$(TargetDir)" ZipFileName="$(MSBuildProjectDirectory)\..\..\Build\$(TargetName).zip" />
-  </Target>
+    
 </Project>
