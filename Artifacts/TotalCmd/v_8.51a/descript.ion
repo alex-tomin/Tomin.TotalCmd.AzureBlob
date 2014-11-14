@@ -1,0 +1,43 @@
+LANGUAGE Additional Totalcmd languages can be found on our addons page on www.ghisler.com
+CABRK.DLL CAB unpacker DLL
+CGLPT64.SYS Parallel port driver for Windows XP/Vista/7 X64
+CGLPT9X.VXD Parallel port driver for Windows 9x/ME
+CGLPTNT.SYS Parallel port driver for Windows NT/2000/XP
+Default.bar Default button bar file
+FRERES32.DLL Library to get free system resources on Windows 9x/ME
+NO.BAR Empty button bar file
+NOCLOSE.EXE Used when launching command line program with Shift+Enter to keep the console open
+NOCLOSE64.EXE Used when launching command line program with Shift+Enter to keep the console open
+SFXHEAD.SFX Self extracting header for ZIP
+SHARE_NT.EXE Helper tool to show share/unshare dialog on Windows NT
+TC7Z.DLL 7ZIP unpacker DLL
+TC7Z64.DLL 7ZIP unpacker DLL (64-bit)
+TC7ZIPIF.DLL Interface DLL to access 7zip DLL
+TCLZMA64.DLL 64-bit LZMA packer/unpacker
+TCMADM64.EXE Tool to copy/delete/create folder/remove folder with administrator rights
+TCMADMIN.EXE Tool to copy/delete/create folder/remove folder with administrator rights
+TCMDLZMA.DLL Library to unpack WinZIP12 LZMA compression method (14)
+TCMDX32.EXE 64-bit to 32-bit tool (for context menu)
+TCMDX64.EXE 64-bit shell extension support for right click context menu
+TCUNIN64.EXE Uninstall or repair Total Commander 64-bit
+TCUNIN64.WUL Uninstall list (files to be removed)
+TCUNINST.EXE Uninstall and repair tool
+TCUNINST.WUL Uninstall list (files to be removed)
+TCUNZL64.DLL 64-bit Unzip/ZLIB library
+TCUNZLIB.DLL Library used for unpacking thumbnails and for FTP MODE Z
+TcUsbRun.exe USB cable insert notification handler (run to activate/deactivate)
+TOTALCMD.EXE Total Commander main program
+TOTALCMD.EXE.MANIFEST Enables XP style on PCs where the internal manifest resource is ignored
+TOTALCMD.INC Command strings for menu and button bar
+TOTALCMD64.EXE Total Commander 64-bit (main program)
+TOTALCMD64.EXE.MANIFEST Enables XP style on PCs where the internal manifest resource is ignored
+UNACEV2.DLL ACE unpacker DLL
+UNRAR.DLL RAR unpacker DLL for Windows 2000 or newer
+UNRAR64.DLL 64-bit RAR unpacker
+UNRAR9X.DLL RAR unpacker DLL for Windows 9x/ME/NT
+WC32TO16.EXE Helper tool to set the date/time of directories on Win9x and ME
+WCMICONS.DLL Icons for button bar
+WCMICONS.INC Mapping table: internal command -> icon index
+WCMZIP32.DLL ZIP packer DLL
+WCMZIP64.DLL 64-bit ZIP packer
+WCUNINST.WUL Old uninstall list of Wincmd

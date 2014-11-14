@@ -11,6 +11,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 	abstract public class FileSystemItemBase
 	{
 		private Dictionary<string, FileSystemItemBase> childrenDictionary = new Dictionary<string, FileSystemItemBase>();
+		DateTime lastLoadTime;
 
 		/// <summary>
 		/// 
@@ -85,11 +86,18 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			RebindChildren(updatedList);
 			RaiseChildrenLoaded();
 		}
-
-		public void LoadChildren()
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="cacheDuration">consequent load will be missed during this period</param>
+		public void LoadChildren(TimeSpan? cacheDuration = null)
 		{
+			if (cacheDuration != null && lastLoadTime + cacheDuration < DateTime.UtcNow)
+				return;
 			var updatedList = LoadChildrenInternalAsync().Result;
 			RebindChildren(updatedList);
+			lastLoadTime = DateTime.UtcNow;
 		}
 
 #warning review race conditions

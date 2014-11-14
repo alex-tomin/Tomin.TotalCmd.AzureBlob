@@ -1,0 +1,1 @@
+start totalcmd64.exe /N /I="%COMMANDER_PATH%\Wincmd64.ini"

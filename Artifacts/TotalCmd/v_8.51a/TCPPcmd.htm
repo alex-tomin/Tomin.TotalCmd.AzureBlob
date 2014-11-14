@@ -1,0 +1,794 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<meta name="description" content="Total Commander - eXtended Pack. Полнофункциональная сборка с нетривиальной структурой и оригинальными настройками. Плагины и утилиты для Total Commander">
+	<meta name="keywords" content="Total Commander, Total Commander PowerPack, www.Samlab.ws, Windows Commander">
+  <meta name="GENERATOR" content="Notepad ;)">
+  <title>Total Commander XP - All Commands</title>
+	<style type="text/css">
+		BODY, TR, TD   {FONT-FAMILY:Arial, Verdana, Geneva; FONT-SIZE: x-small;}
+		TR.header  {BACKGROUND:#E0E0E0; font-weight: bold; text-align: center;}
+		TR.stl     {BACKGROUND:#F2F2F2; text-align: center; color: #000080; font-weight: bold;}
+		A          {color: #000080; text-decoration: underlined;}
+		A:hover    {color: red;} 
+		.head      {FONT-FAMILY:Verdana, Geneva, Arial; FONT-SIZE: small; font-weight: bold; color: #000080;}
+		.h1      {FONT-FAMILY:Verdana, Geneva, Arial; FONT-SIZE: medium; font-weight: bold; color: #000080;}
+		.select    {color: blue;}
+		.cmt       {font-style: italic; color: #003300;}
+		.new       {color: #800000;}
+	</style>
+</head>
+<body bgcolor=white>
+<P><font class=h1>Все команды Total Commander</font></P>
+<P><a href="#IntCmd">Встроенные команды</a><br>
+<a href="#ExtCmd">Пользовательские команды и псевдонимы</a><br>
+<a href="#ParamCmd">Команды, воспринимающие параметры</a><br>
+<a href="#KeybMouseCmd">Команды, отсутствующие в файле <i>Totalcmd.inc</i></a><br>
+<a href="#SysCmd">Системные команды, выполняющиеся из командной строки TC</a><br>
+<a href="#SysFolders">Вызов системных папок Windows</a><br>
+<a href="#TCStartParam">Параметры запуска TC и его инструментов из командной строки</a><br>
+<a href="#ButtonParam">Параметры для панели инструментов, меню &quotЗапуск&quot и пользовательских команд</a><br>
+<a href="#EnvVar">Переменные, используемые в TC</a></P>
+<P><font class=head><a name="IntCmd"></a>Встроенные команды</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><a href="#sup"><td>DEC <sup>*</sup></td><td>HEX <sup>*</sup></td><td>String <sup>*</sup></td><td>Описание команды</td><td colspan=2>Int <sup>*</sup></td><td>Ext <sup>*</sup></td></a><td>Примечание</td></tr>
+<tr class=stl><td colspan=8>[_Активная_панель_]</td></tr>
+<tr><td>300</td><td>$12C</td><td>cm_SrcComments</td><td>Показать комментарии</td><td>CS+F2*</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>301</td><td>$12D</td><td>cm_SrcShort</td><td> &quot;Краткий&quot; вид (только имена)</td><td>C+F1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>302</td><td>$12E</td><td>cm_SrcLong</td><td> &quot;Подробный&quot; вид</td><td>C+F2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>303</td><td>$12F</td><td>cm_SrcTree</td><td>Дерево каталогов</td><td>C+F8</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>304</td><td>$130</td><td>cm_SrcQuickview</td><td>Быстрый просмотр</td><td>C+Q</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>305</td><td>$131</td><td>cm_VerticalPanels</td><td>Расположить панели одну над другой</td><td>&nbsp;</td><td>&nbsp;</td><td>C+G</td><td>&nbsp;</td></tr>
+<td>306</td><td>$132</td><td>cm_SrcQuickInternalOnly</td><td>Быстрый просмотр с отключёнными плагинами</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>307*</font></td><td><font class=new>$133</font></td><td><font class=new>cm_SrcHideQuickview</font></td><td>Выключить быстрый просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>311</td><td>$137</td><td>cm_SrcExecs</td><td>Отображать только программы</td><td>C+F11</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>312</td><td>$138</td><td>cm_SrcAllFiles</td><td>Отображать все файлы</td><td>C+F10</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>313</td><td>$139</td><td>cm_SrcUserSpec</td><td>Последний пользовательский фильтр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>314</td><td>$13A</td><td>cm_SrcUserDef</td><td>Задать фильтр</td><td>C+F12</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>321</td><td>$141</td><td>cm_SrcByName</td><td>Сортировка по имени</td><td>C+F3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>322</td><td>$142</td><td>cm_SrcByExt</td><td>Сортировка по типу</td><td>C+F4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>323</td><td>$143</td><td>cm_SrcBySize</td><td>Сортировка по размеру</td><td>C+F6</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>324</td><td>$144</td><td>cm_SrcByDateTime</td><td>Сортировка по дате/времени</td><td>C+F5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>325</td><td>$145</td><td>cm_SrcUnsorted</td><td>Без сортировки</td><td>C+F7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>330</td><td>$14A</td><td>cm_SrcNegOrder</td><td>В обратном порядке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>331</td><td>$14B</td><td>cm_SrcOpenDrives</td><td>Открыть список дисков</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>269</td><td>$10D</td><td>cm_SrcThumbs</td><td>Просмотр эскизов</td><td>CS+F1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>270</td><td>$10E</td><td>cm_SrcCustomViewMenu</td><td>Меню пользовательских колонок</td><td>S+F1</td><td>&nbsp;</td><td>&nbsp;</td><td>...и стандартных режимов файловой панели</td></tr>
+<tr><td><font class=new>332</font></td><td><font class=new>$14C</font></td><td><font class=new>cm_SrcPathFocus</font></td><td>Активизировать цепочки навигации</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Переход к управлению с клавиатуры</td></tr>
+<tr class=stl><td colspan=8>[_Панель_слева_]</td></tr>
+<tr><td>100</td><td>$64</td><td>cm_LeftComments</td><td>Показать комментарии</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>101</td><td>$65</td><td>cm_LeftShort</td><td> &quot;Краткий&quot; вид (только имена)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>102</td><td>$66</td><td>cm_LeftLong</td><td> &quot;Подробный&quot; вид</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>103</td><td>$67</td><td>cm_LeftTree</td><td>Дерево каталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>104</td><td>$68</td><td>cm_LeftQuickview</td><td>Быстрый просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>106</td><td>$6A</td><td>cm_LeftQuickInternalOnly</td><td>Быстрый просмотр с отключёнными плагинами</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>107</font></td><td><font class=new>$6B</font></td><td><font class=new>cm_LeftHideQuickview</font></td><td>Выключить быстрый просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>111</td><td>$6F</td><td>cm_LeftExecs</td><td>Отображать только программы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>112</td><td>$70</td><td>cm_LeftAllFiles</td><td>Отображать все файлы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>113</td><td>$71</td><td>cm_LeftUserSpec</td><td>Последний пользовательский фильтр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>114</td><td>$72</td><td>cm_LeftUserDef</td><td>Задать фильтр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>121</td><td>$79</td><td>cm_LeftByName</td><td>Сортировка по имени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>122</td><td>$7A</td><td>cm_LeftByExt</td><td>Сортировка по типу</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>123</td><td>$7B</td><td>cm_LeftBySize</td><td>сортировка по размеру</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>124</td><td>$7C</td><td>cm_LeftByDateTime</td><td>Сортировка по дате/времени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>125</td><td>$7D</td><td>cm_LeftUnsorted</td><td>Без сортировки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>130</td><td>$82</td><td>cm_LeftNegOrder</td><td>В обратном порядке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>131</td><td>$83</td><td>cm_LeftOpenDrives</td><td>Открыть список дисков</td><td>A+F1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>132</font></td><td><font class=new>$84</font></td><td><font class=new>cm_LeftPathFocus</font></td><td>Активизировать цепочки навигации</td><td><font class=new>Alt+F11</font></td><td>&nbsp;</td><td>&nbsp;</td><td>Переход к управлению с клавиатуры</td></tr>
+<tr><td>2034</td><td>$7F2</td><td>cm_LeftDirBranch</td><td>Показ файлов без подкаталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2047</font></td><td><font class=new>$7FF</font></td><td><font class=new>cm_LeftDirBranchSel</font></td><td>Показ файлов без подкаталогов (только в выделенном)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>69</td><td>$45</td><td>cm_LeftThumbs</td><td>Просмотр эскизов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>70</td><td>$46</td><td>cm_LeftCustomViewMenu</td><td>Меню пользовательских колонок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>...и стандартных режимов файловой панели</td></tr>
+<tr class=stl><td colspan=8>[_Панель_справа_]</td></tr>
+<tr><td>200</td><td>$C8</td><td>cm_RightComments</td><td>Показать комментарии</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>201</td><td>$C9</td><td>cm_RightShort</td><td> &quot;Краткий&quot; вид (только имена) </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>202</td><td>$CA</td><td>cm_RightLong</td><td> &quot;Подробный&quot; вид</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>203</td><td>$CB</td><td>cm_RightTree</td><td>Дерево каталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>204</td><td>$CC</td><td>cm_RightQuickview</td><td>Быстрый просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>206</td><td>$CE</td><td>cm_RightQuickInternalOnly</td><td>Быстрый просмотр с отключёнными плагинами</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>207</font></td><td><font class=new>$CF</font></td><td><font class=new>cm_RightHideQuickview</font></td><td>Выключить быстрый просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>211</td><td>$D3</td><td>cm_RightExecs</td><td>Отображать только программы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>212</td><td>$D4</td><td>cm_RightAllFiles</td><td>Отображать все файлы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>213</td><td>$D5</td><td>cm_RightUserSpec</td><td>Последний пользовательский фильтр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>214</td><td>$D6</td><td>cm_RightUserDef</td><td>Задать фильтр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>221</td><td>$DD</td><td>cm_RightByName</td><td>Сортировка по имени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>222</td><td>$DE</td><td>cm_RightByExt</td><td>Сортировка по типу</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>223</td><td>$DF</td><td>cm_RightBySize</td><td>Сортировка по размеру</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>224</td><td>$E0</td><td>cm_RightByDateTime</td><td>Сортировка по дате/времени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>225</td><td>$E1</td><td>cm_RightUnsorted</td><td>Без сортировки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>230</td><td>$E6</td><td>cm_RightNegOrder</td><td>В обратном порядке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>231</td><td>$E7</td><td>cm_RightOpenDrives</td><td>Открыть список дисков</td><td>A+F2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>232</font></td><td><font class=new>$E8</font></td><td><font class=new>cm_RightPathFocus</font></td><td>Активизировать цепочки навигации</td><td><font class=new>Alt+F12</font></td><td>&nbsp;</td><td>&nbsp;</td><td>Переход к управлению с клавиатуры</td></tr>
+<tr><td>2035</td><td>$7F3</td><td>cm_RightDirBranch</td><td>Показ файлов без подкаталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2048</font></td><td><font class=new>$800</font></td><td><font class=new>cm_RightDirBranchSel</font></td><td>Показ файлов без подкаталогов (только в выделенном)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>169</td><td>$A9</td><td>cm_RightThumbs</td><td>Просмотр эскизов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>170</td><td>$AA</td><td>cm_RightCustomViewMenu</td><td>Меню пользовательских колонок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>...и стандартных режимов файловой панели</td></tr>
+<tr class=stl><td colspan=8>[_Файловые_операции_]</td></tr>
+<tr><td>903</td><td>$387</td><td>cm_List </td><td>Просмотр</td><td>F3</td><td>&nbsp;</td><td>&nbsp;</td><td>Просмотр согласно настройкам: внутренний (выделенные файлы или файл под курсором) либо с помощью внешней программы</td></tr>
+<tr><td>1006</td><td>$3EE</td><td>cm_ListInternalOnly</td><td>Просмотр с отключёнными плагинами</td><td>AS+F3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>904</td><td>$388</td><td>cm_Edit</td><td>Правка</td><td>F4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>905</td><td>$389</td><td>cm_Copy</td><td>Копировать файлы</td><td>F5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3100</td><td>$C1C</td><td>cm_CopySamepanel</td><td>Копировать в ту же панель</td><td>S+F5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3101</td><td>$C1D</td><td>cm_CopyOtherpanel</td><td>Копировать в другую панель</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>906</td><td>$38A</td><td>cm_RenMov</td><td>Переименовать/Переместить файлы</td><td>F6</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>907</td><td>$38B</td><td>cm_MkDir</td><td>Создать каталог</td><td>F7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>908</td><td>$38C</td><td>cm_Delete</td><td>Удалить файлы</td><td>F8<br>S+F8</td><td>Del<br>S+Del</td><td>&nbsp;</td><td>Если в настройках TC разрешено удаление в Корзину, F8 и Del удаляют файлы туда, а S+F8 и S+Del &ndash; минуя Корзину, если запрещено &ndash; всё наоборот</td></tr>
+<tr><td>518</td><td>$206</td><td>cm_TestArchive</td><td>Протестировать архивы</td><td>AS+F9</td><td>AS+F6</td><td>&nbsp;</td><td>Первый шорткат универсальный, второй не работает в Windows 9x</td></tr>
+<tr><td>508</td><td>$1FC</td><td>cm_PackFiles</td><td>Упаковать файлы (в каталог на другой панели)</td><td>A+F5</td><td>&nbsp;</td><td>&nbsp;</td><td>Как применять эту команду для упаковки файлов в каталог в той же панели, описано ниже в дополнительной таблице</td></tr>
+<tr><td>509</td><td>$1FD</td><td>cm_UnpackFiles</td><td>Распаковать файлы</td><td>A+F9</td><td>A+F6</td><td>&nbsp;</td><td>Первый шорткат универсальный, второй не работает в Windows 9x</td></tr>
+<tr><td>1002</td><td>$3EA</td><td>cm_RenameOnly</td><td>Переименовать</td><td>S+F6</td><td>&nbsp;</td><td>&nbsp;</td><td>В окне редактирования имени в панели &ndash; циклическое переключение способа выделения (имя без расширения/имя+расширение)</td></tr>
+<tr><td>1007</td><td>$3EF</td><td>cm_RenameSingleFile</td><td>Переименовать файл/каталог под курсором</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>1005</td><td>$3ED</td><td>cm_MoveOnly</td><td>Переместить</td><td>F6</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>1003</td><td>$3EB</td><td>cm_Properties</td><td>Свойства (Суммарный размер) </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Для объекта под курсором выполняется как <i>cm_VersionInfo</i> (510), для выделенных объектов &ndash; как <i>cm_GetFileSpace</i> (503)</td></tr>
+<tr><td>1004</td><td>$3EC</td><td>cm_CreateShortcut</td><td>Создать ярлык</td><td>CS+F5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>1001</td><td>$3E9</td><td>cm_Return</td><td>Программный аналог нажатия Enter</td><td>Enter</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2800</td><td>$AF0</td><td>cm_OpenAsUser</td><td>Запуск программы от имени другого пользователя</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>560</td><td>$230</td><td>cm_Split</td><td>Разбить файл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>561</td><td>$231</td><td>cm_Combine</td><td>Собрать файлы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>562</td><td>$232</td><td>cm_Encode</td><td>Кодировать файл (MIME/UUE/XXE)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>563</td><td>$233</td><td>cm_Decode</td><td>Декодировать файл (MIME/UUE/XXE/BinHex/Yenc)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>564</td><td>$234</td><td>cm_CRCcreate</td><td>Посчитать CRC-суммы (форматы CRC32/MD5/SHA1)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>565</td><td>$235</td><td>cm_CRCcheck</td><td>Проверить CRC-суммы (форматы CRC32/MD5/SHA1/SHA256)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>502</td><td>$1F6</td><td>cm_SetAttrib</td><td>Изменить атрибуты</td><td>&nbsp;</td><td>&nbsp;</td><td>A+A</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Настройка_]</td></tr>
+<tr><td>490</td><td>$1EA</td><td>cm_Config</td><td>Настройка: Вид окна</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>486</td><td>$1E6</td><td>cm_DisplayConfig</td><td>Настройка: Содержимое панелей</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>477</td><td>$1DD</td><td>cm_IconConfig</td><td>Настройка: Значки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>492</td><td>$1EC</td><td>cm_FontConfig</td><td>Настройка: Шрифты</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>494</td><td>$1EE</td><td>cm_ColorConfig</td><td>Настройка: Цвета</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>497</td><td>$1F1</td><td>cm_ConfTabChange</td><td>Настройка: Табуляторы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>488</td><td>$1E8</td><td>cm_DirTabsConfig</td><td>Настройка: Вкладки папок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<td>483</td><td>$1E3</td><td>cm_CustomColumnConfig</td><td>Настройка: Наборы колонок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2920</td><td>$B68</td><td>cm_CustomColumnDlg</td><td>Настроить текущий набор колонок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>499</td><td>$1F3</td><td>cm_LanguageConfig</td><td>Настройка: Язык</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td></tr>
+<tr><td>516</td><td>$204</td><td>cm_Config2</td><td>Настройка: Основные операции</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>496</td><td>$1F0</td><td>cm_EditConfig</td><td>Настройка: Правка/Просмотр</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>487</td><td>$1E7</td><td>cm_CopyConfig</td><td>Настройка: Операции с файлами</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>478</td><td>$1DE</td><td>cm_RefreshConfig</td><td>Настройка: Автообновление</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>479</td><td>$1DF</td><td>cm_QuickSearchConfig</td><td>Настройка: Быстрый поиск</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>489</td><td>$1E9</td><td>cm_FtpConfig</td><td>Настройка: FTP</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<td>484</td><td>$1E4</td><td>cm_PluginsConfig</td><td>Настройка: Плагины</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>482</td><td>$1E2</td><td>cm_ThumbnailsConfig</td><td>Настройка: Эскизы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>481</td><td>$1E1</td><td>cm_LogConfig</td><td>Настройка: Файл отчёта</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>480</td><td>$1E0</td><td>cm_IgnoreConfig</td><td>Настройка: Список исключений</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>485</td><td>$1E5</td><td>cm_ZipPackerConfig</td><td>Настройка: Архиватор ZIP</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>491</td><td>$1EB</td><td>cm_PackerConfig</td><td>Настройка: Архиваторы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>495</td><td>$1EF</td><td>cm_Confirmation</td><td>Настройка: Разное</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>493</td><td>$1ED</td><td>cm_ConfigSavePos</td><td>Запомнить позицию</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>498</td><td>$1F2</td><td>cm_ButtonConfig</td><td>Настройка панели инструментов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>580</td><td>$244</td><td>cm_ConfigSaveSettings</td><td>Сохранить настройки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>581</td><td>$245</td><td>cm_ConfigChangeIniFiles</td><td>Правка файлов конфигурации</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>582</td><td>$246</td><td>cm_ConfigSaveDirHistory</td><td>Сохранить историю каталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>700</td><td>$2BC</td><td>cm_ChangeStartMenu</td><td>Настройка меню &quot;Запуск&quot;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Сеть_]</td></tr>
+<tr><td>512</td><td>$200</td><td>cm_NetConnect</td><td>Подключить сетевой диск</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>513</td><td>$201</td><td>cm_NetDisconnect</td><td>Отключить сетевой диск</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>514</td><td>$202</td><td>cm_NetShareDir</td><td>Сделать текущий каталог общим</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>515</td><td>$203</td><td>cm_NetUnshareDir</td><td>Закрыть общий доступ к каталогу</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2204</td><td>$89C</td><td>cm_AdministerServer</td><td>Показать ресурсы администратора (\\server\c$ и пр.)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2203</td><td>$89B</td><td>cm_ShowFileUser</td><td>Показать, кем открыт локальный файл по сети</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Разное_]</td></tr>
+<tr><td>503</td><td>$1F7</td><td>cm_GetFileSpace</td><td>Подсчитать занимаемое место</td><td>C+L</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>505</td><td>$1F9</td><td>cm_VolumeId</td><td>Метка диска</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>510</td><td>$1FE</td><td>cm_VersionInfo</td><td>Свойства (Информация о версии)</td><td>A+Enter</td><td>&nbsp;</td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr><td>511</td><td>$1FF</td><td>cm_ExecuteDOS</td><td>Открыть командную консоль</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>533</td><td>$215</td><td>cm_CompareDirs</td><td>Сравнить каталоги</td><td>S+F2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>536</td><td>$218</td><td>cm_CompareDirsWithSubdirs</td><td>Сравнить каталоги с учётом подкаталогов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2500</td><td>$9C4</td><td>cm_ContextMenu</td><td>Показать контекстное меню</td><td>S+F10</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2927</font></td><td><font class=new>$B6F</font></td><td><font class=new>cm_ContextMenuInternal</font></td><td>Показать контекстное меню внутренних ассоциаций</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2928</font></td><td><font class=new>$B70</font></td><td><font class=new>cm_ContextMenuInternalCursor</font></td><td>Меню внутренних ассоциаций для файла под курсором</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2600</td><td>$A28</td><td>cm_SyncChangeDir</td><td>Синхронное изменение каталогов в панелях</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2700</td><td>$A8C</td><td>cm_EditComment</td><td>Правка комментариев к файлу</td><td>C+Z</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>4001</td><td>$FA1</td><td>cm_FocusLeft</td><td>Поместить курсор в левую панель</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>4002</td><td>$FA2</td><td>cm_FocusRight</td><td>Поместить курсор в правую панель</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>4003</td><td>$FA3</td><td>cm_FocusCmdLine</td><td>Поместить курсор в командную строку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>4004</font></td><td><font class=new>$FA4</font></td><td><font class=new>cm_FocusButtonBar</font></td><td>Установить фокус на панель инструментов</td><td><font class=new>Alt+Shift+F11</font></td><td>&nbsp;</td><td>&nbsp;</td><td>Переход к управлению с клавиатуры</td></tr>
+<tr><td>2014</td><td>$7DE</td><td>cm_CountDirContent</td><td>Подсчёт размеров подкаталогов текущего каталога</td><td>AS+Enter</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2913</td><td>$B61</td><td>cm_UnloadPlugins</td><td>Отключить все плагины</td><td>&nbsp;</td><td>&nbsp;</td><td>A+L</td><td>Действие команды временное, до первого обращения в текущем сеансе к соответствующему плагину</td></tr>
+<tr><td>534</td><td>$216</td><td>cm_DirMatch</td><td>Сравнить каталоги, скрыв одинаковые файлы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>531</td><td>$213</td><td>cm_Exchange</td><td>Поменять местами содержимое панелей (активные вкладки)</td><td>C+U</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>532</td><td>$214</td><td>cm_MatchSrc</td><td>Получатель = Источнику</td><td>&nbsp;</td><td>&nbsp;</td><td>C+J</td><td>&nbsp;</td></tr>
+<tr><td>2918</td><td>$B66</td><td>cm_ReloadSelThumbs</td><td>Обновить выбранные эскизы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Соединение через LPT/USB-порт_]</td></tr>
+<tr><td>2300</td><td>$8FC</td><td>cm_DirectCableConnect</td><td>Установить соединение через LPT/USB-порт</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2301</td><td>$8FD</td><td>cm_NTinstallDriver</td><td>Установить драйвер параллельного порта (NT)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2302</td><td>$8FE</td><td>cm_NTremoveDriver</td><td>Выгрузить драйвер параллельного порта (NT)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Печать_]</td></tr>
+<tr><td>2027</td><td>$7EB</td><td>cm_PrintDir</td><td>Печать списка файлов </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2028</td><td>$7EC</td><td>cm_PrintDirSub</td><td>Печать списка файлов с подкаталогами</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>504</td><td>$1F8</td><td>cm_PrintFile</td><td>Печать содержимого файла</td><td>C+F9</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Выделение_]</td></tr>
+<tr><td>521</td><td>$209</td><td>cm_SpreadSelection</td><td>Выделить группу</td><td>Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение только файлов, работает как 3312, если файлов и папок &ndash; как 3311</td></tr>
+<tr><td>3311</td><td>$CEF</td><td>cm_SelectBoth</td><td>Выделить группу: файлы и папки</td><td>Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3312</td></tr>
+<tr><td>3312</td><td>$CF0</td><td>cm_SelectFiles</td><td>Выделить группу: только файлы</td><td>S+Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3311</td></tr>
+<tr><td>3313</td><td>$CF1</td><td>cm_SelectFolders</td><td>Выделить группу: только папки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>522</td><td>$20A</td><td>cm_ShrinkSelection</td><td>Снять выделение группы (файлы и папки)</td><td>Num-</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение как с файлов, так и с папок</td></tr>
+<tr><td>3314</td><td>$CF2</td><td>cm_ClearFiles</td><td>Снять выделение: только файлы</td><td>S+Num-</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение только с файлов</td></tr>
+<tr><td>3315</td><td>$CF3</td><td>cm_ClearFolders</td><td>Снять выделение: только папки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3316</td><td>$CF4</td><td>cm_ClearSelCfg</td><td>Снять выделение (файлы или всё – как настроено)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>В зависимости от настроек (&quot;Основные операции&quot;) выделяются только файлы или файлы и папки</td></tr>
+<tr><td>523</td><td>$20B</td><td>cm_SelectAll</td><td>Выделить всё (файлы или всё – как настроено)</td><td>C+Num+</td><td>C+A</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение только файлов, работает как 3302, если файлов и папок &ndash; как 3301</td></tr>
+<tr><td>3301</td><td>$CE5</td><td>cm_SelectAllBoth</td><td>Выделить всё: файлы и папки</td><td>C+Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3302</td></tr>
+<tr><td>3302</td><td>$CE6</td><td>cm_SelectAllFiles</td><td>Выделить все файлы</td><td>CS+Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3301</td></tr>
+<tr><td>3303</td><td>$CE7</td><td>cm_SelectAllFolders</td><td>Выделить все папки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>524</td><td>$20C</td><td>cm_ClearAll</td><td>Снять всё выделение (файлы и папки)</td><td>C+Num-</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение как с файлов, так и с папок</td></tr>
+<tr><td>3304</td><td>$CE8</td><td>cm_ClearAllFiles</td><td>Снять выделение со всех файлов</td><td>CS+Num-</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение только с файлов</td></tr>
+<tr><td>3305</td><td>$CE9</td><td>cm_ClearAllFolders</td><td>Снять выделение со всех папок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3306</td><td>$CEA</td><td>cm_ClearAllCfg</td><td>Снять всё выделение (файлы или всё – как настроено)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>В зависимости от настроек (&quot;Основные операции&quot;) снимается выделение только с файлов или с файлов и папок</td></tr>
+<tr><td>525</td><td>$20D</td><td>cm_ExchangeSelection</td><td>Инвертировать выделение</td><td>Num*</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение только файлов, работает как 3322, если файлов и папок &ndash; как 3321</td></tr>
+<tr><td>3321</td><td>$CF9</td><td>cm_ExchangeSelBoth</td><td>Инвертировать выделение (файлы и папки)</td><td>Num*</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3322</td></tr>
+<tr><td>3322</td><td>$CFA</td><td>cm_ExchangeSelFiles</td><td>Инвертировать выделение (файлы)</td><td>S+Num*</td><td>&nbsp;</td><td>&nbsp;</td><td>Если в настройках (&quot;Основные операции&quot;) указано выделение файлов и папок, шорткат работает для этой команды, если только файлов &ndash; для 3321</td></tr>
+<tr><td>3323</td><td>$CFB</td><td>cm_ExchangeSelFolders</td><td>Инвертировать выделение (папки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>527</td><td>$20F</td><td>cm_SelectCurrentExtension</td><td>Выделить файлы/папки по текущему расширению</td><td>A+Num+</td><td>&nbsp;</td><td>&nbsp;</td><td>В зависимости от настроек (&quot;Основные операции&quot;) выделяются только файлы или файлы и папки</td></tr>
+<tr><td>528</td><td>$210</td><td>cm_UnselectCurrentExtension</td><td>Снять выделение по расширению</td><td>A+Num-</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение как с файлов, так и с папок</td></tr>
+<tr><td>541</td><td>$21D</td><td>cm_SelectCurrentName</td><td>Выделить файлы по текущему имени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>В зависимости от настроек (&quot;Основные операции&quot;) выделяются только файлы или файлы и папки</td></tr>
+<tr><td>542</td><td>$21E</td><td>cm_UnselectCurrentName</td><td>Снять выделение по текущему имени</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Независимо от настроек снимается выделение как с файлов, так и с папок</td></tr>
+<tr><td>543</td><td>$21F</td><td>cm_SelectCurrentNameExt</td><td>Выделить файлы по текущему имени+расширению</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Для специальных режимов: файлы без подкаталогов, результаты поиска (в последнем случае в зависимости от настроек выделяются только файлы или файлы и папки)</td></tr>
+<tr><td>544</td><td>$220</td><td>cm_UnselectCurrentNameExt</td><td>Снять выделение по текущему имени+расширению</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Для специальных режимов:  файлы без подкаталогов, результаты поиска (в последнем случае независимо от настроек снимается выделение как с файлов, так и с папок)</td></tr>
+<tr><td>537</td><td>$219</td><td>cm_SelectCurrentPath</td><td>Выделить всё с этим путём</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Для специальных режимов: файлы без подкаталогов, результаты поиска (в последнем случае в зависимости от настроек выделяются только файлы или файлы и папки)</td></tr>
+<tr><td>538</td><td>$21A</td><td>cm_UnselectCurrentPath</td><td>Снять всё выделение с этим путём</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Применяется для специальных режимов: файлы без подкаталогов, результаты поиска (в последнем случае независимо от настроек снимается выделение как с файлов, так и с папок)</td></tr>
+<tr><td>529</td><td>$211</td><td>cm_RestoreSelection</td><td>Восстановить выделение</td><td>Num/</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>530</td><td>$212</td><td>cm_SaveSelection</td><td>Сохранить выделение временно</td><td>&nbsp;</td><td>&nbsp;</td><td>A+S</td><td>&nbsp;</td></tr>
+<tr><td>2031</td><td>$7EF</td><td>cm_SaveSelectionToFile</td><td>Сохранить выделение в файл</td><td>&nbsp;</td><td>&nbsp;</td><td>AS+S</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2041</font></td><td><font class=new>$7F9</font></td><td><font class=new>cm_SaveSelectionToFileA</font></td><td>Сохранить выделение в файл (ANSI)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2042</font></td><td><font class=new>$7FA</font></td><td><font class=new>cm_SaveSelectionToFileW</font></td><td>Сохранить выделение в файл (Unicode)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2039</td><td>$7F7</td><td>cm_SaveDetailsToFile</td><td>Сохранить содержимое всех колонок в файл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2043</font></td><td><font class=new>$7FB</font></td><td><font class=new>cm_SaveDetailsToFileA</font></td><td>Сохранить содержимое всех колонок в файл (ANSI)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>2044</font></td><td><font class=new>$7FC</font></td><td><font class=new>cm_SaveDetailsToFileW</font></td><td>Сохранить содержимое всех колонок в файл (Unicode)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2032</td><td>$7F0</td><td>cm_LoadSelectionFromFile</td><td>Загрузить выделение из файла</td><td>&nbsp;</td><td>&nbsp;</td><td>AS+R</td><td>&nbsp;</td></tr>
+<tr><td>2033</td><td>$7F1</td><td>cm_LoadSelectionFromClip</td><td>Загрузить выделение из буфера</td><td>&nbsp;</td><td>&nbsp;</td><td>F12</td><td>Сохранённое ранее по команде 2017, 2018 или 2021</td></tr>
+<tr class=stl><td colspan=8>[_Безопасность_]</td></tr>
+<tr><td>2200</td><td>$898</td><td>cm_EditPermissionInfo</td><td>Изменение прав доступа (NTFS)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Не работает в Windows Vista/7</td></tr>
+<tr><td>2201</td><td>$899</td><td>cm_EditAuditInfo</td><td>Аудит файлов (NTFS)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Не работает в Windows Vista/7</td></tr>
+<tr><td>2202</td><td>$89A</td><td>cm_EditOwnerInfo</td><td>Стать владельцем (NTFS)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Не работает в Windows Vista/7</td></tr>
+<tr class=stl><td colspan=8>[_Буфер_обмена_]</td></tr>
+<tr><td>2007</td><td>$7D7</td><td>cm_CutToClipboard</td><td>Вырезать выбранные файлы в буфер</td><td>C+X</td><td><font class="select">&nbsp;</font></td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr><td>2008</td><td>$7D8</td><td>cm_CopyToClipboard</td><td>Копировать выбранные файлы в буфер</td><td>C+C</td><td>C+Ins</td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr><td>2009</td><td>$7D9</td><td>cm_PasteFromClipboard</td><td>Вставить из буфера в текущий каталог</td><td>C+V</td><td><font class="select">S+Ins*</font></td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr><td>2017</td><td>$7E1</td><td>cm_CopyNamesToClip</td><td>Копировать в буфер имена файлов</td><td>&nbsp;</td><td>&nbsp;</td><td>F11</td><td>&nbsp;</td></tr>
+<tr><td>2018</td><td>$7E2</td><td>cm_CopyFullNamesToClip</td><td>Копировать в буфер имена с путями</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2021</td><td>$7E5</td><td>cm_CopyNetNamesToClip</td><td>Копировать в буфер имена с UNC-путями</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2029</td><td>$7ED</td><td>cm_CopySrcPathToClip</td><td>Копировать в буфер путь источника</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2030</td><td>$7EE</td><td>cm_CopyTrgPathToClip</td><td>Копировать в буфер путь получателя</td><td>&nbsp;</td><td>&nbsp;</td><td>S+F12</td><td>&nbsp;</td></tr>
+<tr><td>2036</td><td>$7F4</td><td>cm_CopyFileDetailsToClip</td><td>Копировать содержимое всех колонок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2037</td><td>$7F5</td><td>cm_cm_CopyFpFileDetailsToClip</td><td>Копировать все колонки (полные пути)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2038</td><td>$7F6</td><td>cm_CopyNetFileDetailsToClip</td><td>Копировать все колонки (UNC-пути)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_FTP_]</td></tr>
+<tr><td>550</td><td>$226</td><td>cm_FtpConnect</td><td>Соединиться с FTP-сервером</td><td>C+F</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>551</td><td>$227</td><td>cm_FtpNew</td><td>Новое FTP-соединение</td><td>C+N</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>552</td><td>$228</td><td>cm_FtpDisconnect</td><td>Разорвать FTP-соединение</td><td>CS+F</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>553</td><td>$229</td><td>cm_FtpHiddenFiles</td><td>Показывать скрытые файлы на сервере</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>554</td><td>$22A</td><td>cm_FtpAbort</td><td>Прервать текущую FTP-команду</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>555</td><td>$22B</td><td>cm_FtpResumeDownload</td><td>Возобновить прерванную загрузку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>556</td><td>$22C</td><td>cm_FtpSelectTransferMode</td><td>Выбор режима Авто/Двоичный/Текстовый</td><td>CS+M</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>557</td><td>$22D</td><td>cm_FtpAddToList</td><td>Добавить выделенные файлы в список загрузок</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>558</td><td>$22E</td><td>cm_FtpDownloadList</td><td>FTP-загрузка по списку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Навигация_]</td></tr>
+<tr><td>570</td><td>$23A</td><td>cm_GotoPreviousDir</td><td>Назад</td><td>A+влево</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>571</td><td>$23B</td><td>cm_GotoNextDir</td><td>Вперёд</td><td>A+вправо</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>572</td><td>$23C</td><td>cm_DirectoryHistory</td><td>История каталогов</td><td>A+вниз</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>526</td><td>$20E</td><td>cm_DirectoryHotlist</td><td>Избранные каталоги</td><td>C+D</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>573</td><td>$23D</td><td>cm_GotoPreviousLocalDir</td><td>Назад с пропуском FTP</td><td>&nbsp</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>574</td><td>$23E</td><td>cm_GotoNextLocalDir</td><td>Вперёд с пропуском FTP</td><td>&nbsp</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2001</td><td>$7D1</td><td>cm_GoToRoot</td><td>Перейти в корневой каталог диска</td><td>C+\</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2002</td><td>$7D2</td><td>cm_GoToParent</td><td>Перейти в родительский каталог</td><td>C+PgUp</td><td>Backspace</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2003</td><td>$7D3</td><td>cm_GoToDir</td><td>Открыть каталог/архив под курсором</td><td>C+PgDn</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2121</td><td>$849</td><td>cm_OpenDesktop</td><td>Рабочий стол</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2122</td><td>$84A</td><td>cm_OpenDrives</td><td>Мой компьютер</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2123</td><td>$84B</td><td>cm_OpenControls</td><td>Панель управления</td><td>&nbsp;</td><td>&nbsp;</td><td>A+T</td><td>&nbsp;</td></tr>
+<tr><td>2124</td><td>$84C</td><td>cm_OpenFonts</td><td>Шрифты</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2125</td><td>$84D</td><td>cm_OpenNetwork</td><td>Сетевое окружение</td><td>&nbsp;</td><td>&nbsp;</td><td>A+R</td><td>&nbsp;</td></tr>
+<tr><td>2126</td><td>$84E</td><td>cm_OpenPrinters</td><td>Принтеры</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2127</td><td>$84F</td><td>cm_OpenRecycled</td><td>Корзина</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>500</td><td>$1F4</td><td>cm_CDtree</td><td>Дерево каталогов</td><td>A+F10</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2024</td><td>$7E8</td><td>cm_TransferLeft</td><td>Открыть каталог/архив под курсором в левой панели</td><td>C+влево</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2025</td><td>$7E9</td><td>cm_TransferRight</td><td>Открыть каталог/архив под курсором в правой панели</td><td>C+вправо</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2912</td><td>$B60</td><td>cm_EditPath</td><td>Редактировать путь в заголовке панели</td><td>&nbsp;</td><td>&nbsp;</td><td>A+вверх</td><td>&nbsp;</td></tr>
+<tr><td>2050</td><td>$802</td><td>cm_GoToFirstFile</td><td>Поместить курсор на первый файл в списке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2051</td><td>$803</td><td>cm_GotoNextDrive</td><td>Переход к следующему диску <nobr>(C&ndash;&gt;D)</nobr></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2052</td><td>$804</td><td>cm_GotoPreviousDrive</td><td>Переход к предыдущему диску <nobr>(C&lt;&ndash;D)</nobr></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2053</td><td>$805</td><td>cm_GotoNextSelected</td><td>Переход к следующему выделенному файлу</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2054</td><td>$806</td><td>cm_GotoPrevSelected</td><td>Переход к предыдущему выделенному файлу</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2061</td><td>$80D</td><td>cm_GotoDriveA</td><td>Переключиться на диск A</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2063</td><td>$80F</td><td>cm_GotoDriveC</td><td>Переключиться на диск C</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2064</td><td>$810</td><td>cm_GotoDriveD</td><td>Переключиться на диск D</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2065</td><td>$811</td><td>cm_GotoDriveE</td><td>Переключиться на диск E</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2066</td><td>$812</td><td>cm_GotoDriveF</td><td>Переключиться на диск F<br> и т.&nbsp;д.</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Добавьте нужные команды самостоятельно, если вам требуется большее число дисков</td></tr>
+<tr><td>2086</td><td>$826</td><td>cm_GotoDriveZ</td><td>Переключиться на диск Z</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Помощь_]</td></tr>
+<tr><td>610</td><td>$262</td><td>cm_HelpIndex</td><td>Справка (содержание)</td><td>F1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>620</td><td>$26C</td><td>cm_Keyboard</td><td>Справка по горячим клавишам</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>630</td><td>$276</td><td>cm_Register</td><td>Информация о регистрации</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>640</td><td>$280</td><td>cm_VisitHomepage</td><td>Посетить сайт Total Commander</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>690</td><td>$2B2</td><td>cm_About</td><td>О программе Total Commander</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Окно_программы_]</td></tr>
+<tr><td>24340</td><td>$5F14</td><td>cm_Exit</td><td>Закрыть окно TC</td><td>A+F4</td><td><font class=select>A+X</font></td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2000</td><td>$7D0</td><td>cm_Minimize</td><td>Свернуть окно TC</td><td>S+Esc</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2015</td><td>$7DF</td><td>cm_Maximize</td><td>Развернуть окно TC</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2016</td><td>$7E0</td><td>cm_Restore</td><td>Восстановить окно TC</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Командная_строка_]</td></tr>
+<tr><td>2004</td><td>$7D4</td><td>cm_ClearCmdLine</td><td>Очистить командную строку</td><td>C+Y</td><td>Esc</td><td>&nbsp;</td><td>Действие шорткатов не тождественно: первый оставляет курсор в командной строке, второй возвращает в файловую панель</td></tr>
+<tr><td>2005</td><td>$7D5</td><td>cm_NextCommand</td><td>Следующая сохранённая команда</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2006</td><td>$7D6</td><td>cm_PrevCommand</td><td>Предыдущая сохранённая команда</td><td>C+E</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2019</td><td>$7E3</td><td>cm_AddPathToCmdline</td><td>Копировать путь в командную строку</td><td>C+P</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Инструменты_]</td></tr>
+<tr><td>2400</td><td>$960</td><td>cm_MultiRenameFiles</td><td>Групповое переименование</td><td>C+M</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>506</td><td>$1FA</td><td>cm_SysInfo</td><td>Информация о системе</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>559</td><td>$22F</td><td>cm_OpenTransferManager</td><td>Диспетчер фоновой пересылки</td><td>&nbsp;</td><td>&nbsp;</td><td>C+O</td><td>&nbsp;</td></tr>
+<tr><td>501&nbsp;</font></td><td>$1F5</font></td><td>cm_SearchFor</td><td>Поиск файлов</td><td>A+F7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2020</td><td>$7E4</td><td>cm_FileSync</td><td>Синхронизировать каталоги</td><td>&nbsp;</td><td>&nbsp;</td><td>A+D</td><td>&nbsp;</td></tr>
+<tr><td>507</td><td>$1FB</td><td>cm_Associate</td><td>Открыть с помощью... (Файловые ассоциации)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>519</td><td>$207</td><td>cm_InternalAssociate</td><td>Настройка внутренних ассоциаций TC</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2022</td><td>$7E6</td><td>cm_CompareFilesByContent</td><td>Сравнить файлы по содержимому</td><td>&nbsp;</td><td>&nbsp;</td><td>A+C</td><td>&nbsp;</td></tr>
+<tr><td>2040</td><td>$7F8</td><td>cm_IntCompareFilesByContent</td><td>Сравнить файлы внутренним инструментом</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2924</td><td>$B6C</td><td>cm_CommandBrowser</td><td>Список встроенных и пользовательских команд</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Вид_]</td></tr>
+<tr><td>2901</td><td>$B55</td><td>cm_VisButtonbar</td><td>Панель инструментов: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>A+B</td><td>&nbsp;</td></tr>
+<tr><td>2902</td><td>$B56</td><td>cm_VisDriveButtons</td><td>Кнопки дисков: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2903</td><td>$B57</td><td>cm_VisTwoDriveButtons</td><td>Панели выбора дисков: одна/две</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2904</td><td>$B58</td><td>cm_VisFlatdriveButtons</td><td>Кнопки дисков: плоские/обычные</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2905</td><td>$B59</td><td>cm_VisFlatInterface</td><td>Интерфейс основного окна: плоский/обычный</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2906</td><td>$B5A</td><td>cm_VisDriveCombo</td><td>Окно выбора дисков: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2907</td><td>$B5B</td><td>cm_VisCurDir</td><td>Имя текущего каталога: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2926</td><td>$B6E</td><td>cm_VisBreadCrumbs</td><td>Цепочки навигации: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2908</td><td>$B5C</td><td>cm_VisTabheader</td><td>Заголовки табуляторов: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2909</td><td>$B5D</td><td>cm_VisStatusbar</td><td>Строка состояния: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2910</td><td>$B5E</td><td>cm_VisCmdLine</td><td>Командная строка: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2911</td><td>$B5F</td><td>cm_VisKeyButtons</td><td>Функциональные кнопки: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>A+K</td><td>&nbsp;</td></tr>
+<tr><td>2914</td><td>$B62</td><td>cm_ShowHint</td><td>Показать всплывающую подсказку для файла/папки</td><td>&nbsp;</td><td>&nbsp;</td><td>A+I</td><td>&nbsp;</td></tr>
+<tr><td>2915</td><td>$B63</td><td>cm_ShowQuickSearch</td><td>Вывести диалог быстрого поиска/фильтрации в текущем каталоге</td><td>CA+буква<br>A+буква<br>Буква</td><td>&nbsp;</td><td>A+Q</td><td>Способ вызова поиска можно изменить в настройках TC; рекомендуется выбрать там &quot;Отключён&quot;, а для для вызова команды пользоваться Alt+Q. Состояние быстрого фильтра в открывшемся диалоге задаётся ключом <i>QuickSearchAutoFilter</i>.</td></tr>
+<tr><td>2010</td><td>$7DA</td><td>cm_SwitchLongNames</td><td>Показ длинных имен: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>540</td><td>$21C</td><td>cm_RereadSource</td><td>Обновить содержимое панели</td><td>F2</td><td>C+R</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2023</td><td>$7E7</td><td>cm_ShowOnlySelected</td><td>Показать только выделенные</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2011</td><td>$7DB</td><td>cm_SwitchHidSys</td><td>Показ скрытых/системных файлов: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>C+H</td><td>&nbsp;</td></tr>
+<tr><td>2013</td><td>$7DD</td><td>cm_Switch83Names</td><td>Имена формата 8.3 в нижнем регистре: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2012</td><td>$7DC</td><td>cm_SwitchDirSort</td><td>Сортировать каталоги: по имени/как файлы</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2026</td><td>$7EA</td><td>cm_DirBranch</td><td>Показ файлов без подкаталогов</td><td>C+B</td><td>&nbsp;</td><td>&nbsp;</td><td>Вариант для активной панели. Для левой и правой панели см., соответственно, 2034 и 2035</td></tr>
+<tr><td><font class=new>2046</font></td><td><font class=new>$7FE</font></td><td><font class=new>cm_DirBranchSel</font></td><td>Показ файлов без подкаталогов (только в выделенном)</td><td><font class=new>CS+B</font></td><td>&nbsp;</td><td>&nbsp;</td><td>Вариант для активной панели. Для левой и правой панели см., соответственно, 2047 и 2048</td></tr>
+<tr><td>909</td><td>$38D</td><td>cm_50Percent</td><td>Файловые панели равного размера</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2916</td><td>$B64</td><td>cm_VisDirTabs</td><td>Использовать вкладки папок: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>A+W</td><td>&nbsp;</td></tr>
+<tr><td>2923</td><td>$B6B</td><td>cm_VisXPThemeBackground</td><td>Тема Windows XP для фона: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2917</td><td>$B65</td><td>cm_SwitchOverlayIcons</td><td>Показывать оверлейные (наложенные) значки: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2919</td><td>$B67</td><td>cm_VisHistHotButtons</td><td>Кнопки истории и избранных каталогов: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2921</td><td>$B69</td><td>cm_SwitchWatchDirs</td><td>Слежение за каталогами: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2922</td><td>$B6A</td><td>cm_SwitchIgnoreList</td><td>Функция исключений файловых имён: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2925</td><td>$B6D</td><td>cm_SwitchX64Redirection</td><td>x64: Перенаправление System32 &ndash;> SysWOW64: выкл/вкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3200</td><td>$C80</td><td>cm_SeparateTreeOff</td><td>Не показывать дерево в отдельной панели</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3201</td><td>$C81</td><td>cm_SeparateTree1</td><td>Одиночное дерево в отдельной панели</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3202</td><td>$C82</td><td>cm_SeparateTree2</td><td>Два дерева в отдельных панелях</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3203</td><td>$C83</td><td>cm_SwitchSeparateTree</td><td>Выбор режима дерева в отдельной панели (0/1/2)</td><td>CS+F8</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3204</td><td>$C84</td><td>cm_ToggleSeparateTree1</td><td>Одиночное дерево в отдельной панели: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3205</td><td>$C85</td><td>cm_ToggleSeparateTree2</td><td>Два дерева в отдельных панелях: вкл/выкл</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Меню &quot;Запуск&quot;_]</td></tr>
+<tr><td>701</td><td>$2BD</td><td>cm_UserMenu1</td><td>Запустить пункт 1 меню &quot;Запуск&quot;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>В TC 7.0 и выше рекомендуется перейти на пользовательские команды <i>(em_)</i></td></tr>
+<tr><td>702</td><td>$2BE</td><td>cm_UserMenu2</td><td>Запустить пункт 2 меню &quot;Запуск&quot;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>703</td><td>$2BF</td><td>cm_UserMenu3</td><td>Запустить пункт 3 меню &quot;Запуск&quot;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>704</td><td>$2C0</td><td>cm_UserMenu4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>705</td><td>$2C1</td><td>cm_UserMenu5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>706</td><td>$2C2</td><td>cm_UserMenu6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>707</td><td>$2C3</td><td>cm_UserMenu7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>708</td><td>$2C4</td><td>cm_UserMenu8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>709</td><td>$2C5</td><td>cm_UserMenu9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>710</td><td>$2C6</td><td>cm_UserMenu10</td><td>и т.&nbsp;д., вплоть до пункта 198</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Если вам нужно больше команд, добавьте их самостоятельно</td></tr>
+<tr class=stl><td colspan=8>[_Вкладки_]</td></tr>
+<tr><td>3001</td><td>$BB9</td><td>cm_OpenNewTab</td><td>Открыть новую вкладку для текущей папки</td><td>C+T</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3002</td><td>$BBA</td><td>cm_OpenNewTabBg</td><td>Открыть новую фоновую вкладку</td><td>CS+T</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3003</td><td>$BBB</td><td>cm_OpenDirInNewTab</td><td>Открыть папку под курсором в новой вкладке</td><td>C+вверх</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3004</td><td>$BBC</td><td>cm_OpenDirInNewTabOther</td><td>Открыть папку под курсором в новой вкладке на другой панели</td><td>CS+вверх</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3005</td><td>$BBD</td><td>cm_SwitchToNextTab</td><td>Переход на следующую вкладку</td><td>C+Tab</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3006</td><td>$BBE</td><td>cm_SwitchToPreviousTab</td><td>Переход на предыдущую вкладку</td><td>CS+Tab</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3007</td><td>$BBF</td><td>cm_CloseCurrentTab</td><td>Закрыть вкладку</td><td>C+W</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3008</td><td>$BC0</td><td>cm_CloseAllTabs</td><td>Закрыть все вкладки</td><td>CS+W</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3009</td><td>$BC1</td><td>cm_DirTabsShowMenu</td><td>Показать меню вкладки</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3010</td><td>$BC2</td><td>cm_ToggleLockCurrentTab</td><td>Заблокировать/Разблокировать вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3012</td><td>$BC4</td><td>cm_ToggleLockDcaCurrentTab</td><td>То же, но с возможностью смены каталога</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>535</td><td>$217</td><td>cm_ExchangeWithTabs</td><td>Поменять местами содержимое панелей (все вкладки)</td><td>CS+U</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3011</td><td>$BC3</td><td>cm_GoToLockedDir</td><td>Перейти в корень заблокированной вкладки</td><td>C+\</td><td>&nbsp;</td><td>&nbsp;</td><td>Если <i>LockedGoToDriveRoot=0</i>, в противном случае выполняется аналогично <i>cm_GoToRoot</i> (2001)</td></tr>
+<tr><td colspan=8> Активная панель (источник)</td></tr>
+<tr><td>5001</td><td>$1389</td><td>cm_SrcActivateTab1</td><td>Активизировать первую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Почему автор не заменил все эти команды на одну с параметром, непонятно :-/</td></tr>
+<tr><td>5002</td><td>$138A</td><td>cm_SrcActivateTab2</td><td>Активизировать вторую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5003</td><td>$138B</td><td>cm_SrcActivateTab3</td><td>Активизировать третью вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5004</td><td>$138C</td><td>cm_SrcActivateTab4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5005</td><td>$138D</td><td>cm_SrcActivateTab5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5006</td><td>$138E</td><td>cm_SrcActivateTab6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5007</td><td>$138F</td><td>cm_SrcActivateTab7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5008</td><td>$1390</td><td>cm_SrcActivateTab8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5009</td><td>$1391</td><td>cm_SrcActivateTab9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5010</td><td>$1392</td><td>cm_SrcActivateTab10</td><td>и т.&nbsp;д. (вплоть до 99-й вкладки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Неактивная панель (получатель)</td></tr>
+<tr><td>5101</td><td>$13ED</td><td>cm_TrgActivateTab1</td><td>Активизировать первую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5102</td><td>$13EE</td><td>cm_TrgActivateTab2</td><td>Активизировать вторую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5103</td><td>$13EF</td><td>cm_TrgActivateTab3</td><td>Активизировать третью вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5104</td><td>$13F0</td><td>cm_TrgActivateTab4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5105</td><td>$13F1</td><td>cm_TrgActivateTab5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5106</td><td>$13F2</td><td>cm_TrgActivateTab6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5107</td><td>$13F3</td><td>cm_TrgActivateTab7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5108</td><td>$13F4</td><td>cm_TrgActivateTab8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5109</td><td>$13F5</td><td>cm_TrgActivateTab9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Левая панель</td></tr>
+<tr><td>5110</td><td>$13F6</td><td>cm_TrgActivateTab10</td><td>и т.&nbsp;д. (вплоть до 99-й вкладки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5201</td><td>$1451</td><td>cm_LeftActivateTab1</td><td>Активизировать первую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5202</td><td>$1452</td><td>cm_LeftActivateTab2</td><td>Активизировать вторую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5203</td><td>$1453</td><td>cm_LeftActivateTab3</td><td>Активизировать третью вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5204</td><td>$1454</td><td>cm_LeftActivateTab4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5205</td><td>$1455</td><td>cm_LeftActivateTab5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5206</td><td>$1456</td><td>cm_LeftActivateTab6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5207</td><td>$1457</td><td>cm_LeftActivateTab7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5208</td><td>$1458</td><td>cm_LeftActivateTab8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5209</td><td>$1459</td><td>cm_LeftActivateTab9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5210</td><td>$145A</td><td>cm_LeftActivateTab10</td><td>и т.&nbsp;д. (вплоть до 99-й вкладки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Правая панель</td></tr>
+<tr><td>5301</td><td>$14B5</td><td>cm_RightActivateTab1</td><td>Активизировать первую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5302</td><td>$14B6</td><td>cm_RightActivateTab2</td><td>Активизировать вторую вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5303</td><td>$14B7</td><td>cm_RightActivateTab3</td><td>Активизировать третью вкладку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5304</td><td>$14B8</td><td>cm_RightActivateTab4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5305</td><td>$14B9</td><td>cm_RightActivateTab5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5306</td><td>$14BA</td><td>cm_RightActivateTab6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5307</td><td>$14BB</td><td>cm_RightActivateTab7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5308</td><td>$14BC</td><td>cm_RightActivateTab8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5309</td><td>$14BD</td><td>cm_RightActivateTab9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5310</td><td>$14BE</td><td>cm_RightActivateTab10</td><td>и т.&nbsp;д. (вплоть до 99-й вкладки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Сортирующие колонки_]</td></tr>
+<tr><td colspan=8> Активная панель (источник)</td></tr>
+<tr><td>6001</td><td>$1771</td><td>cm_SrcSortByCol1</td><td>Сортировать по первой колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Почему автор не заменил все эти команды на одну с параметром, непонятно :-/</td></tr>
+<tr><td>6002</td><td>$1772</td><td>cm_SrcSortByCol2</td><td>Сортировать по второй колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6003</td><td>$1773</td><td>cm_SrcSortByCol3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6004</td><td>$1774</td><td>cm_SrcSortByCol4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6005</td><td>$1775</td><td>cm_SrcSortByCol5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6006</td><td>$1776</td><td>cm_SrcSortByCol6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6007</td><td>$1777</td><td>cm_SrcSortByCol7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6008</td><td>$1778</td><td>cm_SrcSortByCol8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6009</td><td>$1779</td><td>cm_SrcSortByCol9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6010</td><td>$177A</td><td>cm_SrcSortByCol10</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6099</td><td>$17D3</td><td>cm_SrcSortByCol99</td><td>и т.&nbsp;д. (вплоть до 99-й колонки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Неактивная панель (получатель)</td></tr>
+<tr><td>6101</td><td>$17D5</td><td>cm_TrgSortByCol1</td><td>Сортировать по первой колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6102</td><td>$17D6</td><td>cm_TrgSortByCol2</td><td>Сортировать по второй колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6103</td><td>$17D7</td><td>cm_TrgSortByCol3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6104</td><td>$17D8</td><td>cm_TrgSortByCol4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6105</td><td>$17D9</td><td>cm_TrgSortByCol5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6106</td><td>$17DA</td><td>cm_TrgSortByCol6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6107</td><td>$17DB</td><td>cm_TrgSortByCol7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6108</td><td>$17DC</td><td>cm_TrgSortByCol8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6109</td><td>$17DD</td><td>cm_TrgSortByCol9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6110</td><td>$17DE</td><td>cm_TrgSortByCol10</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6199</td><td>$1837</td><td>cm_TrgSortByCol99</td><td>и т.&nbsp;д. (вплоть до 99-й колонки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Левая панель</td></tr>
+<tr><td>6201</td><td>$1839</td><td>cm_LeftSortByCol1</td><td>Сортировать по первой колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6202</td><td>$183A</td><td>cm_LeftSortByCol2</td><td>Сортировать по второй колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6203</td><td>$183B</td><td>cm_LeftSortByCol3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6204</td><td>$183C</td><td>cm_LeftSortByCol4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6205</td><td>$183D</td><td>cm_LeftSortByCol5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6206</td><td>$183E</td><td>cm_LeftSortByCol6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6207</td><td>$183F</td><td>cm_LeftSortByCol7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6208</td><td>$1840</td><td>cm_LeftSortByCol8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6209</td><td>$1841</td><td>cm_LeftSortByCol9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6210</td><td>$1842</td><td>cm_LeftSortByCol10</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6299</td><td>$189B</td><td>cm_LeftSortByCol99</td><td>и т.&nbsp;д. (вплоть до 99-й колонки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Правая панель</td></tr>
+<tr><td>6301</td><td>$189D</td><td>cm_RightSortByCol1</td><td>Сортировать по первой колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6302</td><td>$189E</td><td>cm_RightSortByCol2</td><td>Сортировать по второй колонке</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6303</td><td>$189E</td><td>cm_RightSortByCol3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6304</td><td>$189F</td><td>cm_RightSortByCol4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6305</td><td>$18A1</td><td>cm_RightSortByCol5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6306</td><td>$18A2</td><td>cm_RightSortByCol6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6307</td><td>$18A3</td><td>cm_RightSortByCol7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6308</td><td>$18A4</td><td>cm_RightSortByCol8</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6309</td><td>$18A5</td><td>cm_RightSortByCol9</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6310</td><td>$18A6</td><td>cm_RightSortByCol10</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>6399</td><td>$18FF</td><td>cm_RightSortByCol99</td><td>и т.&nbsp;д. (вплоть до 99-й колонки)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=8>[_Пользовательские_наборы_колонок_]</td></tr>
+<tr><td colspan=8> Активная панель (источник)</td></tr>
+<tr><td>271</td><td>$10F</td><td>cm_SrcCustomView1</td><td>Пользовательский набор 1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>Почему автор не заменил все эти команды на одну с параметром, непонятно :-/</td></tr>
+<tr><td>272</td><td>$110</td><td>cm_SrcCustomView2</td><td>Пользовательский набор 2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>273</td><td>$111</td><td>cm_SrcCustomView3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>274</td><td>$112</td><td>cm_SrcCustomView4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>275</td><td>$113</td><td>cm_SrcCustomView5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>276</td><td>$114</td><td>cm_SrcCustomView6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>277</td><td>$115</td><td>cm_SrcCustomView7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>278</td><td>$116</td><td>cm_SrcCustomView8</td><td>и т.&nbsp;д., вплоть до 29-го набора</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>279</td><td>$117</td><td>cm_SrcCustomView9</td><td><font class=new>(наборы 30-99 задаются командами 7530-7599)</font></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Левая панель</td></tr>
+<tr><td>71</td><td>$47</td><td>cm_LeftCustomView1</td><td>Пользовательский набор 1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>72</td><td>$48</td><td>cm_LeftCustomView2</td><td>Пользовательский набор 2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>73</td><td>$49</td><td>cm_LeftCustomView3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>74</td><td>$4A</td><td>cm_LeftCustomView4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>75</td><td>$4B</td><td>cm_LeftCustomView5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>76</td><td>$4C</td><td>cm_LeftCustomView6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>77</td><td>$4D</td><td>cm_LeftCustomView7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>78</td><td>$4E</td><td>cm_LeftCustomView8</td><td>и т.&nbsp;д., вплоть до 29-го набора</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>79</td><td>$4F</td><td>cm_LeftCustomView9</td><td><font class=new>(наборы 30-99 задаются командами 6530-6599)</font></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8> Правая панель</td></tr>
+<tr><td>171</td><td>$AB</td><td>cm_RightCustomView1</td><td>Пользовательский набор 1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>172</td><td>$AC</td><td>cm_RightCustomView2</td><td>Пользовательский набор 2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>173</td><td>$AD</td><td>cm_RightCustomView3</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>174</td><td>$AE</td><td>cm_RightCustomView4</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>175</td><td>$AF</td><td>cm_RightCustomView5</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>176</td><td>$B0</td><td>cm_RightCustomView6</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>177</td><td>$B1</td><td>cm_RightCustomView7</td><td>...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>178</td><td>$B2</td><td>cm_RightCustomView8</td><td>и т.&nbsp;д., вплоть до 29-го набора</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>179</td><td>$B3</td><td>cm_RightCustomView9</td><td><font class=new>(наборы 30-99 задаются командами 7030-7099)</font></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8>Пошаговый переход</td></tr>
+<tr><td>5501</td><td>$157D</td><td>cm_SrcNextCustomView</td><td>Активная: Следующий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5502</td><td>$157E</td><td>cm_SrcPrevCustomView</td><td>Активная: Предыдущий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5503</td><td>$157F</td><td>cm_TrgNextCustomView</td><td>Неактивная: Следующий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5504</td><td>$1580</td><td>cm_TrgPrevCustomView</td><td>Неактивная: Предыдущий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5505</td><td>$1581</td><td>cm_LeftNextCustomView</td><td>Левая: Следующий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5506</td><td>$1582</td><td>cm_LeftPrevCustomView</td><td>Левая: Предыдущий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5507</td><td>$1583</td><td>cm_RightNextCustomView</td><td>Правая: Следующий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5508</td><td>$1584</td><td>cm_RightPrevCustomView</td><td>Правая: Предыдущий набор</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td colspan=8>Поля по запросу</td></tr>
+<tr><td><font class=new>5512</font</td><td><font class=new>$1588</font></td><td><font class=new>cm_LoadAllOnDemandFields</font></td><td>Загрузить для всех файлов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>5513</font></td><td><font class=new>$1589</font</td><td><font class=new>cm_LoadSelOnDemandFields</font></td><td>Загрузить для выбранных файлов</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td><font class=new>5514</font></td><td><font class=new>$158A</font></td><td><font class=new>cm_ContentStopLoadFields</font</td><td>Остановить загрузку</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+
+<font class=cmt>Все вышеперечисленные команды можно применять не только в главном меню, но также в пользовательских меню (&quot;Запуск&quot;, избранных каталогов), в панели инструментов, вызывать шорткатами, а начиная с TC 7.0 &ndash; из командной строки. Форма записи команды может быть как строковой, так и числовой, за исключением командной строки, где Гислер решил поддерживать только строковый формат.
+</font>
+<P><font class=head><a name="ExtCmd"></a>Пользовательские команды и псевдонимы</font><br>
+<font class=cmt>В дополнение к стандартному набору встроенных команд формата <b>cm_NNN</b> вы можете создавать и сохранять в файле <b>usercmd.ini</b> пользовательские команды формата <b>em_NNN</b> для вызова программ и команд с нужными параметрами, после чего применять их точно так же, как и встроенные. Пользовательские команды создаются с помощью диалогового окна &quot;Выбор команды&quot;. Чтобы упростить его вызов, рекомендуется создать кнопку на панели инструментов или шорткат для команды <b>cm_CommandBrowser</b>. В открывшемся окне нужно выбрать категорию <b>usercmd.ini</b>, после чего станут доступны дополнительные кнопки для работы с этим классом команд. Подробности описаны в справке TC.
+<br>Помимо общего файла <b>usercmd.ini</b>, используемого при любом языке интерфейса, для сохранения пользовательских команд может применяться специфичный только для данного языка файл <b>wcmd_LNG.ini</b> (например, <b>wcmd_rus.ini</b> для русского языка).
+<br>Возможность включать пользовательские команды в любую часть главного меню позволяет полностью отказаться от команд <b>cm_UserMenuN</b>, применение которых ограничено меню &quot;Запуск&quot; и в целом гораздо менее удобно.<br>
+Пользовательские команды могут содержать не только строковые (<b>em_NNN</b>), но и числовые значения встроенных команд.
+<br>Для использования в командной строке можно на странице конфигурации &quot;Разное&quot; сопоставлять командам вида <b>cm_NNN</b> и <b>em_NNN</b> псевдонимы. Например, сохраняемая в файле <b>wincmd.ini</b> строка <b>cf=cm_Config</b> задаёт псевдоним <b>cf</b>, вызывающий внутреннюю команду <b>cm_Config</b>.
+</font>
+<P><font class=head><a name="ParamCmd"></a>Команды, воспринимающие параметры</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>DEC</td><td>HEX</td><td width="20%">String</td><td>Описание команды</td></tr>
+<tr><td><nobr><b>903</b> имя_файла</nobr></td><td><nobr><b>$387</b> имя_файла</nobr></td><td><b>cm_List</b> имя_файла</td><td>Внутренний просмотр указанного файла (при любых настройках просмотра). Для числовых команд имя файла надо указывать в поле &quot;Параметры&quot;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>appendtabs</b> имя_файла</td><td>Загрузить набор вкладок из TAB-файла, дополнив текущий набор. Простейший способ выполнения: нажать Enter на TAB-файле. Команда без параметра вызывает диалог открытия файла. Чтобы добавить вкладки слева/справа, добавьте к имени команды, соответственно, L или R
+</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>opentabs</b> имя_файла</td><td>Загрузить набор вкладок из TAB-файла, заменив текущий набор. Простейший способ выполнения: нажать S+Enter на TAB-файле. Команда без параметра вызывает диалог открытия файла. Чтобы открыть вкладки слева/справа, добавьте к имени команды, соответственно, L или R</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>cd</b> имя_каталога или <b>cd</b> имя_архива</td><td>Перейти к указанному каталогу или открыть архив. Можно также добавить имя файла (на него установится курсор) или маску для фильтрации (в каталоге отобразятся только файлы с указанным расширением).<br>
+С помощью параметра &quot;/user:&quot; (в нижнем регистре!) можно задать логин/пароль для соединения с сетевым каталогом, например, <b>cd</b> \\сервер\каталог /user:имя_пользователя
+</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><nobr><b>cd</b> ftp://имя_сервера</nobr></td><td>Открыть FTP-соединение с указанным сервером</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>ftpopen</b> имя_соединения</td><td>Открыть FTP-соединение с именем, заданным в диалоговом окне &quot;Cоединение с FTP-сервером&quot;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>syncopen</b> имя_шаблона </td><td>Открыть сохранённые параметры синхронизации, используя имя шаблона, сохранённого ранее в диалоговом окне &quot;Cинхронизация каталогов&quot;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>loadsearch</b> имя_шаблона</td><td>Открыть сохранённые параметры поиска, используя имя шаблона, сохранённого ранее в диалоговом окне &quot;Поиск файлов&quot;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>openbar</b> имя_файла</td><td>Загрузить панель инструментов из указанного BAR-файла (или скрыть, если указан пустой файл наподобие <b>No.bar</b>)</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b><font class=new>multirename</b> имя_шаблона</font></td><td>Открыть инструмент группового переименования с сохранёнными в указанном шаблоне переименования настройками</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><font class=new><b>opencustomview</b> имя_набора_колонок</font></td><td>Переключиться на первый пользовательский набор колонок с указанным именем (регистр имени важен). Чтобы выполнить переключение в конкретной панели, добавьте к имени команды суффикс L (левая панель), R (правая), S (исходная), T (целевая) или B (обе)</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><font class=new><b>selectfiles</b> *.ext1 *.ext2</font> ...</td><td>Выделить файлы/папки по указанной маске. Поддерживаются модификаторы D (только папки), B (папки и файлы), U (снять выделение), L (левая панель), R (правая), T (целевая), S (при нажатой клавише Shift выполнять альтернативное выделение &ndash; только файлы или же файлы и папки)
+<tr><td>&nbsp;</td><td>&nbsp;</td><td><b>zipfromlist</b> имя_архива</td><td>Упаковать файлы по списку в ZIP-архив. В поле команды следует указать имя ZIP-файла, а в поле параметров &ndash; имя файла списка, содержащего список файлов для упаковки, по одному файлу в строке</td></tr>
+</table>
+<font class=cmt>Все вышеперечисленные команды можно использовать в пользовательских меню (&quot;Запуск&quot;, избранных каталогов) и в панели инструментов.<br>Эти команды в исходном виде не работают из командной строки, но для обеспечения их универсального запуска можно сопоставить им пользовательские команды (см. выше).</font>
+<P><font class=head><a name="KeybMouseCmd"></a>Команды, отсутствующие в файле <i>Totalcmd.inc</i></font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>Описание команды</td><td colspan=2>Int</td><td>Примечание</td></tr>
+<tr class=stl><td colspan=4>Меню</td></tr>
+<tr><td>Показать контекстное меню окна TC</td><td>A+Пробел</td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr><td>Активизировать крайнее меню над текущей панелью (соответственно, первое слева или последнее справа)</td><td>F9</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Активизировать крайнее левое меню / Выйти из главного меню</td><td>F10</td><td>&nbsp;</td><td>Стандартная системная команда</td></tr>
+<tr class=stl><td colspan=4>Навигация</td></tr>
+<tr><td>Переключиться между левой и правой файловыми панелями</td><td>Tab</td><td>C+I</td><td>Частичный эквивалент &ndash; пара встроенных команд <i>cm_FocusLeft</i> (4001) и <i>cm_FocusRight</i> (4002)</td></tr>
+<tr><td>Переключиться из дерева каталогов в отдельной панели в активную файловую панель</td><td>Tab</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Переключиться из дерева каталогов в отдельной панели в неактивную файловую панель</td><td>C+I</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Переключиться между файловой панелью и деревом каталогов в отдельной панели</td><td>S+Tab</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=4>Выделение</td></tr>
+<tr><td>Выделить файл или каталог под курсором</td><td>Ins</td><td>&nbsp;</td><td>Курсор перемещается на следующий файл/каталог</td></tr>
+<tr><td>Выделить файл или каталог (с подсчётом размера)</td><td>Пробел</td><td>&nbsp;</td><td>Только при пустой командной строке! Особенности выполнения команды задаются в настройках</td></tr>
+<tr class=stl><td colspan=4>Просмотр и правка</td></tr>
+<tr><td>Использовать внутренний или внешний просмотрщик (альтернативный указанному для F3)</td><td>A+F3</td><td>&nbsp;</td><td>Поведение задаётся в диалоге конфигурации &quot;Правка/Просмотр&quot;</td></tr>
+<tr><td>Просмотреть либо файл под курсором, либо выделенные файлы (альтернатива просмотру по F3)</td><td>S+F3</td><td>&nbsp;</td><td>Поведение задаётся в диалоге конфигурации &quot;Правка/Просмотр&quot;</td></tr>
+<tr><td>Задать имя файла (отсутствующий создаётся) и загрузить его в заданный по умолчанию редактор</td><td>S+F4</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=4>Быстрый фильтр</td></tr>
+<tr><td>Вывести диалог быстрой фильтрации/поиска</td><td><font class=new>C+S</font></td><td>&nbsp;</td><td>Вызванный таким способом диалог <b>всегда</b> открывается с активным быстрым фильтром (в отличие от вызова диалога командой <i>cm_ShowQuickSearch</i>)</td></tr>
+<tr><td>Вывести диалог быстрой фильтрации/поиска и применить последний использованный фильтр</td><td><font class=new>CS+S</font></td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=4>Упаковка</td></tr>
+<tr><td>Упаковать файлы (удалив исходные)</td><td>AS+F5</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Упаковать файлы в текущий каталог</td><td><font class=select>СA+F5</font></td><td>&nbsp;</td><td>По умолчанию не работает. Чтобы включить, задайте в <b>wincmd.ini</b> в секции <i>[Shortcuts]</i> строку <i>CA+F5=cm_PackFiles</i>. Варианты упаковки по A+F5 и (если задано) по CAS+F5 при этом сохраняются</td></tr>
+<tr><td>Упаковать файлы в текущий каталог (удалив исходные)</td><td>СAS+F5</td><td>&nbsp;</td><td>По умолчанию не работает. Чтобы включить, задайте в <b>wincmd.ini</b> в секции <i>[Shortcuts]</i> строку <i>CAS+F5=cm_PackFiles</i>. Варианты упаковки по A+F5 и (если задано) по CA+F5 при этом сохраняются</td></tr>
+<tr class=stl><td colspan=4>Вкладки</td></tr>
+<tr><td>Переименовать/Заблокировать вкладку (в диалоге)</td><td>&nbsp;</td><td>&nbsp;</td><td>Только из контекстного меню вкладки</td></tr>
+<tr><td>Копировать вкладку на противоположную панель</td><td>&nbsp;</td><td>&nbsp;</td><td>Только из контекстного меню вкладки</td></tr>
+<tr><td>Сохранить вкладки активной панели в файл</td><td>&nbsp;</td><td>&nbsp;</td><td>Только из контекстного меню вкладки :-(</td></tr>
+<tr><td>Сохранить вкладки обеих панелей в файл</td><td>&nbsp;</td><td>&nbsp;</td><td>Только из контекстного меню вкладки :-(</td></tr>
+<tr><td>Закрыть дубликаты вкладок</td><td>&nbsp;</td><td>&nbsp;</td><td>Только из контекстного меню вкладки</td></tr>
+<tr class=stl><td colspan=4>Командная строка</td></tr>
+<tr><td>Выполнение командной строки без автоматического закрытия окна командной консоли после завершения вызванной программы</td><td>S+Enter</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Файл под курсором в исходном каталоге добавляется в конец командной строки.<br>Если в строке есть символы, то делается попытка дополнить набранное из истории командной строки</td><td>С+Enter</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Файл под курсором добавляется с полным путем в конец командной строки</td><td>СS+Enter</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Открыть историю командной строки</td><td>A+F8</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Восстановить последнюю команду &ndash; открыть историю командной строки</td><td>C+вниз</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Очистить командную строку и возвратить курсор в файловую панель</td><td>Esc</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Очистить командную строку, оставив в ней курсор</td><td>C+Y</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Удалить символы в командной строке от курсора до конца строки</td><td>C+K</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Удалить слово слева от курсора</td><td>C+W</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Удалить слово справа от курсора</td><td>C+T</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Удалить выбранную запись истории из списка</td><td>S+Del</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+<font class=cmt>Все вышеперечисленные команды можно вызвать <b>только</b> с клавиатуры (причём без возможности переназначить жёстко заданные клавиши) или, как в случае с вкладками, из контекстного меню; их нельзя использовать в меню и в панели инструментов.<br>Хотите, чтобы было иначе? Уговорите Гислера добавить эти команды в файл <b>totalcmd.inc</b>.</font>
+<P><font class=head><a name="SysCmd"></a>Системные команды, выполняющиеся из командной строки TC</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>String</td><td>Описание команды</td><td>Примечание</td></tr>
+<tr><td><font class=select>Символ пробела</font></td><td>Открытие каталога в окне Проводника</td><td>...текущего (для Win2k и выше) или корневого каталога диска C: (для Win9x).<br>Работает <b>только</b> из командной строки</td></tr>
+<tr><td><font class=select>.</font></td><td>Открытие текущей папки в окне Проводника</td><td>&nbsp;</td></tr>
+<tr><td><font class=select>..</font></td><td>Открытие родительской папки в окне Проводника</td><td>&nbsp;</td></tr>
+<tr><td><font class=select>...</font></td><td>Открытие папки <b>Мой компьютер</b> в окне Проводника</td><td>Только начиная с Windows XP</td></tr>
+<tr><td><font class=select>\</font></td><td>Открытие корневого каталог текущего диска в окне Проводника</td><td>&nbsp;</td></tr>
+<tr><td>\\ или <font class=select>\\\</font></td><td>Открытие папки <b>Рабочий стол</b> в панели TC</td><td>Работает <b>только</b> из командной строки</td></tr>
+<tr><td>cd .</td><td>Открытие текущего каталога в панели TC</td><td>...то есть перечитывается текущий каталог</td></tr>
+<tr><td>cd ..</td><td>Открытие родительского каталога в панели TC</td><td>&nbsp;</td></tr>
+<tr><td>cd ...</td><td>Открытие каталога двумя уровнями выше текущего в панели TC</td><td>...и так далее, вплоть до корня диска: чем выше каталог, тем больше точек</td></tr>
+<tr><td>cd \</td><td>Открытие корневого каталога текущего диска в панели TC</td><td>&nbsp;</td></tr>
+<tr><td>cd имя_каталога</td><td>Открытие каталога с заданным именем в панели TC</td><td>...при задании имени архива &ndash; его открытие, при задании имени обычного файла &ndash; позиционирование на нём курсора, при указании маски (<b>только</b> в панели инструментов и в пользовательских меню!) &ndash; фильтрация в открытом каталоге по этой маске</td></tr>
+<tr><td><font class=select>cd \\</font></td><td>Открытие панели TC <b>Сетевое окружение</b> (сеть и FS-плагины)</td><td>&nbsp;</td></tr>
+<tr><td>cd \\сервер\каталог</td><td>Открытие указанного сетевого ресурса в панели TC <b>Сетевое окружение</b></td><td> Поддерживается также (<b>только</b> в панели инструментов и в пользовательских меню!) параметр /user:имя_пользователя</td></tr>
+<tr><td>cd \\\имя_плагина</td><td>Открытие указанного FS-плагина в панели TC <b>Сетевое окружение</b></td><td>&nbsp;</td></tr>
+<tr><td>md имя_каталога</td><td>Создание каталога с заданным именем</td><td rowspan=3>Работает <b>только</b> из командной строки или по F7 (в последнем случае команда <b>md</b>, естественно, опускается).<br>Можно использовать как прямой, так и обратный слэш</td></tr>
+<tr><td><font class=select><nobr>md Dir1\..\Dir2\..\Dir3</nobr></font></td><td>Создание серии каталогов одного уровня вложенности. (То же, что &quot;dir1|dir2|dir3&quot; в диалоге, открытом по F7)</td></tr>
+<tr><td><font class=select>md Dir1\Dir2\Dir3</font></td><td>Создание последовательно вложенных друг в друга каталогов</td></tr>
+</table>
+<font class=cmt>Все вышеперечисленные команды (кроме указанных исключений) можно использовать как в командной строке, так и в панели инструментов, в пользовательских меню (&quot;Запуск&quot;, избранных каталогов) и при создании пользовательскихз команд.</font>
+
+<P><font class=head><a name="SysFolders"></a>Вызов системных папок Windows</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>String</td><td>Открываемая папка</td></tr>
+<tr><td><font class=select>cd ::{208D2C60-3AEA-1069-A2D7-08002B30309D}</font></td><td>Сетевое окружение (My Network Places)</td></tr>
+<tr><td><font class=select>cd ::{450D8FBA-AD25-11D0-98A8-0800361B1103}</font></td><td>Мои документы (My Documents)</td></tr>
+<tr><td><font class=select>cd ::{645FF040-5081-101B-9F08-00AA002F954E}</font></td><td>Корзина (Recycle bin)</td></tr>
+<tr><td><font class=select>cd ::{2227A280-3AEA-1069-A2DE-08002B30309D}</font></td><td>Принтеры и факсы (Printers and faxes)</td></tr>
+<tr><td><font class=select>cd ::{7007ACC7-3202-11D1-AAD2-00805FC1270E}</font></td><td>Сетевые подключения (Network Connections)</td></tr>
+<tr><td><font class=select>cd ::{D6277990-4C6A-11CF-8D87-00AA0060F5BF}</font></td><td>Назначенные задания (Sheduled tasks)</td></tr>
+<tr><td><font class=select>cd ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}</font></td><td>Мой компьютер (My Computer)</td></tr>
+<tr><td><font class=select>cd ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\::{21EC2020-3AEA-1069-A2DD-08002B30309D}</font></td><td>Панель управления (Control Panel)</td></tr>
+<tr><td><font class=select>cd ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\::{2B3453E4-49DF-11D3-8229-0080BE509050}</font></td><td><A HREF="http://www.viksoe.dk/code/gmail.htm" target=_blank>GMail Drive</A> (вначале надо установить)</td></tr>
+</table>
+<font class=cmt>Все вышеперечисленные команды можно применять в пользовательских меню (&quot;Запуск&quot;, избранных каталогов) и в панели инструментов, создавать для них пользовательские команды, которым назначать шорткаты. Команды вызова и соответствующие им папки указаны для Windows XP.<br>Модификации этих команд без начального <b>cd</b> открывают вызываемый каталог в окне Проводника.<br>Из командной строки TC работают <b>только</b> модификации без <b>cd</b> или пользовательские команды на основе таких модификаций. (В Win9x подобный способ не работает вообще.)</font>
+
+<P><font class=head><a name="TCStartParam"></a>Параметры запуска TC и его инструментов из командной строки</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>Параметр</td><td>Значение</td><td>Комментарий</td></tr>
+<tr><td>Диск:\Каталог</td><td>Загружает первый (или единственный) каталог/архив, переданный TC, в левую панель, а второй — в правую</td><td>Имена с пробелами должны быть заключены в двойные кавычки! Всегда указывайте полный путь, включая диск!<br>Используйте в качестве пути <b>ftpopen</b>:имя_соединения для открытия сохранённого FTP-соединения</td></tr>
+<tr><td>/O</td><td>Активизирует уже запущенный TC и передаёт путь (пути) из командной строки в эту копию программы</td><td>Имеет больший приоритет, чем значение ключа <i>Onlyonce</i> в <b>wincmd.ini</b>, позволяющее открывать несколько окон TC</td></tr>
+<tr><td>/N</td><td>Всегда открывает новое окно TC</td><td>Имеет больший приоритет, чем значение ключа <i>Onlyonce</i> в <b>wincmd.ini</b>, позволяющее запускать только одну копию TC</td></tr>
+<tr><td>/L=</td><td>Устанавливает путь в левой панели</td><td>Пример: <b>totalcmd.exe</b> /L=c:\data</td></tr>
+<tr><td>/R=</td><td>Устанавливает путь в правой панели</td><td>Пример: <b>totalcmd.exe</b> /R="d:\Письма от Петрова"</td></tr>
+<tr><td>/S</td><td>Воспринимает переданные каталоги как исходный/целевой вместо левого/правого</td><td>Для совместного применения с параметром /O. Например, каталог, переданный с ключом /R= будет воспринят как каталог назначения</td></tr>
+<tr><td><font class=new>/S=C</font></td><td>Запускает инструмент "Сравнение по содержимому" непосредственно, без открытия главного окна TC</td><td>Пример: <b>totalcmd.exe</b> /S=C c:\файл1 d:\файл2</td></tr>
+<tr><td><font class=new>/S=L</font></td><td>Запускает внутренний просмотрщик непосредственно, передавая ему имя файла для просмотра (требуется указывать полный путь). Воспринимает дополнительные параметры, записанные подряд и отделённые от основного параметра двоеточием (например, /S=L:AT1C1250)</td><td>
+<i>Дополнительные параметры:</i><br>
+A &ndash; Текст в кодировке ANSI/Windows<br>
+S &ndash; Текст в кодировке ASCII/DOS<br>
+V &ndash; Другая кодировка или пропорциональный шрифт<br>
+T1..T7 &ndash; Вид при просмотре 1-7 (1:&nbsp;Только текст, 2:&nbsp;Двоичный, 3:&nbsp;Шестнадцатеричный, 4:&nbsp;Графика/Мультимедиа/LS-плагины, 5:&nbsp;HTML, 6:&nbsp;Unicode, 7:&nbsp;UTF-8)</br>
+C[номер_кодовой_страницы] &ndash; Кодовая страница, например, C1251 для кириллицы<br>
+N &ndash;Автоматический выбор режима, кроме графики/мультимедиа/плагинов<br>
+P[имя_плагина] (в качестве последнего параметра) &ndash; Выбрать загружаемый LS-плагин<br>Пример: /S=L:Piclview для плагина ICLView (имя вводится так, как отображается в заголовке окна Lister'а)</td></tr>
+<tr><td><font class=new>/S=P:PORT</font></td><td>Запускает сервер LPT- или USB-порта для кабельного соединения</td><td>В качестве имени порта используйте LPT1 или USB</td></tr>
+<tr><td><font class=new>/S=S</font></td><td>Запускает инструмент "Синхронизация каталогов" непосредственно, принимая в качестве параметров два пути или, в виде альтернативы, имя шаблона синхронизации в форме /S=S:имя_шаблона</td><td>Если параметр начинается со знака равенства, например, /S=S:=имя_шаблона, сравнение начнётся немедленно. Если этот знак указан как параметр без значения (/S=S:=), сравнение начнётся с переданных каталогов с последними использованными настройками</td></tr>
+<tr><td><font class=new>/O=имя_списка</font></td><td>Только в комбинации с /S=S: Передаёт файловый список для функции "Выделенные (в главном окне)"</td><td>Пример: /O=%F</td></tr>
+<tr><td>/P=</td><td>Устанавливает активную панель при запуске: /P=L &ndash; левую, /P=R &ndash; правую</td><td>Имеет больший приоритет, чем ключ <i>ActiveRight</i> в <b>wincmd.ini</b></td></tr>
+<tr><td>/i=имя.ini</td><td>Указывает, что вместо <b>wincmd.ini</b> для сохранения настроек следует использовать другой INI-файл</td><td>Пример: <b>totalcmd.exe</b> i/Petrov.ini</b></td></tr>
+<tr><td>/F=имя.ini</td><td>Указывает, что вместо <b>wcx_ftp.ini</b> для сохранения настроек встроенного FTP-клиента следует использовать другой INI-файл</td><td>Пример: <b>totalcmd.exe</b> /F=MyFtp.ini</b>
+&nbsp;</td></tr>
+<tr><td>/D=N</td><td>Задерживает запуск TC на N секунд</td><td>Предполагается использовать в системной папке автозагрузки, если есть проблемы с одновременым запуском TC и других программ</td></tr>
+<tr><td>/INSTALLDRIVER</td><td>Устанавливает драйвер LPT-порта</td><td>Только когда вы хотите использовать подключение через параллельный порт как обычный пользователь, а не администратор. Для запуска требует прав администратора; работает только в WinNT</td></tr>
+<tr><td>/REMOVEDRIVER</td><td>Удаляет драйвер, установленный параметром /INSTALLDRIVER</td><td>Работает только в WinNT</td></tr>
+<tr><td>/INSTALLDRIVERQ</td><td>Устанавливает драйвер LPT-порта без вывода каких-либо сообщений</td><td>Работает только в WinNT. Это полезно, например, в удалённых скриптах установки</td></tr>
+<tr><td>/REMOVEDRIVERQ</td><td>Удаляет драйвер LPT-порта без вывода каких-либо сообщений</td><td>Работает только в WinNT</td></tr>
+</table>
+<font class=cmt>Total Commander может запускаться с одним или двумя каталогами в качестве параметров командной строки. При этом указанные каталоги будут открыты, соответственно, в одной или в обеих панелях. Это позволяет создавать, например, несколько ярлыков в системном меню "Пуск", запускающих TC с различными каталогами или даже с открытыми в его панелях архивами. Более того, вместо стандартных файлов настроек можно задать другие INI-файлы, что позволит на одной машине иметь разные наборы настроек TC.<br>
+Существуют, кроме того, параметры командной строки для непосредственного запуска встроенных инструментов TC (просмотра, сравнения, синхронизации) без открытия главного окна программы.<br>
+Синтаксис: <b>totalcmd.exe [/o] [/n] [Диск1:\Каталог1 [Диск2:\Каталог2]] [/i=имя.ini] [/f=имя_ftp.ini]</b><br>
+или <b>totalcmd.exe [/o] [/n] [/L=Диск1:\Каталог1] [/R=Диск2:\Каталог2] [/i=имя.ini] [/f=имя_ftp.ini]</b><br>
+или (для непосредственного запуска встроенного инструмента TC) <b>totalcmd.exe [/S=L:AT1C1251]</b><br>
+Параметры командной строки НЕ чувствительны к регистру. Если каталог с файлом <b>totalcmd.exe</b> не является значением системной переменной <b>PATH</b>, необходимо указывать ПОЛНЫЙ путь к этому файлу.</font>
+
+<P><font class=head><a name="ButtonParam"></a>Параметры для панели инструментов, меню &quotЗапуск&quot и пользовательских команд</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>Параметр</td><td>Значение</td><td>Комментарий</td></tr>
+<tr class=stl><td colspan=3>Общие параметры</td></tr>
+<tr><td>?</td><td>В качестве <b>первого</b> параметра вызывает перед стартом программы диалог, показывающий реальные значения последующих параметров</td><td>Вы можете подтвердить запуск программы с заданными значениями, изменить их перед стартом программы или вообще отменить её запуск. Полезно также для отладки содержимого поля &quotПараметры&quot</td></tr>
+<tr><td>%P</td><td>Вставляет в командную строку исходный путь, включая обратный слэш (\) в конце</td><td>%P вставляет путь с длинными именами каталогов, а %p &ndash; с короткими</td></tr>
+<tr><td>%N</td><td>Вставляет имя файла под курсором</td><td>%N вставляет длинное имя, а %n &ndash; имя DOS (8.3)</td></tr>
+<tr><td>%T</td><td>Вставляет текущий каталог назначения</td><td>%T вставляет путь с длинными именами каталогов, а %t &ndash; с короткими. Особенно полезно для упаковщиков!</td></tr>
+<tr><td>%M</td><td>Вставляет текущее имя файла в каталоге назначения</td><td>%M вставляет длинное имя, а %m &ndash; DOS (8.3)</td></tr>
+<tr><td>%O</td><td>Вставляет текущее имя файла без расширения</td><td>%O вставляет длинное имя, а %o &ndash; в формате DOS (8 символов)</td></tr>
+<tr><td>%E</td><td>Вставляет текущее расширение (без предшествующей точки)</td><td>%E вставляет длинное расширение, а %e &ndash; в формате DOS (3 символа)</td></tr>
+<tr><td>%S</td><td>Вставляет имена всех файлов, выделенных на исходной панели</td><td>Если приписать %P, %p, %T или %t сразу перед %S или %s (без пробела!), то к имени каждого файла из списка будет добавлен путь. При наличии пробелов полный путь автоматически заключается в кавычки. (См. далее пример с %P%S.) Длина командной строки не может превышать 32767 символов!</td></tr>
+<tr><td>%P%S</td><td>Вставляет имена всех выделенных файлов с полными путями</td><td>Не заключайте в кавычки сам параметр %P%S!</td></tr>
+<tr><td>%S10</td><td>То же, что %S, но вставляет не более первых NN (в примере 10) имён выделенных файлов</td><td>Задайте нужное вам число для ограничения количества файлов, передаваемых в программу</td></tr>
+<tr><td>%R</td><td>Вставляет имена всех файлов, выделенных на панели назначения</td><td>Имена, содержащие пробелы, будут взяты в кавычки. Длина командной строки не может превышать 32767 символов!</td></tr>
+<tr><td>%R10</td><td>То же, что %R, но вставляет не более первых NN имён выделенных файлов</td><td>Задайте нужное вам число  для ограничения количества файлов, передаваемых в программу</td></tr>
+<tr><td>%%</td><td>Вставляет знак процента (только один!)</td><td>Для передачи из поля &quot;Параметры&quot; знака процента как такового удвойте его!<br>Записывать здесь переменные даже в таком виде не рекомендуется: TC не раскрывает их, а передаёт как текст (например, %Commander_path%), который большинством программ правильно не воспринимается. Раскрытие переменных TC выполняет только в поле &quot;Команды&quot;!</td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td>%X</td><td>Параметры, следующие за этим, воспринимаются как левая/правая панель вместо источника/получателя</td><td>Новые значения: %P, %p &ndash; путь слева, %T, %t &ndash; путь справа, %N, %n &ndash; имя слева, %M, %m &ndash; имя справа, %S, %s &ndash; выделенные слева, %R, %r &ndash; выделенные справа.<br>
+Пример: %X%P %T посылает пути справа и слева, например, внешнему инструменту синхронизации</td></tr>
+<tr><td>%x</td><td>Параметры, следующие за этим, снова воспринимаются как источник/получатель</td><td>Пример: %X%P %x%P посылает вызванной программе путь слева слева и путь источника</td></tr>
+<tr><td>%Z</td><td>При открытом в панели TC архиве позволяет передавать программам архивы в качестве путей для %P или %T</td><td>Указывается в произвольном месте относительно других параметров.<br>Пример: %Z%P передаёт имя в архиве внешнему инструменту при отображении в TC содержимого этого архива</td></tr>
+<tr class=stl><td colspan=3>Параметры для файлов списка</td></tr>
+<tr><td>%L</td><td>Длинные имена файлов, включая полный путь</td><td>Здесь и далее &ndash; создаёт файл списка в одном из 10 форматов в каталоге, заданном переменной TEMP, с именами выбранных файлов/каталогов и добавляет имя этого файла списка в командную строку. Список удаляется автоматически при завершении запущенной программы.<br>
+Пример: c:\Program Files\Long name.exe</td></tr>
+<tr><td>%l</td><td>Короткие имена файлов, включая полный путь</td><td>Пример: C:\PROGRA~1\LONGNA~1.EXE</td></tr>
+<tr><td>%F</td><td>Длинные имена файлов без пути</td><td>Пример: Long name.exe</td></tr>
+<tr><td>%f</td><td>Короткие имена файлов без пути</td><td>Пример: LONGNA~1.EXE</td></tr>
+<tr><td>%D</td><td>Короткие имена файлов, включая полный путь, но с использованием набора символов DOS для диакритических знаков</td><td>&nbsp;</td></tr>
+<tr><td>%d</td><td>Короткие имена файлов без пути, но с использованием набора символов DOS для диакритических знаков</td><td>&nbsp;</td></tr>
+<tr><td>%UL</td><td>Работает подобно %L, но с файлом списка в UTF-8 Unicode (с BOM)</td><td>&nbsp;</td></tr>
+<tr><td>%UF</td><td>Работает подобно %F, но с файлом списка в UTF-8 Unicode (с BOM)</td><td>&nbsp;</td></tr>
+<tr><td>%WL</td><td>Работает подобно %L, но с файлом списка в UTF-16 Unicode (с BOM)</td><td>&nbsp;</td></tr>
+<tr><td>%WF</td><td>Работает подобно %F, но с файлом списка в UTF-16 Unicode (с BOM)</td><td>&nbsp;</td></tr>
+<tr class=stl><td colspan=3>Параметры только для пользовательских команд</td></tr>
+<tr><td>%A или <nobr>%A0</td><td>Вставляет оставшуюся часть введённой командной строки</td><td rowspan=2>Пример: Команда <i>em_tc</i> запускает <b>totalcmd.exe</b> с параметрами /L=%A1 /R=%A2
+&ndash;> Командная строка <i>em_tc c:\dir1 d:\dir2</i> будет преобразована в команду: <b>totalcmd.exe</b> /L=c:\dir1 /R=d:\dir2</td></tr>
+<tr><td>%A1..%<nobr>A9</td><td>Вставляет, соответственно, параметры от первого до девятого
+</table>
+<font class=cmt>Специальные параметры можно использовать при вызове внешних программ, системных команд и параметризованных внутренних команд TC. Область применения: поле &quotПараметры&quot в диалогах для работы с панелью инструментов (в целом или с конкретной кнопкой), для создания/изменения пользовательской команды и для настройки меню &quotЗапуск&quot. В диалоге настройки меню избранных каталогов специального поля для ввода параметров нет, а потому нет и возможности их применять.<br>Пока в поле &quotКоманда&quot соответствующего диалога задан вызов встроенной (<b>cm_</b>) или пользовательской (<b>em_</b>) команды TC, поля &quotПараметры&quot и &quotПуть запуска&quot недоступны. Неизменяемые параметры должны быть указаны непосредственно после имени файла, потому что иначе при использовании Drag&Drop программе будет передано только имя файла.</font>
+
+<P><font class=head><a name="EnvVar"></a>Переменные, используемые в TC</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=header><td>Имя</td><td>Значение</td><td>Пример реального значения в Windows XP</td></tr>
+<tr class=stl><td colspan=3>Псевдопеременные Total Commander</td></tr>
+<tr><td><nobr>%$APPDATA%</nobr></td><td>Ваши данные приложений</td><td>C:\Documents and Settings\[Ваше_имя]\Application Data</td></tr>
+<tr><td><nobr>%$DESKTOP%</nobr></td><td>Ваша папка <b>Рабочий стол</b></td><td>C:\Documents and Settings\[Ваше_имя]\Рабочий стол</td></tr>
+<tr><td><nobr>%$PERSONAL%</nobr></td><td>Ваша папка <b>Мои документы</b></td><td>C:\Documents and Settings\[Ваше_имя]\Мои документы</td></tr>
+<tr><td><nobr>%$MYPICTURES%</nobr></td><td>Ваша папка <b>Мои рисунки</b></td><td>C:\Documents and Settings\[Ваше_имя]\Мои документы\Мои рисунки</td></tr>
+<tr><td><nobr>%$MYMUSIC%</nobr></td><td>Ваша папка <b>Моя музыка</b></td><td>C:\Documents and Settings\[Ваше_имя]\Мои документы\Моя музыка</td></tr>
+<tr><td><nobr>%$MYVIDEO%</nobr></td><td>Ваша папка <b>Мои видеозаписи</b></td><td>C:\Documents and Settings\[Ваше_имя]\Мои документы\Мои видеозаписи</td></tr>
+<tr><td><nobr>%$STARTMENU%</nobr></td><td>Ваша папка <b> Главное меню</b> </td><td>C:\Documents and Settings\[Ваше_имя]\Главное меню</td></tr>
+<tr><td><nobr>%$PROGRAMS%</nobr></td><td>Ваша папка <b> Программы</b> </td><td>C:\Documents and Settings\[Ваше_имя]\Главное меню\Программы</td></tr>
+<tr><td><nobr>%$STARTUP%</nobr></td><td>Ваша папка <b> Автозагрузка</b></td><td><nobr>C:\Documents and Settings\[Ваше_имя]\Главное меню\Программы\Автозагрузка</nobr></td></tr>
+<tr><td><nobr>%$FONTS%</nobr></td><td>Папка <b>Шрифты</b></td><td>C:\Windows\Fonts</td></tr>
+<tr><td><nobr>%$LOCAL_APPDATA%</nobr></td><td>Ваши локальные данные приложений</td><td>C:\Documents and Settings\[Ваше_имя]\Local Settings\Application Data</td></tr>
+<tr><td><nobr>%$COMMON_APPDATA%</nobr></td><td>Общие данные приложений</td><td>C:\Documents and Settings\All Users\Application Data</td></tr>
+<tr><td><nobr>%$COMMON_DESKTOPDIRECTORY%</nobr></td><td>Общая папка <b>Рабочий стол</b></td><td>C:\Documents and Settings\All Users\Рабочий стол</td></tr>
+<tr><td><nobr>%$COMMON_DOCUMENTS%</nobr></td><td>Общая папка <b>Документы</b></td><td>C:\Documents and Settings\All Users\Документы</td></tr>
+<tr><td>%$COMMON_PICTURES%</nobr></td><td>Общая папка <b>Рисунки</b> </td><td>C:\Documents and Settings\All Users\Документы\Мои рисунки</td></tr>
+<tr><td><nobr>%$COMMON_STARTMENU%</nobr></td><td>Общая папка <b>Главное меню</b></td><td>C:\Documents and Settings\All Users\Главное меню</td></tr>
+<tr><td><nobr>%$COMMON_PROGRAMS%</nobr></td><td>Общая папка <b>Программы</b></td><td>C:\Documents and Settings\All Users\Главное меню\Программы</td></tr>
+<tr><td><nobr>%$COMMON_STARTUP%</nobr></td><td>Общая папка <b>Автозагрузка</b></td><td><nobr>C:\Documents and Settings\All Users\Главное меню\Программы\Автозагрузка</nobr></td></tr>
+<tr class=stl><td colspan=3>Переменные внутреннего окружения Total Commander</td></tr>
+<tr><td><nobr>%COMMANDER_PATH%</nobr></td><td>Каталог <b>Total Commander</b></td><td>C:\Program Files\Total Commander XP</td></tr>
+<tr><td><nobr>%COMMANDER_INI%</nobr></td><td>Основной файл настроек (путь\имя)</td><td>C:\Program Files\Total Commander
+  XP\Profiles\Prof\main.ini</td></tr>
+<tr><td><nobr>%COMMANDER_DRIVE%</nobr></td><td>Диск, с которого запущен <b>TC</b> (для UNC-путей содержит \\сервер\каталог)</td><td>C:</td></tr>
+<tr class=stl><td colspan=3>Наиболее употребительные переменные окружения вашей ОС</td></tr>
+<tr><td><nobr><font class=select>%HOMEPATH%</font></nobr></td><td>Относительный путь к Вашим данным</td><td>\Documents and Settings\[Ваше_имя]</td></tr>
+<tr><td><nobr><font class=select>%USERPROFILE%</font></nobr></td><td>Ваши документы и настройки</td><td>C:\Documents and Settings\[Ваше_имя]</td></tr>
+<tr><td><nobr><font class=select>%ALLUSERSPROFILE%</font></nobr></td><td>Общие документы и настройки</td><td>C:\Documents and Settings\All Users</td></tr>
+<tr><td><nobr><font class=select>%APPDATA%</font></nobr></td><td>Ваши данные приложений</td><td>C:\Documents and Settings\[Ваше_имя]\Application Data</td></tr>
+<tr><td><nobr><font class=select>%PROGRAMFILES%</font></nobr></td><td>Папка <b>Program Files</b></td><td>C:\Program Files</td></tr>
+<tr><td><nobr><font class=select>%COMMONPROGRAMFILES%</font></nobr></td><td><b>Common Files</b> в <b>Program Files</b></td><td>C:\Program Files\Common Files</td></tr>
+<tr><td><nobr><font class=select>%SYSTEMDRIVE%</font></nobr></td><td>Диск, с которого происходит загрузка <b>ОС</b></td><td>C:</td></tr>
+<tr><td><nobr><font class=select>%HOMEDRIVE%</font></nobr></td><td>Диск на котором располагается <b>Windows</b></td><td>C:</td></tr>
+<tr><td><nobr><font class=select>%SYSTEMROOT%</font></nobr></td><td>Папка расположения <b>ОС</b></td><td>C:\Windows</td></tr>
+<tr><td><nobr><font class=select>%WINDIR%</font></nobr></td><td>Папка установки <b>Windows</b></td><td>C:\Windows</td></tr>
+<tr><td><nobr><font class=select>%TEMP%</font>&nbsp;и&nbsp;<font class=select>%TMP%</font></nobr></td><td>Папка для временных файлов</b></td><td>C:\Documents and Settings\[Ваше_имя]\Local Settings\Temp</td></tr>
+</table>
+<font class=cmt>Переменные Total Commander &ndash; значения, подменяющие собой ссылки на компоненты самой программы или на виртуальные папки и системные каталоги. TC позволяет работать с различными видами переменных всюду, где относительные пути предпочтительнее абсолютных: в настройках TC (панель инструментов, плагины, архиваторы...), в параметрах командной строки, в некоторых внешних программах.
+<br><b>Псевдопеременные</b> &ndash; значения, вычисляемые ТС и доступные, в отличие от настоящих переменных, только ему. Значения некоторых из них (хотя и не всех) совпадают со значениями аналогичных переменных окружения ОС, отвечающих за доступ к востребованным системным папкам. Например, системная переменная <b>%appdata%</b> и псевдопеременная <b>%$APPDATA%</b> соответствуют одной и той же папке. Однако имена псевдопеременных TC должны начинаться со знака доллара и записываться только в ВЕРХНЕМ регистре.
+<br>Чтобы открыть в TC физический каталог, соответствующий на вашей ОС данной псевдопеременной, введите её имя в командной строке TC в качестве параметра команды <b>cd</b>.
+<br><b>Переменные внутреннего окружения</b> добавляются к пространству имён переменных окружения вашей ОС при запуске ТС и доступны для любых программ, стартующих из него. Важнейшая из них &ndash; переменная <b>%Commander_Path%</b>. Имена этих переменных могут указываться в любом регистре, знак доллара здесь не требуется.
+<br>Встречаются и узкоспециальные внутренние переменные TC. Это, например, набор переменных для ключей вида <b>treefilelocationNN</b>: <b>%D%</b> для текущего диска, <b>%R%</b> для пути к корневому каталогу, <b>%L%</b> для метки тома (в данном случае верхний регистр обязателен).
+<br>Кроме того, в TC могут использоваться специфические переменные для U3 USB-дисков: <b>%U3_DEVICE_EXEC_PATH%</b>, <b>%U3_APP_DATA_PATH%</b> и др.
+<br><b>Наиболее употребительные переменные окружения вашей ОС</b> мы также посчитали возможным добавить в эту таблицу, поскольку, хотя они и не являются переменными ТС, нет никаких препятствий для их использования в программе.
+<br>Полный список переменных окружения для данной ОС вы получите, открыв <b>Пуск</b> &ndash;> <b>Выполнить...</b> и введя <b>cmd /k set</b> (для NT-систем) или <b>command /k set</b> (в Win9x). Регистр имён всех переменных окружения (в отличие от псевдопеременных) значения не имеет.
+<a name="sup"></a>
+
+<p><font class=head>Важное предупреждение</font>
+<br>В Total Commander версии 7.0 и выше категорически не рекомендуется заниматься произвольной правкой файла <b>totalcmd.inc</b>, кроме случаев добавления новых строк для тех групп команд, которые перечислены в файле частично (переключение на вкладки/диски, сортирующие колонки, команды меню &quot;Запуск&quot и т.&nbsp;д.)! Не следует также пытаться &quot;переводить&quot этот файл, замещая его файлом <b>wcmd_rus.inc</b> из пакета русификации. Это совершенно разные файлы, и в результате перезаписи одного другим вы гарантированно потеряете возможность работать с любым внешним файлом меню (включая русский), пока не восстановите оригинальный INC-файл из дистрибутива TC.</p>
+
+<p><font class=head><sup>*</sup> Условные обозначения</font>
+<table border=1 cellpadding=0 cellspacing=0 width=100%>
+<tr class=stl><td colspan=2>Заголовки колонок</td></tr>
+<tr><td>DEC</td><td>Встроенные команды TC в десятичном формате</td></tr>
+<tr><td>HEX</td><td>Встроенные команды TC в шестнадцатеричном формате (вроде бы так срабатывает быстрее)</td></tr>
+<tr><td>String</td><td>Встроенные команды TC в строковом формате</td></tr>
+<tr><td>Int</td><td>Стандартные клавиатурные шорткаты TC (если стандартных вариантов вызова команды два, они указываются в разных колонках)</td></tr>
+<tr><td>Ext</td><td>Шорткаты, применяемые в <a href="http://trt.net.ru" target="_blank">Total Commander &ndash; eXtended Pack</a> (кроме дублирующих стандартные назначения TC для других функций)</td></tr>
+<tr class=stl><td colspan=2>Содержимое колонок</td></tr>
+<tr><td>CAS+R</td><td>Клавиатурные шорткаты (клавиши-модификаторы: C=Ctrl, A=Alt, S=Shift, W=Windows)</td></tr>
+<tr><td><font class=select>S+Ins</font></td><td><font class=select>Синим цветом отмечены стандартные команды и шорткаты, не описанные в официальной документации TC</font></td></tr>
+<tr><td><font class=new>cm_SrcPathFocus</font></td><td><font class=new>Тёмно-красным цветом отмечены встроенные команды, шорткаты и параметры, впервые появившиеся в TC 7.5x</font></td></tr>
+</table>
+
+<P>Составлено после внимательного прочтения справки и списка внутренних команд TC с последующим бурным обсуждением прочитанного в форуме <a href="http://groups.yahoo.com/group/wincommander/" target=_blank>wincommander@yahoogroups.com</a>. В дальнейшем неоднократно дорабатывалось по мере развития TC и с учётом вновь открывшихся обстоятельств.
+<br>Составители: mozers&trade;, Вадим Казаков (Avada) 
+<br>Неоценимый вклад внесли также: Christian Ghisler, Black Dog, Stas, Sergey Davydov, Ivan Atlanoff</P>
+Последняя правка: Avada, 18.08.2010
+<br>Пожелания, предложения, замечания по содержанию &ndash; <a href=mailto:avada1@yandex.ru?subject=TRT>сюда</a>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

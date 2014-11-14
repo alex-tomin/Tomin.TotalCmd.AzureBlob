@@ -34,6 +34,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
+		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30); //Todo: move to config
 
 		//TODO: multithreaded support
 		private DeletionState deletionState = DeletionState.None;
@@ -68,8 +69,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 			else if (deletionState == DeletionState.None)
 			{
-#warning rebind doesn't work
-				currentNode.LoadChildren();
+				currentNode.LoadChildren(cacheDuration);
 			}
 			
 			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();

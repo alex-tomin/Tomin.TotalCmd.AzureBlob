@@ -85,13 +85,14 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			while (continuationToken != null);
 		}
 
+		//TODO: make async;
 		public void LoadAllSubItems()
 		{
 			BlobContinuationToken continuationToken = null;
 			List<IListBlobItem> blobs = new List<IListBlobItem>();
 			do
 			{
-				var listingResult = CloudBlobDirectory.ListBlobsSegmented(true, BlobListingDetails.None, 100, continuationToken, null, null);
+				var listingResult = CloudBlobDirectory.ListBlobsSegmented(true, BlobListingDetails.None, 5000, continuationToken, null, null);
 				continuationToken = listingResult.ContinuationToken;
 				blobs.AddRange(listingResult.Results);
 			}
