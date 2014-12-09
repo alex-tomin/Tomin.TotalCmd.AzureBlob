@@ -12,7 +12,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 	abstract public class FileSystemItemBase
 	{
 		private Dictionary<string, FileSystemItemBase> childrenDictionary = new Dictionary<string, FileSystemItemBase>();
-		DateTime lastLoadTime;
+		private DateTime lastLoadTime;
 
 		public  virtual CloudBlobContainer CloudBlobContainer
 		{
