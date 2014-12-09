@@ -129,23 +129,30 @@ namespace Tomin.TotalCmd.AzureBlob
 
 	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
 	    {
-            //todo move/copy to other container
-            var newTarget = Regex.Replace(target, @"^\\[^\\]*\\[^\\]*\\", "");
+            var targetParts = Regex.Split(target, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var targetContainer = targetParts[1];
+	        var targetBlob = targetParts[2];
             var src = Root.Instance.GetItemByPath(source);
             if (!src.IsFolder)
             {
                 var sourceCloudBlob = ((BlobItem)src).CloudBlob;
-                var targetCloudBlob = sourceCloudBlob.Container.GetBlockBlobReference(newTarget);
+                var targetCloudBlob =  ((BlobContainer)Root.Instance.GetItemByPath(targetContainer)).CloudBlobContainer.GetBlockBlobReference(targetBlob);
+                if (targetCloudBlob.Exists())
+                {
+                    if (!Request.MessageBox(String.Format("The File '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
+                        return FileOperationResult.OK;
+                }
                 targetCloudBlob.StartCopyFromBlobAsync(sourceCloudBlob.Uri).Wait();
                 if (move)
                     sourceCloudBlob.Delete();
+                return FileOperationResult.OK;
             }
-            return base.FileCopy(source, target, overwrite, move, ri);
+            return FileOperationResult.NotSupported;
         }
 
 	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
 	    {
-	        return base.DirectoryRename(oldName, newName, overwrite, ri);
+	        return FileOperationResult.NotSupported;
 	    }
 
 	    public override bool FileRemove(string remoteName)
