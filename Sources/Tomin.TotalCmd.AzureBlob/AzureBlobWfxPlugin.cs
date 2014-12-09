@@ -169,7 +169,44 @@ namespace Tomin.TotalCmd.AzureBlob
 
 	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
 	    {
-	        return FileOperationResult.NotSupported;
+            //TODO: Refactor
+	        var targetParts = Regex.Split(newName, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var targetContainer = targetParts[1];
+	        var targetDirectory = targetParts[2]+"/";
+
+	        var sourceParts = Regex.Split(oldName, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var sourceDirectory = sourceParts[2].Replace('\\','/') + "/";
+
+            //Now let's fetch the blobs from "source folder"
+            var blobs = Root.Instance.GetItemByPath(oldName).CloudBlobContainer.ListBlobs(sourceDirectory, true);
+            //Now we'll enumerate through blobs
+            foreach (var blob in blobs)
+            {
+                var sourceBlockBlob = blob as CloudBlockBlob;
+                string newBlobName = targetDirectory + sourceBlockBlob.Name.Substring(sourceDirectory.Length);
+                var newBlob =  Root.Instance.GetItemByPath(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
+                newBlob.StartCopyFromBlob(sourceBlockBlob);
+                while (true)
+                {
+                    //Since copy blob operation is an async operation, we must wait for the copy operation to finish.
+                    //To do so, we'll check if the copy operation is completed or not by fetching properties of the new blob.
+                    newBlob.FetchAttributes();
+                    if (newBlob.CopyState.Status != CopyStatus.Pending)
+                    {
+                        break;
+                    }
+                    //It's still not completed. So wait for some time.
+                    System.Threading.Thread.Sleep(1000);
+                }
+                //Get the properties one more time
+                newBlob.FetchAttributes();
+                if (newBlob.CopyState.Status == CopyStatus.Success)
+                {
+                    //Delete the source blob only if the copy is successful.
+                    sourceBlockBlob.DeleteIfExists();
+                }
+            }
+            return FileOperationResult.OK;
 	    }
 
 	    public override bool FileRemove(string remoteName)
