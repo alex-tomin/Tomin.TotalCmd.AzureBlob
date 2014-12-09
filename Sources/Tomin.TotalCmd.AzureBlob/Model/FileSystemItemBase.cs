@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage.Blob;
 using TotalCommander.Plugin;
 using TotalCommander.Plugin.Wfx;
 
@@ -13,7 +14,13 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		private Dictionary<string, FileSystemItemBase> childrenDictionary = new Dictionary<string, FileSystemItemBase>();
 		DateTime lastLoadTime;
 
-		/// <summary>
+		public  virtual CloudBlobContainer CloudBlobContainer
+		{
+		    get { throw new NotImplementedException();}
+		    protected set { throw new NotImplementedException(); }
+		}
+
+	    /// <summary>
 		/// 
 		/// </summary>
 		public event EventHandler ParametersLoaded;
@@ -179,5 +186,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		}
 
 		#endregion
+
+	    public virtual void Copy(string target)
+	    {
+	        throw new NotImplementedException("Copy operation is not implemented on this type");
+	    }
 	}
 }

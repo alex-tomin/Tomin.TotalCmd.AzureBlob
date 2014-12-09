@@ -129,26 +129,23 @@ namespace Tomin.TotalCmd.AzureBlob
 
 	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
 	    {
-            var targetParts = Regex.Split(target, @"(^\\[^\\]*\\[^\\]*\\)");
-	        var targetContainer = targetParts[1];
-	        var targetBlob = targetParts[2];
-            var src = Root.Instance.GetItemByPath(source);
-            if (!src.IsFolder)
-            {
-                var sourceCloudBlob = ((BlobItem)src).CloudBlob;
-                var targetCloudBlob =  ((BlobContainer)Root.Instance.GetItemByPath(targetContainer)).CloudBlobContainer.GetBlockBlobReference(targetBlob);
-                if (targetCloudBlob.Exists())
-                {
-                    if (!Request.MessageBox(String.Format("The File '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
-                        return FileOperationResult.OK;
-                }
-                targetCloudBlob.StartCopyFromBlobAsync(sourceCloudBlob.Uri).Wait();
-                if (move)
-                    sourceCloudBlob.Delete();
-                return FileOperationResult.OK;
-            }
-            return FileOperationResult.NotSupported;
-        }
+	        try
+	        {
+	            if (Root.Instance.GetCloudBlobByPath(target).Exists())
+	                if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
+	                    return FileOperationResult.OK;
+
+	            var src = Root.Instance.GetItemByPath(source);
+	            src.Copy(target);
+	            if (move)
+	                src.Delete();
+	            return FileOperationResult.OK;
+	        }
+            catch (Exception ex)
+			{
+				OnError(ex);
+				return FileOperationResult.WriteError;
+			}}
 
 	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
 	    {

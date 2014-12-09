@@ -13,6 +13,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 	{
 		public const string FakeFileName = "11FakeEmptyFile11";
 
+		public override CloudBlobContainer CloudBlobContainer {
+		    get { return CloudBlobDirectory.Container; }
+		}
+
 		public BlobDirectory(string name, FileSystemItemBase parent, CloudBlobDirectory cloudBlobDirectory)
 			: base(name, parent)
 		{
