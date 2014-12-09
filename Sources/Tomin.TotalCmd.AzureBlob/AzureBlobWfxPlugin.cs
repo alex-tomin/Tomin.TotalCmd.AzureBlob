@@ -34,7 +34,7 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
-		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30); //Todo: move to config
+		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(3); //Todo: move to config
 
 		//TODO: multithreaded support
 		private DeletionState deletionState = DeletionState.None;
@@ -127,7 +127,28 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 		}
 
-		public override bool FileRemove(string remoteName)
+	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
+	    {
+            //todo move/copy to other container
+            var newTarget = Regex.Replace(target, @"^\\[^\\]*\\[^\\]*\\", "");
+            var src = Root.Instance.GetItemByPath(source);
+            if (!src.IsFolder)
+            {
+                var sourceCloudBlob = ((BlobItem)src).CloudBlob;
+                var targetCloudBlob = sourceCloudBlob.Container.GetBlockBlobReference(newTarget);
+                targetCloudBlob.StartCopyFromBlobAsync(sourceCloudBlob.Uri).Wait();
+                if (move)
+                    sourceCloudBlob.Delete();
+            }
+            return base.FileCopy(source, target, overwrite, move, ri);
+        }
+
+	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
+	    {
+	        return base.DirectoryRename(oldName, newName, overwrite, ri);
+	    }
+
+	    public override bool FileRemove(string remoteName)
 		{
 			try
 			{
@@ -147,15 +168,6 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			return FileRemove(remoteName);
 		}
-
-
-		//TODO.
-		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
-		{
-			//return base.FileCopy(source, target, overwrite, move, ri);
-			throw new NotImplementedException("Copy to this target Copy/Move/Rename are not implemented yet.");
-		}
-
 
 
 		public override void OnError(Exception error)
