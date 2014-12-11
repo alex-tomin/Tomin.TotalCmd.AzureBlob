@@ -155,3 +155,4 @@ $RECYCLE.BIN/
 .DS_Store
 /Lib/NuGet
 /Build/TotalCmd
+/Artifacts/License
