@@ -51,8 +51,6 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override FindData FindFirst(string path, out IEnumerator enumerator)
 		{
-			//Debugger.Launch();
-
 			var currentNode = Root.Instance.GetItemByPath(path);
 
 			//Special handling for deletion, as TotalCMD doesn't allow batch deletion. 
@@ -61,7 +59,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				if (currentNode is BlobDirectory)
 				{
-					//get all files in a flat way - it is faster. This should NOT be executed for non-deletion operation as folders will be lost.
+					//get all files in a flat way - it is faster
 					((BlobDirectory)currentNode).LoadAllSubItems();
 					deletionState = DeletionState.Enumerated; //TotalCMD triggers enumeration twice, we want only once. 
 				}
@@ -136,8 +134,7 @@ namespace Tomin.TotalCmd.AzureBlob
 	    {
 	        try
 	        {
-				//TODO: check file copy between plugins; 
-	            if (Root.Instance.GetCloudBlobByPath(target).Exists())
+	            if (Root.Instance.GetBlobReferenceByTotalCmdPath(target).Exists())
 	                if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
 	                    return FileOperationResult.OK;
 
@@ -151,11 +148,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				OnError(ex);
 				return FileOperationResult.WriteError;
-			}}
+			}
+		}
 
 	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
 	    {
-            //TODO: Refactor
+            //TODO: Refactor, consider page blobs, move to BlobDirectory class?
+			//TODO: Consider code reuse with Root.GetBlobReferenceByTotalCmdPath
 	        var targetParts = Regex.Split(newName, @"(^\\[^\\]*\\[^\\]*\\)");
 	        var targetContainer = targetParts[1];
 	        var targetDirectory = targetParts[2]+"/";
@@ -164,18 +163,21 @@ namespace Tomin.TotalCmd.AzureBlob
 	        var sourceDirectory = sourceParts[2].Replace('\\','/') + "/";
 
             //Now let's fetch the blobs from "source folder"
-            var blobs = Root.Instance.GetItemByPath(oldName).CloudBlobContainer.ListBlobs(sourceDirectory, true);
+			//TODO: use Directory.LoadAll - to fill the Tree.
+            var blobs = Root.Instance.GetItemByPath<BlobDirectory>(oldName).CloudBlobDirectory.ListBlobs(true);
             //Now we'll enumerate through blobs
             foreach (var blob in blobs)
             {
                 var sourceBlockBlob = blob as CloudBlockBlob;
                 string newBlobName = targetDirectory + sourceBlockBlob.Name.Substring(sourceDirectory.Length);
-                var newBlob =  Root.Instance.GetItemByPath(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
+                var newBlob =  Root.Instance.GetItemByPath<BlobContainer>(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
+				//TODO: reuse BlobItem.Copy 
                 newBlob.StartCopyFromBlob(sourceBlockBlob);
                 while (true)
                 {
                     //Since copy blob operation is an async operation, we must wait for the copy operation to finish.
                     //To do so, we'll check if the copy operation is completed or not by fetching properties of the new blob.
+					//TODO: make the same  for BlobItem.Copy
                     newBlob.FetchAttributes();
                     if (newBlob.CopyState.Status != CopyStatus.Pending)
                     {

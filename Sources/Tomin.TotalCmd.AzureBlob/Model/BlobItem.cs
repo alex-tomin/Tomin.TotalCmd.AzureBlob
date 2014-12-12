@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
@@ -23,9 +21,6 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			CloudBlob = blob;
 		}
 
-		public override CloudBlobContainer CloudBlobContainer {
-		    get { return CloudBlob.Container; }
-		}
 
 		public override bool IsFolder
 		{
@@ -56,8 +51,9 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 	    public override void Copy(string target)
 	    {
-	        var targetCloudBlob = Root.Instance.GetCloudBlobByPath(target);
-            targetCloudBlob.StartCopyFromBlobAsync(CloudBlob.Uri).Wait();
+	        var targetCloudBlob = Root.Instance.GetBlobReferenceByTotalCmdPath(target);
+            targetCloudBlob.StartCopyFromBlob(CloudBlob.Uri);
+			//TODO: fetch and wait for copy state
 	    }
 	}
 }

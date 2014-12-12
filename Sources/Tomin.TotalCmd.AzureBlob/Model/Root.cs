@@ -71,9 +71,30 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 				if (currentItem == null)
 					throw new Exception(String.Format("Invalid operation: Node {0} is missing in path '{1}' ", level, path));
 			}
-
 			return currentItem;
+		}
 
+		public T GetItemByPath<T>(string path) where T:FileSystemItemBase
+		{
+			return (T)GetItemByPath(path);
+		}
+
+		/// <summary>
+		/// get CloudBlob *reference* instance.
+		/// </summary>
+		/// <param name="target">full path in Total CMD format</param>
+		/// <returns></returns>
+		public ICloudBlob GetBlobReferenceByTotalCmdPath(string path)
+		{
+			var targetParts = Regex.Split(path, @"(^\\[^\\]*\\[^\\]*\\)");
+			var targetContainer = targetParts[1];
+			var targetBlob = targetParts[2];
+
+
+			BlobContainer container = Root.Instance.GetItemByPath<BlobContainer>(targetContainer);
+			var targetCloudBlob = container.CloudBlobContainer.GetBlockBlobReference(targetBlob);
+
+			return targetCloudBlob;
 		}
 
 		public override bool CreateDirectory(string folderName)
@@ -81,14 +102,6 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new NotImplementedException(String.Format("Please double click on special item below {0} to add a new account", AddNewStorageText));
 		}
 
-	    internal CloudBlockBlob GetCloudBlobByPath(string target)
-	    {
-	        var targetParts = Regex.Split(target, @"(^\\[^\\]*\\[^\\]*\\)");
-	        var targetContainer = targetParts[1];
-	        var targetBlob = targetParts[2];
 
-	        var targetCloudBlob = GetItemByPath(targetContainer).CloudBlobContainer.GetBlockBlobReference(targetBlob);
-	        return targetCloudBlob;
-	    }
 	}
 }
