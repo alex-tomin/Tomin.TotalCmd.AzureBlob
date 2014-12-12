@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			
 			FileSize = blob.Properties.Length;
 			CloudBlob = blob;
+		}
+
+		public override CloudBlobContainer CloudBlobContainer {
+		    get { return CloudBlob.Container; }
 		}
 
 		public override bool IsFolder
@@ -48,5 +54,10 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			CloudBlob.Delete();
 		}
 
+	    public override void Copy(string target)
+	    {
+	        var targetCloudBlob = Root.Instance.GetCloudBlobByPath(target);
+            targetCloudBlob.StartCopyFromBlobAsync(CloudBlob.Uri).Wait();
+	    }
 	}
 }

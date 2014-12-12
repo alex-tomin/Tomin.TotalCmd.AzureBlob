@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -68,7 +69,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			{
 				currentItem = currentItem[level];
 				if (currentItem == null)
-					throw new Exception(string.Format("Invalid operation: Node {0} is missing in path '{1}' ", level, path));
+					throw new Exception(String.Format("Invalid operation: Node {0} is missing in path '{1}' ", level, path));
 			}
 
 			return currentItem;
@@ -77,7 +78,17 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 
 		public override bool CreateDirectory(string folderName)
 		{
-			throw new NotImplementedException(string.Format("Please double click on special item below {0} to add a new account", AddNewStorageText));
+			throw new NotImplementedException(String.Format("Please double click on special item below {0} to add a new account", AddNewStorageText));
 		}
+
+	    internal CloudBlockBlob GetCloudBlobByPath(string target)
+	    {
+	        var targetParts = Regex.Split(target, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var targetContainer = targetParts[1];
+	        var targetBlob = targetParts[2];
+
+	        var targetCloudBlob = GetItemByPath(targetContainer).CloudBlobContainer.GetBlockBlobReference(targetBlob);
+	        return targetCloudBlob;
+	    }
 	}
 }

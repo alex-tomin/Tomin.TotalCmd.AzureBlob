@@ -25,7 +25,7 @@ namespace Tomin.TotalCmd.AzureBlob
 {
 	public class AzureBlobWfxPlugin : TotalCommanderWfxPlugin
 	{
-		enum DeletionState
+		enum UpdateOperationState
 		{
 			None = 0,
 			Initiated,
@@ -37,7 +37,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30); //Todo: move to config
 
 		//TODO: multithreaded support
-		private DeletionState deletionState = DeletionState.None;
+		private UpdateOperationState updateOperationState = UpdateOperationState.None;
 
 		public AzureBlobWfxPlugin()
 		{
@@ -52,22 +52,27 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var currentNode = Root.Instance.GetItemByPath(path);
 
-			if (deletionState == DeletionState.Initiated)
+			if (updateOperationState == UpdateOperationState.Initiated)
 			{
 				if (currentNode is BlobDirectory)
 				{
 					//get all files in a flat way
 					((BlobDirectory)currentNode).LoadAllSubItems();
-					deletionState = DeletionState.Enumerated; //TotalCMD triggers enumeration twice, we want only once.
+					updateOperationState = UpdateOperationState.Enumerated; //TotalCMD triggers enumeration twice, we want only once.
 				}
-				else
+				else if (currentNode is BlobItem)
 				{
 					//don't enumerate items - proceed to folder deletion immediately
 					enumerator = Enumerable.Empty<FindData>().GetEnumerator();
 					return FindNext(enumerator);
 				}
+				else
+				{
+                    currentNode.LoadChildren();
+                    updateOperationState = UpdateOperationState.Enumerated;
+				}
 			}
-			else if (deletionState == DeletionState.None)
+			else if (updateOperationState == UpdateOperationState.None)
 			{
 				currentNode.LoadChildren(cacheDuration);
 			}
@@ -121,17 +126,93 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
 		{
-			if (operation == StatusOperation.Delete && origin == StatusOrigin.Start)
-			{
-				deletionState = DeletionState.Initiated;
-			}
+		    switch (operation)
+		    {
+		        case StatusOperation.PutSingle:
+		        case StatusOperation.PutMulti:
+		        case StatusOperation.RenameMoveSingle:
+		        case StatusOperation.RenameMoveMulti:
+		        case StatusOperation.Delete:
+		        case StatusOperation.CreateDirectory:
+		        case StatusOperation.SyncPut:
+		        case StatusOperation.SyncDelete:
+		        case StatusOperation.PutMultiThread:
+                    if (origin == StatusOrigin.End)
+                        updateOperationState = UpdateOperationState.Initiated;
+                    break;
+                default:
+		            if (updateOperationState == UpdateOperationState.Enumerated)
+		                updateOperationState = UpdateOperationState.None;
+                    break;
+		    }
 		}
 
-		public override bool FileRemove(string remoteName)
+	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
+	    {
+	        try
+	        {
+	            if (Root.Instance.GetCloudBlobByPath(target).Exists())
+	                if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
+	                    return FileOperationResult.OK;
+
+	            var src = Root.Instance.GetItemByPath(source);
+	            src.Copy(target);
+	            if (move)
+	                src.Delete();
+	            return FileOperationResult.OK;
+	        }
+            catch (Exception ex)
+			{
+				OnError(ex);
+				return FileOperationResult.WriteError;
+			}}
+
+	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
+	    {
+            //TODO: Refactor
+	        var targetParts = Regex.Split(newName, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var targetContainer = targetParts[1];
+	        var targetDirectory = targetParts[2]+"/";
+
+	        var sourceParts = Regex.Split(oldName, @"(^\\[^\\]*\\[^\\]*\\)");
+	        var sourceDirectory = sourceParts[2].Replace('\\','/') + "/";
+
+            //Now let's fetch the blobs from "source folder"
+            var blobs = Root.Instance.GetItemByPath(oldName).CloudBlobContainer.ListBlobs(sourceDirectory, true);
+            //Now we'll enumerate through blobs
+            foreach (var blob in blobs)
+            {
+                var sourceBlockBlob = blob as CloudBlockBlob;
+                string newBlobName = targetDirectory + sourceBlockBlob.Name.Substring(sourceDirectory.Length);
+                var newBlob =  Root.Instance.GetItemByPath(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
+                newBlob.StartCopyFromBlob(sourceBlockBlob);
+                while (true)
+                {
+                    //Since copy blob operation is an async operation, we must wait for the copy operation to finish.
+                    //To do so, we'll check if the copy operation is completed or not by fetching properties of the new blob.
+                    newBlob.FetchAttributes();
+                    if (newBlob.CopyState.Status != CopyStatus.Pending)
+                    {
+                        break;
+                    }
+                    //It's still not completed. So wait for some time.
+                    System.Threading.Thread.Sleep(1000);
+                }
+                //Get the properties one more time
+                newBlob.FetchAttributes();
+                if (newBlob.CopyState.Status == CopyStatus.Success)
+                {
+                    //Delete the source blob only if the copy is successful.
+                    sourceBlockBlob.DeleteIfExists();
+                }
+            }
+            return FileOperationResult.OK;
+	    }
+
+	    public override bool FileRemove(string remoteName)
 		{
 			try
 			{
-				deletionState = DeletionState.None;
 				var item = Root.Instance.GetItemByPath(remoteName);
 				item.Delete();
 				return true;
@@ -147,15 +228,6 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			return FileRemove(remoteName);
 		}
-
-
-		//TODO.
-		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
-		{
-			//return base.FileCopy(source, target, overwrite, move, ri);
-			throw new NotImplementedException("Copy to this target Copy/Move/Rename are not implemented yet.");
-		}
-
 
 
 		public override void OnError(Exception error)
