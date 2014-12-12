@@ -25,7 +25,7 @@ namespace Tomin.TotalCmd.AzureBlob
 {
 	public class AzureBlobWfxPlugin : TotalCommanderWfxPlugin
 	{
-		enum UpdateOperationState
+		enum DeletionState
 		{
 			None = 0,
 			Initiated,
@@ -34,10 +34,13 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
-		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30); //Todo: move to config
+		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(3); //Todo: move to config
 
 		//TODO: multithreaded support
-		private UpdateOperationState updateOperationState = UpdateOperationState.None;
+		/// <summary>
+		/// Used to improve directory deletion. See FindFirst function - inline comments.
+		/// </summary>
+		private DeletionState deletionState = DeletionState.None;
 
 		public AzureBlobWfxPlugin()
 		{
@@ -52,27 +55,24 @@ namespace Tomin.TotalCmd.AzureBlob
 
 			var currentNode = Root.Instance.GetItemByPath(path);
 
-			if (updateOperationState == UpdateOperationState.Initiated)
+			//Special handling for deletion, as TotalCMD doesn't allow batch deletion. 
+			//It first enumerates all items, then removes one-by-one, and only then removes empty fodlers. - It could take hours if you have big an deep storage.
+			if (deletionState == DeletionState.Initiated)
 			{
 				if (currentNode is BlobDirectory)
 				{
-					//get all files in a flat way
+					//get all files in a flat way - it is faster. This should NOT be executed for non-deletion operation as folders will be lost.
 					((BlobDirectory)currentNode).LoadAllSubItems();
-					updateOperationState = UpdateOperationState.Enumerated; //TotalCMD triggers enumeration twice, we want only once.
+					deletionState = DeletionState.Enumerated; //TotalCMD triggers enumeration twice, we want only once. 
 				}
-				else if (currentNode is BlobItem)
+				else
 				{
 					//don't enumerate items - proceed to folder deletion immediately
 					enumerator = Enumerable.Empty<FindData>().GetEnumerator();
 					return FindNext(enumerator);
 				}
-				else
-				{
-                    currentNode.LoadChildren();
-                    updateOperationState = UpdateOperationState.Enumerated;
-				}
 			}
-			else if (updateOperationState == UpdateOperationState.None)
+			else if (deletionState == DeletionState.None)
 			{
 				currentNode.LoadChildren(cacheDuration);
 			}
@@ -126,25 +126,10 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)
 		{
-		    switch (operation)
-		    {
-		        case StatusOperation.PutSingle:
-		        case StatusOperation.PutMulti:
-		        case StatusOperation.RenameMoveSingle:
-		        case StatusOperation.RenameMoveMulti:
-		        case StatusOperation.Delete:
-		        case StatusOperation.CreateDirectory:
-		        case StatusOperation.SyncPut:
-		        case StatusOperation.SyncDelete:
-		        case StatusOperation.PutMultiThread:
-                    if (origin == StatusOrigin.End)
-                        updateOperationState = UpdateOperationState.Initiated;
-                    break;
-                default:
-		            if (updateOperationState == UpdateOperationState.Enumerated)
-		                updateOperationState = UpdateOperationState.None;
-                    break;
-		    }
+			if (operation == StatusOperation.Delete && origin == StatusOrigin.Start)
+			{
+				deletionState = DeletionState.Initiated;
+			}
 		}
 
 	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
@@ -214,6 +199,7 @@ namespace Tomin.TotalCmd.AzureBlob
 		{
 			try
 			{
+				deletionState = DeletionState.None;
 				var item = Root.Instance.GetItemByPath(remoteName);
 				item.Delete();
 				return true;
