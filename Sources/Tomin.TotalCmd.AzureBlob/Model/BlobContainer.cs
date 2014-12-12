@@ -25,7 +25,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			get { return true; }
 		}
 
-		public CloudBlobContainer CloudBlobContainer { get; private set; }
+		public override CloudBlobContainer CloudBlobContainer { get; protected set; }
 
 		protected override async System.Threading.Tasks.Task<IEnumerable<FileSystemItemBase>> LoadChildrenInternalAsync()
 		{
