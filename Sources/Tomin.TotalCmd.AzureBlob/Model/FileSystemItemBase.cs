@@ -100,7 +100,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		/// <param name="cacheDuration">consequent load will be missed during this period</param>
 		public void LoadChildren(TimeSpan? cacheDuration = null)
 		{
-			if (cacheDuration != null && lastLoadTime + cacheDuration > DateTime.UtcNow)
+			if (cacheDuration != null && DateTime.Now - lastLoadTime < cacheDuration)
 				return;
 			var updatedList = LoadChildrenInternalAsync().Result;
 			RebindChildren(updatedList);

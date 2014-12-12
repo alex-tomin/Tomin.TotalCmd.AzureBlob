@@ -151,6 +151,7 @@ namespace Tomin.TotalCmd.AzureBlob
 	    {
 	        try
 	        {
+				//TODO: check file copy between plugins; 
 	            if (Root.Instance.GetCloudBlobByPath(target).Exists())
 	                if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
 	                    return FileOperationResult.OK;
