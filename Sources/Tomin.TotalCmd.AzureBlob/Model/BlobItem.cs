@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using TotalCommander.Plugin.Wfx;
 using System.Threading.Tasks;
+using Tomin.TotalCmd.AzureBlob.Helpers;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -34,11 +35,15 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new InvalidOperationException("Operation not supported on File items");
 		}
 
-		public override FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
+		public override FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri, Action<int> setProgress)
 		{
-			using (var fileStream = File.OpenWrite(localName))
+			FileStream localFileStream = File.OpenWrite(localName);
+			long length = CloudBlob.Properties.Length;
+			using (var progressFileStream = new ProgressStream(localFileStream, length))
 			{
-				CloudBlob.DownloadToStream(fileStream);
+				progressFileStream.ProgressChanged += (sender, e) => setProgress(e.Progress);
+
+				CloudBlob.DownloadToStream(progressFileStream);
 			}
 
 			return FileOperationResult.OK;

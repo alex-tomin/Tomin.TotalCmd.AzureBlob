@@ -108,18 +108,37 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
 		{
+			bool continueOperation = Progress.SetProgress(remoteName, localName, 0);
+			if (!continueOperation)
+				return FileOperationResult.UserAbort;
+
 			var blobItem = Root.Instance.GetItemByPath(remoteName);
-			return blobItem.DownloadFile(remoteName, ref  localName, copyFlags, ri);
+			var name = localName;
+			Action<int> setProgress = progress => Progress.SetProgress(remoteName, name, progress);
+
+			var result = blobItem.DownloadFile(remoteName, ref  localName, copyFlags, ri, setProgress);
+			Progress.SetProgress(remoteName, localName, 100);
+			return result;
 		}
 
 		public override FileOperationResult FilePut(string localName, ref string remoteName, CopyFlags copyFlags)
 		{
+			//TODO: add cancellation for a single big file
+			bool continueOperation = Progress.SetProgress(remoteName, localName, 0);
+			if (!continueOperation)
+				return FileOperationResult.UserAbort;
+
 			int lastSlashIndex = remoteName.LastIndexOf('\\');
 			string existingFolderPath = remoteName.Substring(0, lastSlashIndex);
 			string newFolderName = remoteName.Substring(lastSlashIndex + 1);
 
 			var directory = Root.Instance.GetItemByPath(existingFolderPath);
-			return directory.UploadFile(localName, newFolderName, copyFlags);
+			var name = remoteName;
+			Action<int> setProgress = progress => Progress.SetProgress(localName, name, progress);
+			
+			var result = directory.UploadFile(localName, newFolderName, copyFlags, setProgress);	
+			Progress.SetProgress(remoteName, localName, 100);
+			return result;
 		}
 
 		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)

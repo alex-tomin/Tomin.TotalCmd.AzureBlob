@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using TotalCommander.Plugin.Wfx;
 using System.Threading.Tasks;
+using Tomin.TotalCmd.AzureBlob.Helpers;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -63,10 +64,17 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return true;
 		}
 
-		public override FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags)
+		public override FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags, Action<int> setProgress)
 		{
+			FileStream localFileStream = File.OpenRead(localName);
 			var blob = CloudBlobDirectory.GetBlockBlobReference(remoteName);
-			blob.UploadFromFile(localName, FileMode.Open);
+
+			using (var progressFileStream = new ProgressStream(localFileStream))
+			{
+				progressFileStream.ProgressChanged += (sender, e) => setProgress(e.Progress);
+				blob.UploadFromStream(progressFileStream);
+			}
+
 			return FileOperationResult.OK;
 		}
 

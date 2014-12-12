@@ -157,7 +157,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new NotImplementedException("Creating sub directory is not yet implemented");
 		}
 
-		public virtual FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
+		public virtual FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri, Action<int> setProgress)
 		{
 			if (IsFolder)
 				throw new InvalidOperationException("Invalid opertion on Folder");
@@ -165,7 +165,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new NotImplementedException("Not Imlemented yet");
 		}
 
-		public virtual FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags)
+		public virtual FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags, Action<int> setProgress)
 		{
 			if (!IsFolder)
 				throw new InvalidOperationException("Invalid opertion on File");

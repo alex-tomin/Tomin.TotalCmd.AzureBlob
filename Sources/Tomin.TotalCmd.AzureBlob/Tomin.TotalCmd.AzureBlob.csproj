@@ -104,6 +104,7 @@
     <Compile Include="Forms\AddStorageDialog.Designer.cs">
       <DependentUpon>AddStorageDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ProgressStream.cs" />
     <Compile Include="Model\BlobDirectory.cs" />
     <Compile Include="Model\FileSystemItemBase.cs" />
     <Compile Include="Model\NewAccountSupportFile.cs" />
