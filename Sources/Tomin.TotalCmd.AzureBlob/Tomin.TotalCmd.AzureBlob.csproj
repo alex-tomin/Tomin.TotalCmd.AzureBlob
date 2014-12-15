@@ -37,6 +37,7 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(MSBuildProjectDirectory)\..\..\Build\TotalCmd\TOTALCMD64.EXE</StartProgram>
     <StartWorkingDirectory>$(MSBuildProjectDirectory)\..\..\Build\TotalCmd\</StartWorkingDirectory>
+    <StartArguments>/L="\\\AzureBlob\"</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,6 +106,7 @@
       <DependentUpon>AddStorageDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ProgressStream.cs" />
+    <Compile Include="Helpers\RetryPolicyCancellationWrapper.cs" />
     <Compile Include="Model\BlobDirectory.cs" />
     <Compile Include="Model\FileSystemItemBase.cs" />
     <Compile Include="Model\NewAccountSupportFile.cs" />

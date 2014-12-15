@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tomin.TotalCmd.AzureBlob.Configuration;
+using Tomin.TotalCmd.AzureBlob.Helpers;
 using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
@@ -14,6 +15,8 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		public StorageAccount(string name, FileSystemItemBase parent, CloudBlobClient blobClient): base(name, parent)
 		{
 			BlobClient = blobClient;
+			//Allow cancellation for Blob operations;
+			BlobClient.DefaultRequestOptions.RetryPolicy = new RetryPolicyCancellationWrapper(BlobClient.DefaultRequestOptions.RetryPolicy);
 		}
 
 		public override bool IsFolder

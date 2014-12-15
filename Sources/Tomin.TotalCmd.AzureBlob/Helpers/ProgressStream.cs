@@ -2,6 +2,7 @@
 using System.ComponentModel;
 
 using System.IO;
+using System.Threading;
 
 namespace Tomin.TotalCmd.AzureBlob.Helpers
 {
@@ -10,10 +11,17 @@ namespace Tomin.TotalCmd.AzureBlob.Helpers
 		private Stream stream;
 		private long bytesTransferred;
 		private long totalLength;
+		CancellationToken cancellationToken;
 
 		public event EventHandler<ProgressChangedEventArgs> ProgressChanged;
 
-
+		public ProgressStream(Stream file, long? length = null, CancellationToken cancellationToken = default(CancellationToken))
+		{
+			this.stream = file;
+			this.totalLength = length ?? file.Length;
+			this.bytesTransferred = 0;
+			this.cancellationToken = cancellationToken;
+		}
 
 		public override void SetLength(long value)
 		{
@@ -23,6 +31,7 @@ namespace Tomin.TotalCmd.AzureBlob.Helpers
 
 		public override int Read(byte[] buffer, int offset, int count)
 		{
+			cancellationToken.ThrowIfCancellationRequested();
 			int result = stream.Read(buffer, offset, count);
 			bytesTransferred += result;
 			OnProgressChanged(bytesTransferred, totalLength);
@@ -32,6 +41,7 @@ namespace Tomin.TotalCmd.AzureBlob.Helpers
 
 		public override void Write(byte[] buffer, int offset, int count)
 		{
+			cancellationToken.ThrowIfCancellationRequested();
 			this.stream.Write(buffer, offset, count);
 			bytesTransferred += count;
 			OnProgressChanged(bytesTransferred, totalLength);
@@ -47,12 +57,6 @@ namespace Tomin.TotalCmd.AzureBlob.Helpers
 		}
 
 		#region Transparent Wrapper
-		public ProgressStream(Stream file, long? length = null)
-		{
-			this.stream = file;
-			this.totalLength = length ?? file.Length;
-			this.bytesTransferred = 0;
-		}
 
 		public override bool CanRead
 		{

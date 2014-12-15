@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Tomin.TotalCmd.AzureBlob.Helpers;
 using TotalCommander.Plugin.Wfx;
@@ -63,18 +64,18 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			return true;
 		}
 
-		public override FileOperationResult UploadFile(string localName, string remoteName, CopyFlags copyFlags, Action<int> setProgress)
+		public override void UploadFile(string localName, string remoteName, CopyFlags copyFlags, CancellationToken cancellationToken, Action<int> setProgress)
 		{
 			FileStream localFileStream = File.OpenRead(localName);
 			var blob = CloudBlobContainer.GetBlockBlobReference(remoteName);
+			//redundant, as CloudBlobContainer preserves this settings (comparing to BlobDirectory which doesn't)
+			blob.ServiceClient.DefaultRequestOptions.RetryPolicy = new RetryPolicyCancellationWrapper(blob.ServiceClient.DefaultRequestOptions.RetryPolicy);
 
-			using (var progressFileStream = new ProgressStream(localFileStream))
+			using (var progressFileStream = new ProgressStream(localFileStream, cancellationToken:cancellationToken))
 			{
 				progressFileStream.ProgressChanged += (sender, e) => setProgress(e.Progress);
 				blob.UploadFromStream(progressFileStream);
 			}
-
-			return FileOperationResult.OK;
 		}
 
 		public override void Delete()

@@ -32,7 +32,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			Enumerated
 		}
 
-		private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
+		//private static Dictionary<string, CloudBlobClient> blobClients = new Dictionary<string, CloudBlobClient>();
 		private static Dictionary<string, DateTime> directoryLastWriteTimeCache = new Dictionary<string, DateTime>();
 		private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(3); //Todo: move to config
 
@@ -108,24 +108,62 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
 		{
-			bool continueOperation = Progress.SetProgress(remoteName, localName, 0);
-			if (!continueOperation)
+			//switch (copyFlags)
+			//{
+			//	case CopyFlags.None:
+			//		
+			//		break;
+			//	case CopyFlags.Overwrite:
+			//		
+			//		break;
+			//	case CopyFlags.Resume:
+			//		
+			//		break;
+			//	case CopyFlags.Move:
+			//		return FileOperationResult.Exists;
+			//		break;
+			//}
+
+			bool cancelled = !Progress.SetProgress(remoteName, localName, 0);
+			if (cancelled)
 				return FileOperationResult.UserAbort;
 
 			var blobItem = Root.Instance.GetItemByPath(remoteName);
+			var cancellationToken = new CancellationTokenSource();
 			var name = localName;
-			Action<int> setProgress = progress => Progress.SetProgress(remoteName, name, progress);
 
-			var result = blobItem.DownloadFile(remoteName, ref  localName, copyFlags, ri, setProgress);
+			Action<int> setProgress = progress =>
+			{
+				cancelled = !Progress.SetProgress(remoteName, name, progress);
+				if (cancelled) cancellationToken.Cancel();
+			};
+
+			try
+			{
+				blobItem.DownloadFile(remoteName, localName, copyFlags, cancellationToken.Token, setProgress);
+			}
+			catch (Exception ex)
+			{
+				if (!(ex.InnerException is OperationCanceledException))
+					throw;
+				
+				//remove half downloaded file
+				if (File.Exists(localName))
+					File.Delete(localName);
+				return FileOperationResult.UserAbort;
+			}
+
+			//if ((copyFlags & CopyFlags.Move) == CopyFlags.Move)
+				//blobItem.Delete();
+
 			Progress.SetProgress(remoteName, localName, 100);
-			return result;
+			return FileOperationResult.OK;
 		}
 
 		public override FileOperationResult FilePut(string localName, ref string remoteName, CopyFlags copyFlags)
 		{
-			//TODO: add cancellation for a single big file
-			bool continueOperation = Progress.SetProgress(remoteName, localName, 0);
-			if (!continueOperation)
+			bool cancelled = !Progress.SetProgress(remoteName, localName, 0);
+			if (cancelled)
 				return FileOperationResult.UserAbort;
 
 			int lastSlashIndex = remoteName.LastIndexOf('\\');
@@ -133,12 +171,30 @@ namespace Tomin.TotalCmd.AzureBlob
 			string newFolderName = remoteName.Substring(lastSlashIndex + 1);
 
 			var directory = Root.Instance.GetItemByPath(existingFolderPath);
+			var cancellationToken = new CancellationTokenSource();
 			var name = remoteName;
-			Action<int> setProgress = progress => Progress.SetProgress(localName, name, progress);
-			
-			var result = directory.UploadFile(localName, newFolderName, copyFlags, setProgress);	
+
+			Action<int> setProgress = progress =>
+			{
+				cancelled = !Progress.SetProgress(localName, name, progress);
+				if (cancelled) cancellationToken.Cancel();
+			};
+	
+			try
+			{
+				directory.UploadFile(localName, newFolderName, copyFlags, cancellationToken.Token, setProgress);
+			}
+			catch (OperationCanceledException ex)
+			{
+				//remove half uploaded file
+				FileSystemItemBase remoteBlob = null;
+				if (Root.Instance.TryGetItemByPath(remoteName, out remoteBlob))
+					remoteBlob.Delete();
+				return FileOperationResult.UserAbort;
+			}
+
 			Progress.SetProgress(remoteName, localName, 100);
-			return result;
+			return FileOperationResult.OK;
 		}
 
 		public override void StatusInfo(string remoteName, StatusOrigin origin, StatusOperation operation)

@@ -69,9 +69,26 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			{
 				currentItem = currentItem[level];
 				if (currentItem == null)
-					throw new Exception(String.Format("Invalid operation: Node {0} is missing in path '{1}' ", level, path));
+					throw new MissingMemberException(String.Format("Invalid operation: Node {0} is missing in path '{1}' ", level, path));
 			}
 			return currentItem;
+		}
+
+		/// <summary>
+		/// Returns false if item was not found;
+		/// </summary>
+		public bool TryGetItemByPath(string path, out FileSystemItemBase item)
+		{
+			try
+			{
+				item = GetItemByPath(path);
+				return true;
+			}
+			catch (MissingMemberException)
+			{
+				item = null;
+				return false;
+			}
 		}
 
 		public T GetItemByPath<T>(string path) where T:FileSystemItemBase

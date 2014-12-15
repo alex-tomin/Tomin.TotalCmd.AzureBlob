@@ -7,6 +7,8 @@ using System.Text;
 using TotalCommander.Plugin.Wfx;
 using System.Threading.Tasks;
 using Tomin.TotalCmd.AzureBlob.Helpers;
+using Microsoft.WindowsAzure.Storage;
+using System.Threading;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
 {
@@ -20,6 +22,7 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			
 			FileSize = blob.Properties.Length;
 			CloudBlob = blob;
+			CloudBlob.ServiceClient.DefaultRequestOptions.RetryPolicy = new RetryPolicyCancellationWrapper(CloudBlob.ServiceClient.DefaultRequestOptions.RetryPolicy);
 		}
 
 
@@ -35,18 +38,16 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new InvalidOperationException("Operation not supported on File items");
 		}
 
-		public override FileOperationResult DownloadFile(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri, Action<int> setProgress)
+		public override void DownloadFile(string remoteName, string localName, CopyFlags copyFlags, CancellationToken cancellationToken, Action<int> setProgress)
 		{
 			FileStream localFileStream = File.OpenWrite(localName);
 			long length = CloudBlob.Properties.Length;
-			using (var progressFileStream = new ProgressStream(localFileStream, length))
+
+			using (var progressFileStream = new ProgressStream(localFileStream, length, cancellationToken))
 			{
 				progressFileStream.ProgressChanged += (sender, e) => setProgress(e.Progress);
-
 				CloudBlob.DownloadToStream(progressFileStream);
 			}
-
-			return FileOperationResult.OK;
 		}
 
 		public override void Delete()
