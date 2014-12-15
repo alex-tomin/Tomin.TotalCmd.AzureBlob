@@ -74,7 +74,7 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				currentNode.LoadChildren(cacheDuration);
 			}
-			
+
 			enumerator = currentNode.Children.Select(x => x.ToFindData()).GetEnumerator();
 			return FindNext(enumerator);
 		}
@@ -108,25 +108,16 @@ namespace Tomin.TotalCmd.AzureBlob
 
 		public override FileOperationResult FileGet(string remoteName, ref string localName, CopyFlags copyFlags, RemoteInfo ri)
 		{
-			//switch (copyFlags)
-			//{
-			//	case CopyFlags.None:
-			//		
-			//		break;
-			//	case CopyFlags.Overwrite:
-			//		
-			//		break;
-			//	case CopyFlags.Resume:
-			//		
-			//		break;
-			//	case CopyFlags.Move:
-			//		return FileOperationResult.Exists;
-			//		break;
-			//}
-
 			bool cancelled = !Progress.SetProgress(remoteName, localName, 0);
 			if (cancelled)
 				return FileOperationResult.UserAbort;
+
+			if (File.Exists(localName))
+			{
+				//First time? - show user a prompt.
+				if (copyFlags == CopyFlags.None || copyFlags == CopyFlags.Move)
+					return FileOperationResult.Exists;
+			}
 
 			var blobItem = Root.Instance.GetItemByPath(remoteName);
 			var cancellationToken = new CancellationTokenSource();
@@ -146,15 +137,17 @@ namespace Tomin.TotalCmd.AzureBlob
 			{
 				if (!(ex.InnerException is OperationCanceledException))
 					throw;
-				
+
 				//remove half downloaded file
 				if (File.Exists(localName))
 					File.Delete(localName);
 				return FileOperationResult.UserAbort;
 			}
 
-			//if ((copyFlags & CopyFlags.Move) == CopyFlags.Move)
-				//blobItem.Delete();
+			if ((copyFlags & CopyFlags.Move) == CopyFlags.Move)
+			{
+				blobItem.Delete(); //Remove original on Move operation
+			}
 
 			Progress.SetProgress(remoteName, localName, 100);
 			return FileOperationResult.OK;
@@ -165,6 +158,14 @@ namespace Tomin.TotalCmd.AzureBlob
 			bool cancelled = !Progress.SetProgress(remoteName, localName, 0);
 			if (cancelled)
 				return FileOperationResult.UserAbort;
+
+			FileSystemItemBase remoteBlob = null;
+			if (Root.Instance.TryGetItemByPath(remoteName, out remoteBlob))
+			{
+				//First time? - show user a prompt.
+				if ((copyFlags & CopyFlags.Overwrite) != CopyFlags.Overwrite)
+					return FileOperationResult.Exists;
+			}
 
 			int lastSlashIndex = remoteName.LastIndexOf('\\');
 			string existingFolderPath = remoteName.Substring(0, lastSlashIndex);
@@ -179,7 +180,7 @@ namespace Tomin.TotalCmd.AzureBlob
 				cancelled = !Progress.SetProgress(localName, name, progress);
 				if (cancelled) cancellationToken.Cancel();
 			};
-	
+
 			try
 			{
 				directory.UploadFile(localName, newFolderName, copyFlags, cancellationToken.Token, setProgress);
@@ -187,10 +188,14 @@ namespace Tomin.TotalCmd.AzureBlob
 			catch (OperationCanceledException ex)
 			{
 				//remove half uploaded file
-				FileSystemItemBase remoteBlob = null;
 				if (Root.Instance.TryGetItemByPath(remoteName, out remoteBlob))
 					remoteBlob.Delete();
 				return FileOperationResult.UserAbort;
+			}
+
+			if ((copyFlags & CopyFlags.Move) == CopyFlags.Move)
+			{
+				File.Delete(localName);
 			}
 
 			Progress.SetProgress(remoteName, localName, 100);
@@ -205,74 +210,75 @@ namespace Tomin.TotalCmd.AzureBlob
 			}
 		}
 
-	    public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
-	    {
-	        try
-	        {
-	            if (Root.Instance.GetBlobReferenceByTotalCmdPath(target).Exists())
-	                if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
-	                    return FileOperationResult.OK;
+		public override FileOperationResult FileCopy(string source, string target, bool overwrite, bool move, RemoteInfo ri)
+		{
+			try
+			{
+				if (Root.Instance.GetBlobReferenceByTotalCmdPath(target).Exists())
+					if (!Request.MessageBox(String.Format("The file '{0}' already exists.\n Do you want to owerwrite it?", target), MessageBoxButtons.YesNo))
+						return FileOperationResult.OK;
 
-	            var src = Root.Instance.GetItemByPath(source);
-	            src.Copy(target);
-	            if (move)
-	                src.Delete();
-	            return FileOperationResult.OK;
-	        }
-            catch (Exception ex)
+				var src = Root.Instance.GetItemByPath(source);
+				src.Copy(target);
+				if (move)
+					src.Delete();
+				return FileOperationResult.OK;
+			}
+			catch (Exception ex)
 			{
 				OnError(ex);
 				return FileOperationResult.WriteError;
 			}
 		}
 
-	    public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
-	    {
-            //TODO: Refactor, consider page blobs, move to BlobDirectory class?
+		public override FileOperationResult DirectoryRename(string oldName, string newName, bool overwrite, RemoteInfo ri)
+		{
+			//TODO: Refactor, consider page blobs, move to BlobDirectory class?
 			//TODO: Consider code reuse with Root.GetBlobReferenceByTotalCmdPath
-	        var targetParts = Regex.Split(newName, @"(^\\[^\\]*\\[^\\]*\\)");
-	        var targetContainer = targetParts[1];
-	        var targetDirectory = targetParts[2]+"/";
+			//TODO: rename container or storage account - handle;
+			var targetParts = Regex.Split(newName, @"(^\\[^\\]*\\[^\\]*\\)");
+			var targetContainer = targetParts[1];
+			var targetDirectory = targetParts[2] + "/";
 
-	        var sourceParts = Regex.Split(oldName, @"(^\\[^\\]*\\[^\\]*\\)");
-	        var sourceDirectory = sourceParts[2].Replace('\\','/') + "/";
+			var sourceParts = Regex.Split(oldName, @"(^\\[^\\]*\\[^\\]*\\)");
+			var sourceDirectory = sourceParts[2].Replace('\\', '/') + "/";
 
-            //Now let's fetch the blobs from "source folder"
+			//Now let's fetch the blobs from "source folder"
 			//TODO: use Directory.LoadAll - to fill the Tree.
-            var blobs = Root.Instance.GetItemByPath<BlobDirectory>(oldName).CloudBlobDirectory.ListBlobs(true);
-            //Now we'll enumerate through blobs
-            foreach (var blob in blobs)
-            {
-                var sourceBlockBlob = blob as CloudBlockBlob;
-                string newBlobName = targetDirectory + sourceBlockBlob.Name.Substring(sourceDirectory.Length);
-                var newBlob =  Root.Instance.GetItemByPath<BlobContainer>(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
+			var blobs = Root.Instance.GetItemByPath<BlobDirectory>(oldName).CloudBlobDirectory.ListBlobs(true);
+			//Now we'll enumerate through blobs
+			foreach (var blob in blobs)
+			{
+				var sourceBlockBlob = blob as CloudBlockBlob;
+				string newBlobName = targetDirectory + sourceBlockBlob.Name.Substring(sourceDirectory.Length);
+				var newBlob = Root.Instance.GetItemByPath<BlobContainer>(targetContainer).CloudBlobContainer.GetBlockBlobReference(newBlobName);
 				//TODO: reuse BlobItem.Copy 
-                newBlob.StartCopyFromBlob(sourceBlockBlob);
-                while (true)
-                {
-                    //Since copy blob operation is an async operation, we must wait for the copy operation to finish.
-                    //To do so, we'll check if the copy operation is completed or not by fetching properties of the new blob.
+				newBlob.StartCopyFromBlob(sourceBlockBlob);
+				while (true)
+				{
+					//Since copy blob operation is an async operation, we must wait for the copy operation to finish.
+					//To do so, we'll check if the copy operation is completed or not by fetching properties of the new blob.
 					//TODO: make the same  for BlobItem.Copy
-                    newBlob.FetchAttributes();
-                    if (newBlob.CopyState.Status != CopyStatus.Pending)
-                    {
-                        break;
-                    }
-                    //It's still not completed. So wait for some time.
-                    System.Threading.Thread.Sleep(1000);
-                }
-                //Get the properties one more time
-                newBlob.FetchAttributes();
-                if (newBlob.CopyState.Status == CopyStatus.Success)
-                {
-                    //Delete the source blob only if the copy is successful.
-                    sourceBlockBlob.DeleteIfExists();
-                }
-            }
-            return FileOperationResult.OK;
-	    }
+					newBlob.FetchAttributes();
+					if (newBlob.CopyState.Status != CopyStatus.Pending)
+					{
+						break;
+					}
+					//It's still not completed. So wait for some time.
+					System.Threading.Thread.Sleep(1000);
+				}
+				//Get the properties one more time
+				newBlob.FetchAttributes();
+				if (newBlob.CopyState.Status == CopyStatus.Success)
+				{
+					//Delete the source blob only if the copy is successful.
+					sourceBlockBlob.DeleteIfExists();
+				}
+			}
+			return FileOperationResult.OK;
+		}
 
-	    public override bool FileRemove(string remoteName)
+		public override bool FileRemove(string remoteName)
 		{
 			try
 			{
