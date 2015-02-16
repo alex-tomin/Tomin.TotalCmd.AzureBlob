@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Tomin.TotalCmd.AzureBlob.Forms;
 using Tomin.TotalCmd.AzureBlob.Helpers;
+using TotalCommander.Plugin;
 using TotalCommander.Plugin.Wfx;
 
 namespace Tomin.TotalCmd.AzureBlob.Model
@@ -82,5 +84,11 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 		{
 			CloudBlobContainer.Delete();
 		}
+
+	    public override ExecuteResult ExecuteProperties(TotalCommanderWindow window, ref string remoteName)
+	    {
+	        ContainerPropertiesDialog.Edit(CloudBlobContainer);
+	        return base.ExecuteProperties(window, ref remoteName);
+	    }
 	}
 }

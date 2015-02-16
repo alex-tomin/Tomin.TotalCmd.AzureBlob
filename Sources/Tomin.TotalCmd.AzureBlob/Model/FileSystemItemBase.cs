@@ -179,11 +179,16 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 			throw new NotImplementedException("Delete operation is not implemented on this type");
 		}
 
-		#endregion
-
 	    public virtual void Copy(string target)
 	    {
 	        throw new NotImplementedException("Copy operation is not implemented on this type");
 	    }
+
+	    public virtual ExecuteResult ExecuteProperties(TotalCommanderWindow window, ref string remoteName)
+	    {
+            return ExecuteResult.OK;
+	    }
+
+		#endregion
 	}
 }
