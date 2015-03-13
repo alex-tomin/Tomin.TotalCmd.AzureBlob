@@ -90,7 +90,13 @@ namespace Tomin.TotalCmd.AzureBlob
 			throw new InvalidOperationException("Enumerator Type is not defined");
 		}
 
-		public override ExecuteResult ExecuteOpen(TotalCommanderWindow window, ref string remoteName)
+	    public override ExecuteResult ExecuteProperties(TotalCommanderWindow window, ref string remoteName)
+	    {
+			var item = Root.Instance.GetItemByPath(remoteName);
+			return item.ExecuteProperties(window, ref remoteName);
+	    }
+
+	    public override ExecuteResult ExecuteOpen(TotalCommanderWindow window, ref string remoteName)
 		{
 			var item = Root.Instance.GetItemByPath(remoteName);
 			return item.ExecuteOpen(window, ref remoteName);

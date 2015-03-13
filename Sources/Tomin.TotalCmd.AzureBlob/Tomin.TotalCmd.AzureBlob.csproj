@@ -105,6 +105,18 @@
     <Compile Include="Forms\AddStorageDialog.Designer.cs">
       <DependentUpon>AddStorageDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ContainerPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContainerPropertiesDialog.Designer.cs">
+      <DependentUpon>ContainerPropertiesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BlobPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BlobPropertiesDialog.Designer.cs">
+      <DependentUpon>BlobPropertiesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ProgressStream.cs" />
     <Compile Include="Helpers\RetryPolicyCancellationWrapper.cs" />
     <Compile Include="Model\BlobDirectory.cs" />
@@ -151,6 +163,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\AddStorageDialog.resx">
       <DependentUpon>AddStorageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContainerPropertiesDialog.resx">
+      <DependentUpon>ContainerPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlobPropertiesDialog.resx">
+      <DependentUpon>BlobPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

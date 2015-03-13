@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Tomin.TotalCmd.AzureBlob.Forms;
+using TotalCommander.Plugin;
 using TotalCommander.Plugin.Wfx;
 using System.Threading.Tasks;
 using Tomin.TotalCmd.AzureBlob.Helpers;
@@ -60,6 +62,12 @@ namespace Tomin.TotalCmd.AzureBlob.Model
 	        var targetCloudBlob = Root.Instance.GetBlobReferenceByTotalCmdPath(target);
             targetCloudBlob.StartCopyFromBlob(CloudBlob.Uri);
 			//TODO: fetch and wait for copy state
+	    }
+
+	    public override ExecuteResult ExecuteProperties(TotalCommanderWindow window, ref string remoteName)
+	    {
+            BlobPropertiesDialog.Edit(CloudBlob);
+	        return base.ExecuteProperties(window, ref remoteName);
 	    }
 	}
 }
