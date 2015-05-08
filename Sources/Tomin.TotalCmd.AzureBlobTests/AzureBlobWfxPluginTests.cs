@@ -12,6 +12,7 @@ namespace Tomin.TotalCmd.AzureBlob.Tests
 	public class AzureBlobWfxPluginTests
 	{
 		[TestMethod()]
+        [Ignore]
 		public void FileCopyTest()
 		{
 			Assert.Fail();
