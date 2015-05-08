@@ -1,6 +1,6 @@
 version: 1.0.{build}
 before_build:
-  - nuget restore
+  - nuget restore Sources\Tomin.TotalCmd.AzureBlob.sln
 build:
   verbosity: minimal
   project: Sources\Tomin.TotalCmd.AzureBlob.sln
