@@ -1,7 +1,8 @@
-Tomin.TotalCmd.AzureBlob
+Tomin.TotalCmd.AzureBlob 
 ========================
+[![Build status](https://ci.appveyor.com/api/projects/status/hmyxifyp8vbv23ex?svg=true)](https://ci.appveyor.com/project/idealist1508/tomin-totalcmd-azureblob)
 
-Total Commander plugin for Azure Blob service
+Total Commander plugin for Azure Blob service 
 
 Prerequisites
 ---------------
